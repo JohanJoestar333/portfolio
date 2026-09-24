@@ -1,0 +1,122 @@
+.login-lab__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.login-lab__field input {
+  padding: 0.65rem 0.75rem;
+  background: var(--surface-raised);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+}
+
+.login-lab__field input:focus-visible {
+  border-color: var(--accent);
+}
+
+.login-lab__error {
+  margin: -0.5rem 0 1rem;
+  font-size: var(--text-xs);
+  color: var(--status-fail);
+}
+
+.login-lab__banner {
+  margin: 1rem 0 0;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+}
+
+.login-lab__banner:empty {
+  display: none;
+}
+
+.login-lab__banner.is-success {
+  background: var(--accent-dim);
+  color: var(--status-pass);
+}
+
+.login-lab__banner.is-failure {
+  background: var(--status-fail-dim);
+  color: var(--status-fail);
+}
+
+.login-lab__hint {
+  margin-top: 1.25rem;
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+}
+
+.login-lab__scenarios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.login-lab__scenario-btn {
+  padding: 0.5rem 0.75rem;
+  font-size: var(--text-xs);
+  font-family: var(--font-mono);
+  background: var(--surface-raised);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.login-lab__scenario-btn:hover,
+.login-lab__scenario-btn:focus-visible {
+  border-color: var(--accent);
+  color: var(--text-primary);
+}
+
+.login-lab__results-label {
+  margin-bottom: 0.75rem;
+}
+
+.login-lab__log {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 360px;
+  overflow-y: auto;
+}
+
+.login-lab__log-empty {
+  font-size: var(--text-sm);
+  color: var(--text-tertiary);
+}
+
+.login-lab__log-entry {
+  padding: 0.85rem;
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.login-lab__log-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+.login-lab__log-line {
+  margin: 0.2rem 0 0;
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+
+.login-lab__log-line span {
+  color: var(--text-tertiary);
+}

@@ -1,0 +1,34 @@
+// App.jsx is the "composition root" — it doesn't contain any content or
+// logic itself, it just imports every section and stacks them in the
+// order they should appear on the page. To reorder sections, change the
+// order of the JSX below. To add a new section, create its component
+// folder under src/components/, import it here, and drop it into the
+// tree where you want it to appear (and add a matching link in
+// Navbar.jsx if it should be reachable from the nav).
+import Navbar from './components/Navbar/Navbar.jsx'
+import Hero from './components/Hero/Hero.jsx'
+import About from './components/About/About.jsx'
+import QALab from './components/QALab/QALab.jsx'
+import Automation from './components/Automation/Automation.jsx'
+import Skills from './components/Skills/Skills.jsx'
+import Experience from './components/Experience/Experience.jsx'
+import Writing from './components/Writing/Writing.jsx'
+import Contact from './components/Contact/Contact.jsx'
+import Footer from './components/Footer/Footer.jsx'
+
+export default function App() {
+  return (
+    <>
+      <Navbar />
+      <Hero />
+      <About />
+      <QALab />
+      <Automation />
+      <Skills />
+      <Experience />
+      <Writing />
+      <Contact />
+      <Footer />
+    </>
+  )
+}

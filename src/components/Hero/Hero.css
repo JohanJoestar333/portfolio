@@ -1,0 +1,37 @@
+.hero {
+  padding-block: clamp(3rem, 10vw, 6rem) clamp(2.5rem, 8vw, 5rem);
+}
+
+.hero__inner {
+  max-width: 720px;
+}
+
+.hero__name {
+  font-size: var(--text-3xl);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0.5rem 0 0;
+}
+
+.hero__quote {
+  margin: 1.75rem 0;
+  font-size: var(--text-xl);
+  font-weight: 500;
+  line-height: 1.35;
+  max-width: 560px;
+  padding-left: 1.1rem;
+  border-left: 2px solid var(--accent);
+}
+
+.hero__lede {
+  color: var(--text-secondary);
+  max-width: 520px;
+  margin-bottom: 2rem;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+}

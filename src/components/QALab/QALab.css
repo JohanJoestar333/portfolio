@@ -1,0 +1,55 @@
+.qa-lab__intro {
+  color: var(--text-secondary);
+  max-width: 640px;
+  margin: -1.5rem 0 2.5rem;
+}
+
+.qa-lab__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.qa-lab__tab {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  padding: 0.55rem 1rem;
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+}
+
+.qa-lab__tab:hover {
+  color: var(--text-primary);
+}
+
+.qa-lab__tab.is-active {
+  color: var(--accent-text-on);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Shared two-pane "app under test" / "QA panel" layout, reused by
+   LoginLab and FormLab. */
+.qa-lab-experience {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 900px) {
+  .qa-lab-experience {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+.qa-lab-experience .panel {
+  padding: 1.5rem;
+}

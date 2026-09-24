@@ -1,0 +1,300 @@
+/* ==========================================================================
+   Design tokens
+   Dark, slightly green-tinted charcoal base — grounded in a terminal/testing
+   aesthetic rather than a generic "dark mode" palette. One accent (lime),
+   one reserved status color (fail/bug red) so red always means something
+   specific rather than acting as decoration.
+   ========================================================================== */
+
+:root {
+  /* Surfaces */
+  --bg: #0d1210;
+  --surface: #151a17;
+  --surface-raised: #1c2320;
+  --surface-hover: #202822;
+  --border: #2a322d;
+  --border-strong: #3a453e;
+
+  /* Text */
+  --text-primary: #edf2ee;
+  --text-secondary: #93a099;
+  --text-tertiary: #5c6660;
+
+  /* Accent */
+  --accent: #84cc16;
+  --accent-bright: #a3e635;
+  --accent-dim: rgba(132, 204, 22, 0.12);
+  --accent-text-on: #0d1210;
+
+  /* Status (reserved meanings — pass/fail/warn, used only in the QA Lab
+     and anywhere something is literally being tested) */
+  --status-pass: #84cc16;
+  --status-fail: #f87171;
+  --status-fail-dim: rgba(248, 113, 113, 0.12);
+  --status-warn: #fbbf24;
+  --status-warn-dim: rgba(251, 191, 36, 0.12);
+
+  /* Type */
+  --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Consolas, monospace;
+
+  /* Type scale (major third-ish, hand-tuned) */
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.75rem;
+  --text-2xl: 2.5rem;
+  --text-3xl: 3.5rem;
+
+  /* Layout */
+  --content-max: 1120px;
+  --content-padding: clamp(1.25rem, 4vw, 3rem);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  color-scheme: dark;
+}
+
+/* ==========================================================================
+   Reset
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+/* ==========================================================================
+   Focus states — visible everywhere, styled (not the default blue ring)
+   ========================================================================== */
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ==========================================================================
+   Typography helpers
+   ========================================================================== */
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  letter-spacing: 0.01em;
+}
+
+/* ==========================================================================
+   Layout helpers
+   ========================================================================== */
+
+.container {
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--content-padding);
+}
+
+/* Keeps anchor-linked sections from being hidden under the sticky navbar */
+section[id] {
+  scroll-margin-top: 4.25rem;
+}
+
+.section {
+  padding-block: clamp(3.5rem, 8vw, 6.5rem);
+  border-top: 1px solid var(--border);
+}
+
+.section-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+  max-width: 640px;
+}
+
+.section-head h2 {
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.section-head p {
+  color: var(--text-secondary);
+  font-size: var(--text-base);
+}
+
+/* ==========================================================================
+   Shared primitives (buttons, panels, status pills)
+   Kept intentionally few — reused across Hero, QA Lab, Contact.
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease,
+    transform 0.1s ease;
+  text-decoration: none;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-text-on);
+}
+
+.btn-primary:hover {
+  background: var(--accent-bright);
+}
+
+.btn-secondary {
+  background: transparent;
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  color: var(--text-secondary);
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+/* Status pills — used by every QA Lab result panel */
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+}
+
+.status-pass {
+  background: var(--accent-dim);
+  color: var(--status-pass);
+}
+
+.status-fail {
+  background: var(--status-fail-dim);
+  color: var(--status-fail);
+}
+
+.status-warn {
+  background: var(--status-warn-dim);
+  color: var(--status-warn);
+}
+
+/* ==========================================================================
+   Scrollable overflow containers (wide code/tables never scroll the page)
+   ========================================================================== */
+
+.scroll-x {
+  overflow-x: auto;
+}

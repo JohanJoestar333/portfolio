@@ -1,0 +1,70 @@
+.form-lab__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.form-lab__field input,
+.form-lab__field textarea {
+  padding: 0.65rem 0.75rem;
+  background: var(--surface-raised);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: inherit;
+  resize: vertical;
+}
+
+.form-lab__field input:focus-visible,
+.form-lab__field textarea:focus-visible {
+  border-color: var(--accent);
+}
+
+.form-lab__error {
+  margin: -0.5rem 0 1rem;
+  font-size: var(--text-xs);
+  color: var(--status-fail);
+}
+
+.form-lab__hint {
+  color: var(--text-tertiary);
+  font-size: var(--text-sm);
+}
+
+.form-lab__checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-size: var(--text-sm);
+  margin-bottom: 1.5rem;
+}
+
+.form-lab__checklist li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-lab__checklist .is-pass span {
+  color: var(--status-pass);
+}
+
+.form-lab__checklist .is-fail span {
+  color: var(--status-fail);
+}
+
+.form-lab__checklist .is-pass {
+  color: var(--text-secondary);
+}
+
+.form-lab__checklist .is-fail {
+  color: var(--text-primary);
+}
+
+.form-lab__meta {
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+}

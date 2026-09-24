@@ -1,0 +1,62 @@
+.contact__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.contact__link {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1.1rem 1.35rem;
+  text-decoration: none;
+  color: var(--text-primary);
+  flex: 1 1 220px;
+  transition: border-color 0.15s ease, transform 0.1s ease;
+}
+
+.contact__link:hover,
+.contact__link:focus-visible {
+  border-color: var(--accent);
+}
+
+.contact__link:active {
+  transform: translateY(1px);
+}
+
+/* .contact__link is applied to both <a> (LinkedIn, Email) and <button>
+   (GitHub) elements — this resets the parts of a native <button> that
+   would otherwise make it look different from the anchors next to it. */
+button.contact__link {
+  border: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+}
+
+.contact__link-icon {
+  display: flex;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.contact__link-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.contact__link-label {
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+.contact__link-value {
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

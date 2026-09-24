@@ -1,0 +1,27 @@
+.footer {
+  border-top: 1px solid var(--border);
+  padding-block: 2.5rem;
+}
+
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer__name {
+  font-weight: 600;
+}
+
+.footer__role {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.footer__tagline,
+.footer__copyright {
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+}
