@@ -39,9 +39,4 @@ describe('Accessibility', () => {
     cy.get('[data-testid="nav-toggle"]').click()
     cy.checkA11y()
   })
-
-  it('has no detectable accessibility violations with the GitHub note open', () => {
-    cy.contains('button', 'View GitHub').click()
-    cy.checkA11y('[data-testid="github-note-modal"]')
-  })
 })

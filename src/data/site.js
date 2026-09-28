@@ -10,8 +10,6 @@ export const site = {
   focus: 'Quality + Automation',
   status: 'Currently building — QA Portfolio + Automation Lab',
 
-  // TODO: replace with your real GitHub profile URL.
-  github: 'https://github.com/your-username',
   linkedin: 'https://www.linkedin.com/in/thomas-pessoa-tech/',
   email: 'tomecosabs@gmail.com',
 }

@@ -24,17 +24,6 @@
   transform: translateY(1px);
 }
 
-/* .contact__link is applied to both <a> (LinkedIn, Email) and <button>
-   (GitHub) elements — this resets the parts of a native <button> that
-   would otherwise make it look different from the anchors next to it. */
-button.contact__link {
-  border: none;
-  font: inherit;
-  text-align: left;
-  cursor: pointer;
-  width: 100%;
-}
-
 .contact__link-icon {
   display: flex;
   color: var(--accent);

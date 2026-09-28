@@ -1,7 +1,5 @@
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { site } from '../../data/site.js'
-import GithubNote from '../GithubNote/GithubNote.jsx'
 import './Hero.css'
 
 // `container` and `item` are Framer Motion "variants" — reusable sets of
@@ -25,9 +23,6 @@ const item = {
 }
 
 export default function Hero() {
-  // Controls whether the "before you head to GitHub" note is showing.
-  const [githubNoteOpen, setGithubNoteOpen] = useState(false)
-
   return (
     // id="top" is what the navbar's logo link (href="#top") scrolls to.
     <section id="top" className="hero">
@@ -66,13 +61,6 @@ export default function Hero() {
           <a href="#qa-lab" className="btn btn-primary">
             Explore QA Lab
           </a>
-          {/* A <button> rather than a link, since clicking it opens the
-              GithubNote modal below instead of navigating anywhere
-              directly — the modal's own "Continue to GitHub" link is
-              what actually navigates. */}
-          <button type="button" className="btn btn-secondary" onClick={() => setGithubNoteOpen(true)}>
-            View GitHub
-          </button>
         </motion.div>
 
         <motion.span variants={item} className="pill" data-testid="hero-status">
@@ -80,8 +68,6 @@ export default function Hero() {
           {site.status}
         </motion.span>
       </motion.div>
-
-      <GithubNote open={githubNoteOpen} onClose={() => setGithubNoteOpen(false)} href={site.github} />
     </section>
   )
 }

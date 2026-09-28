@@ -6,8 +6,8 @@ Actions.
 
 ## Status
 
-**Phase 6 of 8 complete:** the real Cypress suite is in place — now 5
-spec files (32 tests), exercising the exact bugs documented in
+**Phase 6 of 8 complete:** the real Cypress suite is in place — 5 spec
+files (31 tests), exercising the exact bugs documented in
 `QA_NOTES.md`, the correct-path behavior, and automated accessibility
 checks. Remaining phases add GitHub Actions CI and a responsive polish
 pass.
@@ -16,19 +16,19 @@ Also added outside the original phase plan:
 
 - A **Writing** section (`src/components/Writing/`) that reads from
   `src/data/writing.js` — add your Medium posts there.
-- A **GitHub note modal** (`src/components/GithubNote/`) shown before
-  the Hero's "View GitHub" button or the Contact card's GitHub link
-  navigate anywhere.
 - A **downloadable resume** — `public/Thomas-Pessoa-Resume.pdf`, linked
   from the "Resume" card in the Contact section.
 - **Automated accessibility testing** via `cypress-axe` —
   `cypress/e2e/accessibility.cy.js` checks the homepage, each QA Lab
-  tab, the mobile menu, and the GitHub note modal for common,
-  mechanically-detectable a11y issues (missing labels, contrast, ARIA
-  misuse, etc.). This doesn't replace real assistive-tech testing, but
-  it catches a lot automatically. **Run `npm install` again** after
-  pulling these changes — `cypress-axe` and `axe-core` are new
-  devDependencies that weren't there before.
+  tab, and the mobile menu for common, mechanically-detectable a11y
+  issues (missing labels, contrast, ARIA misuse, etc.). This doesn't
+  replace real assistive-tech testing, but it catches a lot
+  automatically. **Run `npm install` again** after pulling these
+  changes — `cypress-axe` and `axe-core` are new devDependencies that
+  weren't there before.
+
+There is intentionally no GitHub link anywhere on the site — Contact
+only shows LinkedIn, Email, and Resume.
 
 Run the test suite with:
 
@@ -37,9 +37,8 @@ npm run test:e2e         # headless, starts the dev server automatically
 npm run test:e2e:open    # interactive Cypress runner
 ```
 
-Before deploying, replace the placeholder GitHub link in
-`src/data/site.js` with your real one, and swap in an updated resume PDF
-whenever yours changes (keep the same filename, or update the path in
+Before deploying, swap in an updated resume PDF whenever yours changes
+(keep the same filename, or update `RESUME_PATH` in
 `src/components/Contact/Contact.jsx`).
 
 ## Getting started
@@ -148,8 +147,6 @@ touch a component file just to update text or links.
 | I want to change... | Edit this file |
 | --- | --- |
 | Name, role, location, focus, the "Currently building" status pill, LinkedIn/email | `src/data/site.js` |
-| Your GitHub profile URL | `src/data/site.js` — still a placeholder; `github: 'https://github.com/your-username'` |
-| The "before you head to GitHub" note text | `src/components/GithubNote/GithubNote.jsx` — the `NOTE_TEXT` constant |
 | Your resume PDF | Replace `public/Thomas-Pessoa-Resume.pdf` with your updated file (keep the same filename, or update `RESUME_PATH` in `src/components/Contact/Contact.jsx`) |
 | Skills listed under Testing Toolkit, or the "Currently learning" list | `src/data/skills.js` |
 | Work history (add/edit/remove a role) | `src/data/experience.js` — it's an array, so copy an existing entry to add a new role |
