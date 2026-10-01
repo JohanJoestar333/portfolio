@@ -1,4 +1,4 @@
-import { certificates } from '../../data/certificates.js'
+import { certificates, certificatesIntro } from '../../data/certificates.js'
 import Reveal from '../Reveal/Reveal.jsx'
 import './Certificates.css'
 
@@ -15,15 +15,15 @@ function CertificateIcon() {
 
 // Renders whatever is in src/data/certificates.js. Each card is a full
 // link (the whole card is clickable, not just the title) that opens the
-// certificate's url in a new tab.
+// certificate's url in a new tab. `image` and `year` are optional.
 export default function Certificates() {
   return (
     <section id="certificates" className="section certificates">
       <div className="container">
         <Reveal>
           <div className="section-head">
-            <h2>Certificates</h2>
-            <p>A few things I've completed along the way.</p>
+            <h2>{certificatesIntro.title}</h2>
+            <p>{certificatesIntro.description}</p>
           </div>
         </Reveal>
 
@@ -33,7 +33,7 @@ export default function Certificates() {
           <div className="certificates__grid">
             {certificates.map((cert, index) => (
               <Reveal
-                key={index}
+                key={cert.url}
                 as="a"
                 href={cert.url}
                 className="panel certificates__card"
@@ -43,7 +43,13 @@ export default function Certificates() {
                 delay={Math.min(index * 0.08, 0.3)}
               >
                 {cert.image ? (
-                  <img src={cert.image} alt={`${cert.title} certificate`} className="certificates__image" />
+                  <img
+                    src={cert.image}
+                    alt={`${cert.title} certificate`}
+                    className="certificates__image"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 ) : (
                   <div className="certificates__image certificates__image--placeholder">
                     <CertificateIcon />
@@ -51,7 +57,10 @@ export default function Certificates() {
                 )}
                 <div className="certificates__text">
                   <p className="certificates__title">{cert.title}</p>
-                  <p className="certificates__org mono">{cert.organization}</p>
+                  <p className="certificates__org mono">
+                    {cert.organization}
+                    {cert.year && ` · ${cert.year}`}
+                  </p>
                 </div>
               </Reveal>
             ))}

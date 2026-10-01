@@ -1,23 +1,30 @@
+// Each category becomes one card in the "Testing Toolkit" section. To add a
+// skill, drop its name into a category's `skills` array. To add a whole new
+// category, copy an object and give it a `title` and a `skills` list.
 export const skillCategories = [
   {
     title: 'Testing',
-    skills: ['Manual Testing', 'Functional Testing', 'Regression Testing', 'Exploratory Testing', 'UI Testing', 'Negative Testing'],
+    skills: ['Manual Testing', 'Functional Testing', 'Regression Testing', 'Exploratory Testing', 'UI Testing', 'Negative Testing', 'Accessibility Testing'],
+  },
+  {
+    title: 'Test Design',
+    skills: ['Test Case Design', 'Test Planning', 'Bug Reporting', 'Acceptance Criteria'],
   },
   {
     title: 'Automation',
-    skills: ['Cypress', 'JavaScript'],
+    skills: ['Cypress', 'JavaScript', 'axe-core', 'GitHub Actions (CI)'],
   },
   {
     title: 'API',
     skills: ['Postman', 'REST API Testing'],
   },
   {
-    title: 'Development',
-    skills: ['React', 'JavaScript', 'HTML', 'CSS', 'SQL Fundamentals'],
+    title: 'AI',
+    skills: ['AI-Assisted Testing', 'Generative AI'],
   },
   {
-    title: 'Workflow',
-    skills: ['Git', 'GitHub', 'Agile/Scrum', 'ClickUp'],
+    title: 'Development & Workflow',
+    skills: ['React', 'JavaScript', 'HTML', 'CSS', 'SQL Fundamentals', 'Git', 'GitHub', 'Agile/Scrum', 'ClickUp'],
   },
 ]
 

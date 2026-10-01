@@ -59,3 +59,84 @@
   font-weight: 500;
   text-align: right;
 }
+
+/* Numbers strip + "What I'm into" cards: full width under the two columns */
+.about__stats,
+.about__interests {
+  grid-column: 1 / -1;
+}
+
+.about__stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .about__stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.about__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1.1rem 1.25rem;
+}
+
+.about__stat-value {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1.1;
+}
+
+.about__stat-label {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+
+.about__interests .eyebrow {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.about__interest-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .about__interest-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 980px) {
+  .about__interest-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.about__interest {
+  padding: 1.25rem;
+  transition: border-color 0.15s ease;
+}
+
+.about__interest:hover {
+  border-color: var(--accent);
+}
+
+.about__interest h3 {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.about__interest p {
+  font-size: var(--text-xs);
+  line-height: 1.55;
+  color: var(--text-secondary);
+}

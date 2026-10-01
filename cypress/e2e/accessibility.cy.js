@@ -29,11 +29,6 @@ describe('Accessibility', () => {
     cy.checkA11y('[data-testid="qa-tabpanel"]')
   })
 
-  it('has no detectable accessibility violations in the Bug Hunter', () => {
-    cy.get('[data-testid="qa-tab-bugs"]').click()
-    cy.checkA11y('[data-testid="qa-tabpanel"]')
-  })
-
   it('has no detectable accessibility violations with the mobile menu open', () => {
     cy.viewport(375, 800)
     cy.get('[data-testid="nav-toggle"]').click()

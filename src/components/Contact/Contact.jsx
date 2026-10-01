@@ -38,9 +38,8 @@ function DownloadIcon() {
   )
 }
 
-// Lives in public/, so Vite serves it at this exact path in both dev and
-// a production build — no import needed, it's just a static file.
-const RESUME_PATH = '/Thomas-Pessoa-Resume.pdf'
+// The resume path lives in src/data/site.js (resumePath) so Hero and
+// Contact always point at the same file.
 
 // Turns "https://linkedin.com/in/..." into "linkedin.com/in/..." for a
 // cleaner-looking label under the link.
@@ -54,7 +53,7 @@ function displayUrl(url) {
 const LINKS = [
   { key: 'linkedin', label: 'LinkedIn', value: displayUrl(site.linkedin), href: site.linkedin, Icon: LinkedinIcon, external: true },
   { key: 'email', label: 'Email', value: site.email, href: `mailto:${site.email}`, Icon: MailIcon, external: false },
-  { key: 'resume', label: 'Resume', value: 'PDF · Download', href: RESUME_PATH, Icon: DownloadIcon, download: true },
+  { key: 'resume', label: 'Resume', value: 'PDF · Download', href: site.resumePath, Icon: DownloadIcon, download: true },
 ]
 
 export default function Contact() {

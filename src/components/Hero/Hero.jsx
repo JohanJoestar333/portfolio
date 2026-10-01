@@ -51,15 +51,20 @@ export default function Hero() {
         </motion.blockquote>
 
         <motion.p variants={item} className="hero__lede">
-          Software QA Analyst focused on manual testing, exploratory testing,
-          regression, UI and API testing, while continuously expanding my
-          automation skills.
+          {site.heroLede}
         </motion.p>
 
         <motion.div variants={item} className="hero__actions">
           {/* Scrolls to the QA Lab section further down this same page. */}
           <a href="#qa-lab" className="btn btn-primary">
             Explore QA Lab
+          </a>
+          {/* Straight to the thing most recruiters want: the resume. */}
+          <a href={site.resumePath} download className="btn btn-secondary" data-testid="hero-resume">
+            Download Resume
+          </a>
+          <a href={site.linkedin} target="_blank" rel="noreferrer" className="btn btn-secondary" data-testid="hero-linkedin">
+            LinkedIn
           </a>
         </motion.div>
 

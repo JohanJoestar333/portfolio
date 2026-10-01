@@ -32,18 +32,64 @@ function validate(values) {
   return errors
 }
 
+// Grades the most recent submission. Each row is one of:
+//   'pass'     — the form behaved correctly for input that exercised this check
+//   'fail'     — the form behaved incorrectly (a real bug was hit)
+//   'untested' — this submission didn't exercise the check, so nothing is claimed
+// The expected behaviour is written independently of validate(), so the
+// results reflect what the form actually did, not a hardcoded answer.
+function buildChecks(values, errors) {
+  const required = ['name', 'email', 'phone', 'message']
+  const emptyFields = required.filter((f) => values[f].length === 0)
+  const whitespaceFields = required.filter((f) => values[f].length > 0 && values[f].trim().length === 0)
+  const allEmpty = [...required, 'age'].every((f) => values[f].length === 0)
+  const emailText = values.email.trim()
+  const ageText = values.age.trim()
+  const ageNum = Number(ageText)
+  const ageValid = ageText.length > 0 && !Number.isNaN(ageNum) && ageNum >= 0 && ageNum <= 120
+
+  const grade = (tested, ok) => (!tested ? 'untested' : ok ? 'pass' : 'fail')
+
+  return [
+    { id: 'required', label: 'Required fields', status: grade(emptyFields.length > 0, emptyFields.every((f) => errors[f])) },
+    { id: 'empty', label: 'Empty submission', status: grade(allEmpty, required.every((f) => errors[f])) },
+    {
+      id: 'email',
+      label: 'Email validation',
+      status: grade(emailText.length > 0, EMAIL_PATTERN.test(emailText) ? !errors.email : Boolean(errors.email)),
+    },
+    {
+      id: 'age',
+      label: 'Age range',
+      status: grade(ageText.length > 0, ageValid ? !errors.age : Boolean(errors.age)),
+    },
+    {
+      id: 'maxlength',
+      label: 'Maximum length',
+      status: grade(values.message.length > MESSAGE_MAX_LENGTH, Boolean(errors.message)),
+    },
+    {
+      id: 'whitespace',
+      label: 'Whitespace handling',
+      status: grade(whitespaceFields.length > 0, whitespaceFields.every((f) => errors[f])),
+    },
+  ]
+}
+
+// Letters aren't allowed in the phone field: anything other than digits and
+// the usual phone punctuation (+ - ( ) and spaces) is removed as it's typed
+// or pasted.
+function sanitizePhone(value) {
+  return value.replace(/[^\d+\-() ]/g, '')
+}
+
 export default function FormLab() {
   const [values, setValues] = useState(INITIAL_VALUES)
   const [errors, setErrors] = useState({}) // Field-level error messages from the most recent submit.
   const [submitted, setSubmitted] = useState(false) // Has the form been submitted at least once? Gates when errors/checklist show.
   const [submitCount, setSubmitCount] = useState(0) // Just a small "Submissions this session" counter, shown at the bottom.
-  // These two flip to `true` the first time a submission proves the bug
-  // exists, and then stay `true` for the rest of the session — like a
-  // real regression that's been found and logged, not something that can
-  // un-happen. That's why they're separate booleans rather than being
-  // recomputed fresh on every submit.
-  const [maxLengthFound, setMaxLengthFound] = useState(false)
-  const [whitespaceFound, setWhitespaceFound] = useState(false)
+  // Graded results for the most recent submission (see buildChecks above).
+  const [checks, setChecks] = useState([])
 
   // Returns an onChange handler for a specific field, so each <input>
   // below doesn't need its own inline handler.
@@ -57,24 +103,8 @@ export default function FormLab() {
     setErrors(nextErrors)
     setSubmitted(true)
     setSubmitCount((c) => c + 1)
-
-    // Check whether THIS submission is the one that reveals either known
-    // gap — if so, flip the sticky flag on (see comment above).
-    if (values.message.length > MESSAGE_MAX_LENGTH) setMaxLengthFound(true)
-    if (values.message.length > 0 && values.message.trim().length === 0) setWhitespaceFound(true)
+    setChecks(buildChecks(values, nextErrors))
   }
-
-  // The five rows shown in the "Test results" panel. "required", "email",
-  // and "empty" are always true because those checks are genuinely
-  // implemented correctly in validate() above — they're not fake, they
-  // just don't have a way to fail given this form's logic.
-  const checklist = [
-    { id: 'required', label: 'Required fields', pass: true },
-    { id: 'email', label: 'Email validation', pass: true },
-    { id: 'maxlength', label: 'Maximum length', pass: !maxLengthFound },
-    { id: 'empty', label: 'Empty submission', pass: true },
-    { id: 'whitespace', label: 'Whitespace handling', pass: !whitespaceFound },
-  ]
 
   return (
     <div className="qa-lab-experience form-lab">
@@ -95,7 +125,15 @@ export default function FormLab() {
 
           <label className="form-lab__field">
             <span>Phone</span>
-            <input type="text" value={values.phone} onChange={handleChange('phone')} data-testid="form-phone" />
+            <input
+              type="tel"
+              inputMode="tel"
+              autoComplete="off"
+              placeholder="Numbers only"
+              value={values.phone}
+              onChange={(event) => setValues((prev) => ({ ...prev, phone: sanitizePhone(event.target.value) }))}
+              data-testid="form-phone"
+            />
           </label>
           {submitted && errors.phone && <p className="form-lab__error">{errors.phone}</p>}
 
@@ -119,13 +157,18 @@ export default function FormLab() {
 
       <div className="panel form-lab__qa">
         <p className="eyebrow">Test results</p>
+        <p className="form-lab__hint form-lab__desc">
+          Each submission is graded on what it actually exercised. Checks your input didn't touch show as not tested.
+        </p>
         {!submitted ? (
           <p className="form-lab__hint">Submit the form to see live test results here.</p>
         ) : (
           <ul className="form-lab__checklist mono" data-testid="form-checklist">
-            {checklist.map((check) => (
-              <li key={check.id} className={check.pass ? 'is-pass' : 'is-fail'}>
-                <span aria-hidden="true">{check.pass ? '✓' : '✗'}</span> {check.label}
+            {checks.map((check) => (
+              <li key={check.id} className={`is-${check.status}`}>
+                <span aria-hidden="true">{check.status === 'pass' ? '✓' : check.status === 'fail' ? '✗' : '–'}</span>{' '}
+                {check.label}
+                {check.status === 'untested' && <span className="form-lab__untested"> (not tested)</span>}
               </li>
             ))}
           </ul>

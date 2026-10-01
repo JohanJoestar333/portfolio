@@ -227,6 +227,10 @@ export default function LoginLab() {
     <div className="qa-lab-experience login-lab">
       <div className="panel login-lab__app">
         <p className="eyebrow">App under test</p>
+        <p className="login-lab__desc">
+          The Login Lab is a small demo login form with a few intentional validation bugs. Log in yourself, or use the
+          test scenarios on the right to see how the form behaves in each case.
+        </p>
         <form onSubmit={handleFormSubmit} noValidate>
           <label className="login-lab__field">
             <span>Email</span>
@@ -281,6 +285,10 @@ export default function LoginLab() {
 
       <div className="panel login-lab__qa">
         <p className="eyebrow">Test scenarios</p>
+        <p className="login-lab__desc">
+          You can test these scenarios yourself by typing into the form, or just click one — the software fills in the
+          form, runs the test for you, and logs the outcome.
+        </p>
         <div className="login-lab__scenarios">
           {SCENARIOS.map((scenario) => (
             <button
@@ -296,6 +304,10 @@ export default function LoginLab() {
         </div>
 
         <p className="eyebrow login-lab__results-label">Results</p>
+        <p className="login-lab__desc">
+          Every attempt is logged here with the expected behavior, what actually happened, and whether it passed or a
+          bug was found.
+        </p>
         <ul className="login-lab__log scroll-x" data-testid="login-log">
           {log.length === 0 && <li className="login-lab__log-empty">No attempts yet — try a scenario or log in above.</li>}
           {log.map((entry) => (

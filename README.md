@@ -1,58 +1,116 @@
 # Thomas — Software QA Analyst Portfolio
 
+[![CI](https://github.com/JohanJoestar333/portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/JohanJoestar333/portfolio/actions/workflows/ci.yml)
+
 A personal portfolio built as both a showcase and a working QA/testing
-playground: an interactive QA Lab, Cypress test suite, and CI via GitHub
-Actions.
+playground: an interactive QA Lab with intentional bugs to find, a Cypress
+suite that tests the site itself, automated accessibility checks, and CI
+that runs everything on every push.
 
-## Status
+## What's on the site
 
-**Phase 6 of 8 complete:** the real Cypress suite is in place — 5 spec
-files (31 tests), exercising the exact bugs documented in
-`QA_NOTES.md`, the correct-path behavior, and automated accessibility
-checks. Remaining phases add GitHub Actions CI and a responsive polish
-pass.
+- **Hero** — one-line pitch with direct *Download Resume* and *LinkedIn*
+  buttons.
+- **About** — a recruiter-friendly intro, a live numbers strip (years in
+  QA, automated tests, certificates, articles — all computed, never typed
+  in), and a "What I'm into" grid covering AI-assisted QA, building
+  websites, test case design, and test automation.
+- **QA Lab** — two interactive apps (Login Lab, Form Validation Lab) with
+  documented, reproducible bugs (see `QA_NOTES.md`).
+- **Automation** — the real Cypress spec list and test counts, read from
+  `cypress/e2e/` at build time so they can't go stale.
+- **Testing Toolkit** — skills by category, plus what I'm learning now.
+- **Certificates** — clickable cards with images, driven by one data file.
+- **Experience** — roles and responsibilities.
+- **Writing** — articles on QA, testing, and AI, driven by one data file.
+- **Contact** — LinkedIn, email, and a resume download.
+- Dark/light theme (remembers your choice), scroll-reveal animations, a
+  scroll progress bar, and a mobile menu.
 
-Also added outside the original phase plan:
+There is intentionally no GitHub link anywhere on the site — Contact only
+shows LinkedIn, Email, and Resume.
 
-- A **Writing** section (`src/components/Writing/`) that reads from
-  `src/data/writing.js` — add your Medium posts there.
-- A **downloadable resume** — `public/Thomas-Pessoa-Resume.pdf`, linked
-  from the "Resume" card in the Contact section.
-- **Automated accessibility testing** via `cypress-axe` —
-  `cypress/e2e/accessibility.cy.js` checks the homepage, each QA Lab
-  tab, and the mobile menu for common, mechanically-detectable a11y
-  issues (missing labels, contrast, ARIA misuse, etc.). This doesn't
-  replace real assistive-tech testing, but it catches a lot
-  automatically. **Run `npm install` again** after pulling these
-  changes — `cypress-axe` and `axe-core` are new devDependencies that
-  weren't there before.
-- A **dark/light theme toggle** (`src/components/ThemeToggle/`) in the
-  navbar. The choice is remembered (`localStorage`), defaults to the
-  visitor's OS-level preference on first visit, and applies before the
-  page paints (see the inline script in `index.html`) so there's no
-  flash of the wrong theme.
-- A **Certificates** section (`src/components/Certificates/`) that reads
-  from `src/data/certificates.js` — add your certificate images to
-  `public/certificates/` and reference them there.
-- **Scroll-triggered animations** — a reusable `<Reveal>` component
-  (`src/components/Reveal/`) fades content up into place the first time
-  it scrolls into view, used throughout every section below the Hero.
-  There's also a thin progress bar fixed to the top of the page
-  (`src/components/ScrollProgress/`) that fills in as you scroll down.
+## Testing & CI
 
-There is intentionally no GitHub link anywhere on the site — Contact
-only shows LinkedIn, Email, and Resume.
+**5 Cypress spec files, 33 tests**, covering:
 
-Run the test suite with:
+| Spec | Covers |
+| --- | --- |
+| `homepage.cy.js` | Page load, navigation, mobile menu, every section renders |
+| `login.cy.js` | Login Lab scenarios, including the documented bugs |
+| `form-validation.cy.js` | Form Validation Lab rules and live results panel |
+| `accessibility.cy.js` | Automated axe-core checks (`cypress-axe`) on the page, each QA Lab tab, and the mobile menu |
+| `content.cy.js` | Every certificate and post renders with a working `https` link; every certificate image loads; About stats/interests and the Hero resume button are present |
+
+`content.cy.js` loops over whatever is rendered, so **new certificates and
+posts you add are tested automatically**.
+
+GitHub Actions (`.github/workflows/ci.yml`) installs dependencies, runs the
+production build, and runs the full Cypress suite on every push to `main`
+and every pull request. Screenshots from failed tests are uploaded as a
+downloadable artifact.
+
+Run the suite locally:
 
 ```bash
 npm run test:e2e         # headless, starts the dev server automatically
 npm run test:e2e:open    # interactive Cypress runner
 ```
 
-Before deploying, swap in an updated resume PDF whenever yours changes
-(keep the same filename, or update `RESUME_PATH` in
-`src/components/Contact/Contact.jsx`).
+## Adding content
+
+Almost everything is edited in `src/data/` — you rarely touch a component.
+Each data file has a copy-paste template in a comment at the top.
+
+### Add a certificate
+
+1. Put the image in `public/certificates/`. Use a WebP or JPEG around
+   1200px wide and under ~200 KB (https://squoosh.app converts for free).
+2. Open `src/data/certificates.js`, copy an entry to the end of the
+   `certificates` array, and fill it in:
+
+   ```js
+   {
+     title: 'Course or certification name',
+     organization: 'Who issued it',
+     url: 'https://…',                      // verification / badge page
+     image: '/certificates/your-file.webp', // optional — omit for an icon
+     year: '2026',                          // optional
+   },
+   ```
+
+3. Save. The card appears, the "Certificates" number in About goes up, and
+   `content.cy.js` starts checking it.
+
+### Add a writing post
+
+Open `src/data/writing.js`, copy an entry to the **top** of the `posts`
+array (newest first), and fill it in:
+
+```js
+{
+  title: 'Your article title',
+  description: 'One sentence on what the reader will get out of it.',
+  url: 'https://medium.com/@you/your-article',
+  tag: 'QA',            // optional label above the title
+  date: 'Oct 2026',     // optional, shown next to the tag
+  platform: 'Medium',   // optional, defaults to Medium ("Read on …")
+},
+```
+
+The section heading and description above the list live in the
+`writingIntro` object in the same file.
+
+### Edit the About text or interests
+
+`src/data/site.js` — `about` is an array of paragraphs (add, remove, or
+reword freely) and `interests` is the "What I'm into" card list.
+
+### Add a spec
+
+Create any `cypress/e2e/*.cy.js` file. It's picked up by `npm run test:e2e`
+and CI, and shows up in the Automation section with its test count. Add an
+optional one-line description for it in `src/data/automation.js`.
 
 ## Getting started
 
@@ -85,13 +143,13 @@ Starting from nothing but the GitHub repository link:
    git clone <your-repo-url>
    ```
 
-   Replace `<your-repo-url>` with the actual GitHub link once the repo is
-   pushed (e.g. `git clone https://github.com/your-username/thomas-qa-portfolio.git`).
+   Replace `<your-repo-url>` with the GitHub link of this repository
+   (e.g. `git clone https://github.com/JohanJoestar333/portfolio.git`).
 
 2. **Move into the project folder.**
 
    ```bash
-   cd thomas-qa-portfolio
+   cd portfolio
    ```
 
 3. **Install dependencies.**
@@ -159,12 +217,14 @@ touch a component file just to update text or links.
 
 | I want to change... | Edit this file |
 | --- | --- |
-| Name, role, location, focus, the "Currently building" status pill, LinkedIn/email | `src/data/site.js` |
-| Your resume PDF | Replace `public/Thomas-Pessoa-Resume.pdf` with your updated file (keep the same filename, or update `RESUME_PATH` in `src/components/Contact/Contact.jsx`) |
+| Name, role, location, focus, the "Currently building" status pill, Hero tagline, LinkedIn/email, resume path | `src/data/site.js` |
+| About paragraphs and the "What I'm into" cards | `src/data/site.js` — the `about` and `interests` arrays |
+| Your resume PDF | Replace `public/Thomas-Pessoa-Resume.pdf` with your updated file (keep the same filename, or update `resumePath` in `src/data/site.js`) |
 | Skills listed under Testing Toolkit, or the "Currently learning" list | `src/data/skills.js` |
 | Work history (add/edit/remove a role) | `src/data/experience.js` — it's an array, so copy an existing entry to add a new role |
-| Medium posts in the Writing section | `src/data/writing.js` — copy an existing entry, fill in `title`, `description`, `url` |
-| Certificates (add/edit/remove one) | `src/data/certificates.js` — copy an existing entry, fill in `title`, `organization`, `url`, and `image`; drop the actual image file in `public/certificates/` |
+| Writing posts, and the Writing section's intro text | `src/data/writing.js` — see "Add a writing post" above |
+| Certificates (add/edit/remove one), and the section's intro text | `src/data/certificates.js` — see "Add a certificate" above |
+| Automation section intro and spec descriptions | `src/data/automation.js` (the spec list itself is generated from `cypress/e2e/`) |
 | Nav links, their order, or the mobile menu | `src/components/Navbar/Navbar.jsx` — edit the `navLinks` array near the top |
 | Order of sections on the page | `src/App.jsx` — sections render in the order they're listed there |
 | Colors, fonts, spacing, or the accent color (dark theme) | `src/styles/globals.css` — the `:root` block near the top of the file |
@@ -173,7 +233,6 @@ touch a component file just to update text or links.
 | How much content fades up on scroll, or the effect itself | `src/components/Reveal/Reveal.jsx` — adjust the `initial`/`whileInView` values, or wrap/unwrap `<Reveal>` around content in any section |
 | Login Lab's preset test scenarios | `src/components/QALab/LoginLab/LoginLab.jsx` — the `SCENARIOS` array |
 | Form Validation Lab's fields or checklist copy | `src/components/QALab/FormLab/FormLab.jsx` |
-| Bug Hunter's bugs (add/remove one) | `src/components/QALab/BugHunter/BugHunter.jsx` — add metadata to the `BUGS` array, write a small widget component, and register it in the `WIDGETS` map |
 | Cypress test coverage | `cypress/e2e/*.cy.js` — one file per major area; add a new `.cy.js` file for a new area |
 
 **To add a brand-new section** (say, a "Testimonials" section):
@@ -185,4 +244,5 @@ touch a component file just to update text or links.
 
 ## Stack
 
-React + Vite + JavaScript + CSS, Cypress for testing, GitHub Actions for CI.
+React + Vite + JavaScript + CSS, Framer Motion for animation, Cypress +
+cypress-axe for testing, GitHub Actions for CI.

@@ -43,3 +43,24 @@
   color: var(--accent);
   white-space: nowrap;
 }
+
+.writing__post-meta {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  margin-bottom: 0.4rem;
+}
+
+.writing__more {
+  margin-top: 1.5rem;
+}
+
+.writing__more a {
+  font-size: var(--text-xs);
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.writing__more a:hover,
+.writing__more a:focus-visible {
+  text-decoration: underline;
+}

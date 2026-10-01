@@ -1,4 +1,7 @@
-import { site } from '../../data/site.js'
+import { site, about, interests } from '../../data/site.js'
+import { certificates } from '../../data/certificates.js'
+import { posts } from '../../data/writing.js'
+import { testCount } from '../../data/automation.js'
 import Reveal from '../Reveal/Reveal.jsx'
 import './About.css'
 
@@ -12,6 +15,18 @@ const meta = [
   { label: 'Focus', value: site.focus },
 ]
 
+// The numbers strip is computed, not typed in, so it can't go stale: years
+// come from site.experienceStart, the test count is read from the real
+// Cypress specs, and certificates/articles are counted from their data
+// files (add one and the number goes up by itself).
+const years = new Date().getFullYear() - Number(site.experienceStart)
+const stats = [
+  { label: 'Years in QA', value: `${years}+` },
+  { label: 'Automated tests', value: testCount },
+  { label: 'Certificates', value: certificates.length },
+  { label: 'Articles', value: posts.length },
+]
+
 export default function About() {
   return (
     <section id="about" className="section about">
@@ -20,32 +35,16 @@ export default function About() {
       <div className="container about__grid">
         {/* Each grid child is wrapped in its own <Reveal> rather than one
             Reveal around the whole group — CSS grid needs each item to be
-            a direct child of the grid container to lay out correctly, so
-            wrapping all three in a single outer element would collapse
-            them into one grid cell. Reveal's className prop puts the
-            grid-item class (about__body, etc.) directly on the element
-            it renders, so the grid rules in About.css still apply
-            exactly as before. */}
+            a direct child of the grid container to lay out correctly. */}
         <Reveal className="section-head">
           <h2>A little about me</h2>
         </Reveal>
 
-        {/* The two paragraphs below are hand-written prose, not pulled
-            from a data file — edit them directly here if you want to
-            change the wording. */}
+        {/* Paragraphs come from the `about` array in src/data/site.js. */}
         <Reveal className="about__body" delay={0.05}>
-          <p>
-            I'm a Software QA Analyst with experience working across the
-            software development lifecycle. My work involves understanding
-            requirements, validating acceptance criteria, testing happy
-            paths and edge cases, documenting defects, and making sure
-            changes don't break what already works.
-          </p>
-          <p>
-            I'm especially interested in the space between development and
-            quality, and I'm currently expanding my automation skills with
-            Cypress while building projects with React and JavaScript.
-          </p>
+          {about.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
         </Reveal>
 
         {/* <dl> (description list) is the semantically correct HTML
@@ -59,6 +58,27 @@ export default function About() {
               <dd>{row.value}</dd>
             </div>
           ))}
+        </Reveal>
+
+        <Reveal as="ul" className="about__stats" delay={0.05} data-testid="about-stats">
+          {stats.map((stat) => (
+            <li key={stat.label} className="about__stat panel">
+              <span className="about__stat-value mono">{stat.value}</span>
+              <span className="about__stat-label">{stat.label}</span>
+            </li>
+          ))}
+        </Reveal>
+
+        <Reveal className="about__interests" delay={0.05}>
+          <p className="eyebrow">What I'm into</p>
+          <ul className="about__interest-grid">
+            {interests.map((interest) => (
+              <li key={interest.title} className="about__interest panel" data-testid="about-interest">
+                <h3>{interest.title}</h3>
+                <p>{interest.description}</p>
+              </li>
+            ))}
+          </ul>
         </Reveal>
       </div>
     </section>

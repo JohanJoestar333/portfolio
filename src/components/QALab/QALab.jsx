@@ -1,18 +1,16 @@
 import { useState } from 'react'
 import LoginLab from './LoginLab/LoginLab.jsx'
 import FormLab from './FormLab/FormLab.jsx'
-import BugHunter from './BugHunter/BugHunter.jsx'
 import Reveal from '../Reveal/Reveal.jsx'
 import './QALab.css'
 
-// This section is a simple tab switcher: only one of the three
+// This section is a simple tab switcher: only one of the two
 // experiences below is mounted at a time (whichever matches `activeTab`).
-// To add a fourth QA Lab experience: build it as its own component folder
-// (like LoginLab/, FormLab/, BugHunter/), then add one line here.
+// To add another QA Lab experience: build it as its own component folder
+// (like LoginLab/ and FormLab/), then add one line here.
 const TABS = [
   { id: 'login', label: 'Login Lab', Component: LoginLab },
   { id: 'form', label: 'Form Validation Lab', Component: FormLab },
-  { id: 'bugs', label: 'Bug Hunter', Component: BugHunter },
 ]
 
 export default function QALab() {
@@ -61,7 +59,7 @@ export default function QALab() {
           </div>
 
           {/* Only the active tab's component is ever rendered here — the
-              other two aren't mounted at all, so their state resets each
+              other one isn't mounted at all, so their state resets each
               time you switch away and back. */}
           <div role="tabpanel" data-testid="qa-tabpanel">
             {Active && <Active />}

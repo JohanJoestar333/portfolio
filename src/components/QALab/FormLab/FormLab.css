@@ -68,3 +68,19 @@
   font-size: var(--text-xs);
   color: var(--text-tertiary);
 }
+
+.form-lab__desc {
+  margin: 0 0 1rem;
+}
+
+.form-lab__checklist .is-untested {
+  color: var(--text-tertiary);
+}
+
+.form-lab__checklist .is-untested span:first-child {
+  color: var(--text-tertiary);
+}
+
+.form-lab__checklist .form-lab__untested {
+  font-size: var(--text-xs);
+}

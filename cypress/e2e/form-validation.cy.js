@@ -65,6 +65,22 @@ describe('Form Validation Lab', () => {
     cy.get('[data-testid="form-checklist"]').contains('li', 'Maximum length').should('have.class', 'is-fail')
   })
 
+  it('does not let letters be typed into the phone field', () => {
+    cy.get('[data-testid="form-phone"]').type('abc123-def456')
+    cy.get('[data-testid="form-phone"]').should('have.value', '123-456')
+  })
+
+  it('only grades checks the submission actually exercised', () => {
+    cy.get('[data-testid="form-name"]').type('Jane Doe')
+    cy.get('[data-testid="form-email"]').type('jane@example.com')
+    cy.get('[data-testid="form-phone"]').type('123456789')
+    cy.get('[data-testid="form-message"]').type('Hello there')
+    cy.get('[data-testid="form-submit"]').click()
+    cy.get('[data-testid="form-checklist"]').contains('li', 'Email validation').should('have.class', 'is-pass')
+    cy.get('[data-testid="form-checklist"]').contains('li', 'Maximum length').should('have.class', 'is-untested')
+    cy.get('[data-testid="form-checklist"]').contains('li', 'Whitespace handling').should('have.class', 'is-untested')
+  })
+
   it('tracks how many times the form has been submitted this session', () => {
     cy.get('[data-testid="form-submit"]').click()
     cy.get('[data-testid="form-submit"]').click()
