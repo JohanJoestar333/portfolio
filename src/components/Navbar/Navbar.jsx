@@ -9,11 +9,11 @@ import './Navbar.css'
 // same array, so you only ever edit it in one place.
 const navLinks = [
   { label: 'About', href: '#about' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Skills', href: '#skills' },
   { label: 'QA Lab', href: '#qa-lab' },
   { label: 'Automation', href: '#automation' },
-  { label: 'Skills', href: '#skills' },
   { label: 'Certificates', href: '#certificates' },
-  { label: 'Experience', href: '#experience' },
   { label: 'Writing', href: '#writing' },
   { label: 'Contact', href: '#contact' },
 ]

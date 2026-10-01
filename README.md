@@ -9,19 +9,23 @@ that runs everything on every push.
 
 ## What's on the site
 
+Sections appear in this order, chosen so a recruiter sees who you are, your
+experience, and your skills first, with the proof (QA Lab, Automation,
+certificates, writing) after.
+
 - **Hero** — one-line pitch with direct *Download Resume* and *LinkedIn*
   buttons.
 - **About** — a recruiter-friendly intro, a live numbers strip (years in
   QA, automated tests, certificates, articles — all computed, never typed
   in), and a "What I'm into" grid covering AI-assisted QA, building
   websites, test case design, and test automation.
+- **Experience** — roles and responsibilities.
+- **Testing Toolkit** — skills by category, plus what I'm learning now.
 - **QA Lab** — two interactive apps (Login Lab, Form Validation Lab) with
   documented, reproducible bugs (see `QA_NOTES.md`).
 - **Automation** — the real Cypress spec list and test counts, read from
   `cypress/e2e/` at build time so they can't go stale.
-- **Testing Toolkit** — skills by category, plus what I'm learning now.
 - **Certificates** — clickable cards with images, driven by one data file.
-- **Experience** — roles and responsibilities.
 - **Writing** — articles on QA, testing, and AI, driven by one data file.
 - **Contact** — LinkedIn, email, and a resume download.
 - Dark/light theme (remembers your choice), scroll-reveal animations, a

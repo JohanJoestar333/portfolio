@@ -25,11 +25,11 @@ export default function App() {
       <Navbar />
       <Hero />
       <About />
+      <Experience />
+      <Skills />
       <QALab />
       <Automation />
-      <Skills />
       <Certificates />
-      <Experience />
       <Writing />
       <Contact />
       <Footer />
