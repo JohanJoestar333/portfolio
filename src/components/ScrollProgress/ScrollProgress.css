@@ -1,0 +1,10 @@
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent);
+  transform-origin: 0% 50%;
+  z-index: 60; /* Above the sticky navbar (z-index: 50 in Navbar.css) */
+}

@@ -50,7 +50,7 @@ describe('Homepage', () => {
   it('renders every top-level section', () => {
     // Loops through every section id and checks it exists in the DOM.
     // Add a new section id here if you add a new section to App.jsx.
-    ;['about', 'qa-lab', 'automation', 'skills', 'experience', 'writing', 'contact'].forEach((id) => {
+    ;['about', 'qa-lab', 'automation', 'skills', 'certificates', 'experience', 'writing', 'contact'].forEach((id) => {
       cy.get(`#${id}`).should('exist')
     })
   })

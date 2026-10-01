@@ -8,8 +8,8 @@
 // delete its object. Order here is the order they're displayed in.
 export const posts = [
   {
-    title: 'QA + AI: Why Quality Assurance and Artificial Intelligence Are a Perfect Match',
-    description: 'AI can handle the repetition. QA provides the judgment. Here’s how combining the two can make software testing faster, deeper, and more effective.',
+    title: 'TODO: replace with your first Medium post title',
+    description: 'TODO: one sentence on what the post covers.',
     url: 'https://medium.com/@your-username/replace-with-real-url',
   },
 ]

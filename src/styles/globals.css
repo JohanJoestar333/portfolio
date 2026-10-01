@@ -54,7 +54,56 @@
   --radius-md: 10px;
   --radius-lg: 16px;
 
+  /* Translucent sticky-navbar background — a token (not a hardcoded
+     rgba()) specifically so it can be swapped per theme below. */
+  --navbar-bg: rgba(13, 18, 16, 0.85);
+
   color-scheme: dark;
+}
+
+/* ==========================================================================
+   Light theme
+   Toggled by ThemeToggle.jsx, which sets data-theme="light" on <html>
+   (persisted in localStorage, and initialized before first paint by the
+   inline script in index.html to avoid a flash of the wrong theme).
+   Every component CSS file in this project uses var(--token) exclusively
+   rather than hardcoded colors, so overriding the tokens here is enough
+   to re-theme the entire site — no other CSS file needs to change.
+   ========================================================================== */
+
+:root[data-theme='light'] {
+  /* Surfaces */
+  --bg: #f7f9f7;
+  --surface: #ffffff;
+  --surface-raised: #eef2ee;
+  --surface-hover: #e5eae5;
+  --border: #dce3dc;
+  --border-strong: #c3cfc3;
+
+  /* Text */
+  --text-primary: #12160f;
+  --text-secondary: #49564a;
+  --text-tertiary: #798479;
+
+  /* Accent — a darker green than the dark theme's, since the bright lime
+     used on a near-black background doesn't have enough contrast to
+     read as text on a near-white one. */
+  --accent: #3f7d0b;
+  --accent-bright: #4d9814;
+  --accent-dim: rgba(63, 125, 11, 0.1);
+  --accent-text-on: #ffffff;
+
+  /* Status — same idea: darker, more saturated versions for contrast on
+     a light background. */
+  --status-pass: #3f7d0b;
+  --status-fail: #dc2626;
+  --status-fail-dim: rgba(220, 38, 38, 0.08);
+  --status-warn: #b45309;
+  --status-warn-dim: rgba(180, 83, 9, 0.1);
+
+  --navbar-bg: rgba(247, 249, 247, 0.85);
+
+  color-scheme: light;
 }
 
 /* ==========================================================================

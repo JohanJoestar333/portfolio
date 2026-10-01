@@ -26,6 +26,19 @@ Also added outside the original phase plan:
   automatically. **Run `npm install` again** after pulling these
   changes — `cypress-axe` and `axe-core` are new devDependencies that
   weren't there before.
+- A **dark/light theme toggle** (`src/components/ThemeToggle/`) in the
+  navbar. The choice is remembered (`localStorage`), defaults to the
+  visitor's OS-level preference on first visit, and applies before the
+  page paints (see the inline script in `index.html`) so there's no
+  flash of the wrong theme.
+- A **Certificates** section (`src/components/Certificates/`) that reads
+  from `src/data/certificates.js` — add your certificate images to
+  `public/certificates/` and reference them there.
+- **Scroll-triggered animations** — a reusable `<Reveal>` component
+  (`src/components/Reveal/`) fades content up into place the first time
+  it scrolls into view, used throughout every section below the Hero.
+  There's also a thin progress bar fixed to the top of the page
+  (`src/components/ScrollProgress/`) that fills in as you scroll down.
 
 There is intentionally no GitHub link anywhere on the site — Contact
 only shows LinkedIn, Email, and Resume.
@@ -151,9 +164,13 @@ touch a component file just to update text or links.
 | Skills listed under Testing Toolkit, or the "Currently learning" list | `src/data/skills.js` |
 | Work history (add/edit/remove a role) | `src/data/experience.js` — it's an array, so copy an existing entry to add a new role |
 | Medium posts in the Writing section | `src/data/writing.js` — copy an existing entry, fill in `title`, `description`, `url` |
+| Certificates (add/edit/remove one) | `src/data/certificates.js` — copy an existing entry, fill in `title`, `organization`, `url`, and `image`; drop the actual image file in `public/certificates/` |
 | Nav links, their order, or the mobile menu | `src/components/Navbar/Navbar.jsx` — edit the `navLinks` array near the top |
 | Order of sections on the page | `src/App.jsx` — sections render in the order they're listed there |
-| Colors, fonts, spacing, or the accent color | `src/styles/globals.css` — everything is a CSS variable under `:root` at the top of the file |
+| Colors, fonts, spacing, or the accent color (dark theme) | `src/styles/globals.css` — the `:root` block near the top of the file |
+| Colors for light mode specifically | `src/styles/globals.css` — the `:root[data-theme='light']` block right below the dark one |
+| Whether the theme toggle shows in the nav | `src/components/Navbar/Navbar.jsx` — remove the `<ThemeToggle />` line to drop it entirely |
+| How much content fades up on scroll, or the effect itself | `src/components/Reveal/Reveal.jsx` — adjust the `initial`/`whileInView` values, or wrap/unwrap `<Reveal>` around content in any section |
 | Login Lab's preset test scenarios | `src/components/QALab/LoginLab/LoginLab.jsx` — the `SCENARIOS` array |
 | Form Validation Lab's fields or checklist copy | `src/components/QALab/FormLab/FormLab.jsx` |
 | Bug Hunter's bugs (add/remove one) | `src/components/QALab/BugHunter/BugHunter.jsx` — add metadata to the `BUGS` array, write a small widget component, and register it in the `WIDGETS` map |

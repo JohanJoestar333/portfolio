@@ -1,4 +1,5 @@
 import { site } from '../../data/site.js'
+import Reveal from '../Reveal/Reveal.jsx'
 import './Contact.css'
 
 // Small hand-written SVG icons — kept inline here (rather than pulling in
@@ -60,21 +61,25 @@ export default function Contact() {
   return (
     <section id="contact" className="section contact">
       <div className="container">
-        <div className="section-head">
-          <h2>Let's talk</h2>
-          <p>Interested in QA, testing, automation, or just found a bug I missed?</p>
-        </div>
+        <Reveal>
+          <div className="section-head">
+            <h2>Let's talk</h2>
+            <p>Interested in QA, testing, automation, or just found a bug I missed?</p>
+          </div>
+        </Reveal>
 
         <div className="contact__links">
-          {LINKS.map(({ key, label, value, href, Icon, external, download }) => (
-            <a
+          {LINKS.map(({ key, label, value, href, Icon, external, download }, index) => (
+            <Reveal
               key={key}
+              as="a"
               href={href}
               className="contact__link panel"
               target={external ? '_blank' : undefined}
               rel={external ? 'noreferrer' : undefined}
               download={download || undefined}
               data-testid={`contact-${key}`}
+              delay={index * 0.08}
             >
               <span className="contact__link-icon">
                 <Icon />
@@ -83,7 +88,7 @@ export default function Contact() {
                 <span className="contact__link-label">{label}</span>
                 <span className="contact__link-value mono">{value}</span>
               </span>
-            </a>
+            </Reveal>
           ))}
         </div>
       </div>

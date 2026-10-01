@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { site } from '../../data/site.js'
+import ThemeToggle from '../ThemeToggle/ThemeToggle.jsx'
 import './Navbar.css'
 
 // Each entry is just a label + the id of the section it should jump to
@@ -11,6 +12,7 @@ const navLinks = [
   { label: 'QA Lab', href: '#qa-lab' },
   { label: 'Automation', href: '#automation' },
   { label: 'Skills', href: '#skills' },
+  { label: 'Certificates', href: '#certificates' },
   { label: 'Experience', href: '#experience' },
   { label: 'Writing', href: '#writing' },
   { label: 'Contact', href: '#contact' },
@@ -54,21 +56,28 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Hamburger button — only visible below 720px. aria-expanded and
-            aria-controls tell screen readers this button toggles the
-            #mobile-menu element below. */}
-        <button
-          type="button"
-          className="navbar__toggle"
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          data-testid="nav-toggle"
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span />
-          <span />
-        </button>
+        {/* Grouped so both stay pinned to the right edge at every
+            viewport width — the theme toggle is always visible, whether
+            or not the mobile menu is open. */}
+        <div className="navbar__controls">
+          <ThemeToggle />
+
+          {/* Hamburger button — only visible below 720px. aria-expanded
+              and aria-controls tell screen readers this button toggles
+              the #mobile-menu element below. */}
+          <button
+            type="button"
+            className="navbar__toggle"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            data-testid="nav-toggle"
+            onClick={() => setOpen((v) => !v)}
+          >
+            <span />
+            <span />
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu panel. Clicking any link inside it also closes the

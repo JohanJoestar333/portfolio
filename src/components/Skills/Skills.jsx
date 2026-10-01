@@ -1,4 +1,5 @@
 import { skillCategories, currentlyLearning } from '../../data/skills.js'
+import Reveal from '../Reveal/Reveal.jsx'
 import './Skills.css'
 
 // All the actual skill names come from src/data/skills.js — this
@@ -9,13 +10,25 @@ export default function Skills() {
   return (
     <section id="skills" className="section skills">
       <div className="container">
-        <div className="section-head">
-          <h2>Testing Toolkit</h2>
-        </div>
+        <Reveal>
+          <div className="section-head">
+            <h2>Testing Toolkit</h2>
+          </div>
+        </Reveal>
 
+        {/* skills__grid (not .container) is the actual CSS grid here, so
+            each category card can safely get its own Reveal — they're
+            still direct children of the grid. A small per-card delay
+            (capped at 0.3s so a long skill list doesn't take forever to
+            finish revealing) makes the cards cascade in one after
+            another instead of all appearing at once. */}
         <div className="skills__grid">
-          {skillCategories.map((category) => (
-            <div key={category.title} className="panel skills__category">
+          {skillCategories.map((category, index) => (
+            <Reveal
+              key={category.title}
+              className="panel skills__category"
+              delay={Math.min(index * 0.08, 0.3)}
+            >
               <h3>{category.title}</h3>
               <ul className="skills__tags">
                 {category.skills.map((skill) => (
@@ -24,11 +37,11 @@ export default function Skills() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </Reveal>
           ))}
         </div>
 
-        <div className="panel skills__learning">
+        <Reveal className="panel skills__learning">
           <p className="eyebrow">Currently learning</p>
           <ul className="skills__tags">
             {currentlyLearning.map((skill) => (
@@ -38,7 +51,7 @@ export default function Skills() {
               </li>
             ))}
           </ul>
-        </div>
+        </Reveal>
       </div>
     </section>
   )

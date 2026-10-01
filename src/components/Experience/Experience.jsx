@@ -1,4 +1,5 @@
 import { experience } from '../../data/experience.js'
+import Reveal from '../Reveal/Reveal.jsx'
 import './Experience.css'
 
 // Loops over every entry in src/data/experience.js and renders one card
@@ -8,13 +9,23 @@ export default function Experience() {
   return (
     <section id="experience" className="section experience">
       <div className="container">
-        <div className="section-head">
-          <h2>Experience</h2>
-        </div>
+        <Reveal>
+          <div className="section-head">
+            <h2>Experience</h2>
+          </div>
+        </Reveal>
 
+        {/* experience__list (not .container) is a plain flex column, not
+            a grid, but each entry still gets its own Reveal + small
+            stagger so multiple roles cascade in one after another rather
+            than all appearing at once. */}
         <div className="experience__list">
-          {experience.map((entry) => (
-            <div key={`${entry.company}-${entry.role}`} className="panel experience__entry">
+          {experience.map((entry, index) => (
+            <Reveal
+              key={`${entry.company}-${entry.role}`}
+              className="panel experience__entry"
+              delay={Math.min(index * 0.1, 0.3)}
+            >
               <div className="experience__header">
                 <div>
                   <h3>{entry.role}</h3>
@@ -30,7 +41,7 @@ export default function Experience() {
                   <li key={bullet}>{bullet}</li>
                 ))}
               </ul>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

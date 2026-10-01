@@ -2,7 +2,7 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(13, 18, 16, 0.85);
+  background: var(--navbar-bg);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
@@ -36,6 +36,12 @@
 .navbar__links {
   display: flex;
   gap: 2rem;
+}
+
+.navbar__controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .navbar__links a {

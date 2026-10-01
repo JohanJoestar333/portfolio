@@ -1,4 +1,5 @@
 import { site } from '../../data/site.js'
+import Reveal from '../Reveal/Reveal.jsx'
 import './About.css'
 
 // The little "Location / Role / Experience / Focus" panel is built from
@@ -17,14 +18,22 @@ export default function About() {
       {/* Two-column layout on wide screens (prose left, meta panel
           right), stacked on mobile — see the @media rule in About.css. */}
       <div className="container about__grid">
-        <div className="section-head">
+        {/* Each grid child is wrapped in its own <Reveal> rather than one
+            Reveal around the whole group — CSS grid needs each item to be
+            a direct child of the grid container to lay out correctly, so
+            wrapping all three in a single outer element would collapse
+            them into one grid cell. Reveal's className prop puts the
+            grid-item class (about__body, etc.) directly on the element
+            it renders, so the grid rules in About.css still apply
+            exactly as before. */}
+        <Reveal className="section-head">
           <h2>A little about me</h2>
-        </div>
+        </Reveal>
 
         {/* The two paragraphs below are hand-written prose, not pulled
             from a data file — edit them directly here if you want to
             change the wording. */}
-        <div className="about__body">
+        <Reveal className="about__body" delay={0.05}>
           <p>
             I'm a Software QA Analyst with experience working across the
             software development lifecycle. My work involves understanding
@@ -37,19 +46,20 @@ export default function About() {
             quality, and I'm currently expanding my automation skills with
             Cypress while building projects with React and JavaScript.
           </p>
-        </div>
+        </Reveal>
 
         {/* <dl> (description list) is the semantically correct HTML
             element for a set of label/value pairs like this — better for
-            screen readers than a plain <div> grid would be. */}
-        <dl className="about__meta panel">
+            screen readers than a plain <div> grid would be. as="dl" tells
+            Reveal to render a <motion.dl> instead of its default <div>. */}
+        <Reveal as="dl" className="about__meta panel" delay={0.1}>
           {meta.map((row) => (
             <div key={row.label} className="about__meta-row">
               <dt className="mono">{row.label}</dt>
               <dd>{row.value}</dd>
             </div>
           ))}
-        </dl>
+        </Reveal>
       </div>
     </section>
   )

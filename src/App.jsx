@@ -5,12 +5,14 @@
 // folder under src/components/, import it here, and drop it into the
 // tree where you want it to appear (and add a matching link in
 // Navbar.jsx if it should be reachable from the nav).
+import ScrollProgress from './components/ScrollProgress/ScrollProgress.jsx'
 import Navbar from './components/Navbar/Navbar.jsx'
 import Hero from './components/Hero/Hero.jsx'
 import About from './components/About/About.jsx'
 import QALab from './components/QALab/QALab.jsx'
 import Automation from './components/Automation/Automation.jsx'
 import Skills from './components/Skills/Skills.jsx'
+import Certificates from './components/Certificates/Certificates.jsx'
 import Experience from './components/Experience/Experience.jsx'
 import Writing from './components/Writing/Writing.jsx'
 import Contact from './components/Contact/Contact.jsx'
@@ -19,12 +21,14 @@ import Footer from './components/Footer/Footer.jsx'
 export default function App() {
   return (
     <>
+      <ScrollProgress />
       <Navbar />
       <Hero />
       <About />
       <QALab />
       <Automation />
       <Skills />
+      <Certificates />
       <Experience />
       <Writing />
       <Contact />

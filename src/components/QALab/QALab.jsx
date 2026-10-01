@@ -2,6 +2,7 @@ import { useState } from 'react'
 import LoginLab from './LoginLab/LoginLab.jsx'
 import FormLab from './FormLab/FormLab.jsx'
 import BugHunter from './BugHunter/BugHunter.jsx'
+import Reveal from '../Reveal/Reveal.jsx'
 import './QALab.css'
 
 // This section is a simple tab switcher: only one of the three
@@ -26,38 +27,46 @@ export default function QALab() {
   return (
     <section id="qa-lab" className="section qa-lab">
       <div className="container">
-        <div className="section-head">
-          <h2>QA Lab</h2>
-          <p>This portfolio is also a testing playground.</p>
-        </div>
+        <Reveal>
+          <div className="section-head">
+            <h2>QA Lab</h2>
+            <p>This portfolio is also a testing playground.</p>
+          </div>
 
-        <p className="qa-lab__intro">Don't just read about how I test software. Try breaking something yourself.</p>
+          <p className="qa-lab__intro">Don't just read about how I test software. Try breaking something yourself.</p>
+        </Reveal>
 
-        {/* role="tablist" / role="tab" / aria-selected are the standard
-            ARIA pattern for tabs, so screen readers announce this as a
-            tab group rather than a row of unrelated buttons. */}
-        <div className="qa-lab__tabs" role="tablist" aria-label="QA Lab experiences">
-          {TABS.map((tab) => (
-            <button
-              key={tab.id}
-              type="button"
-              role="tab"
-              aria-selected={activeTab === tab.id}
-              className={`qa-lab__tab ${activeTab === tab.id ? 'is-active' : ''}`}
-              onClick={() => setActiveTab(tab.id)}
-              data-testid={`qa-tab-${tab.id}`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
+        {/* This Reveal wraps the tabs AND the panel below, but only plays
+            once when it first scrolls into view — switching tabs
+            afterwards doesn't replay it, since it's the same element the
+            whole time and viewport={{ once: true }} only fires once. */}
+        <Reveal delay={0.1}>
+          {/* role="tablist" / role="tab" / aria-selected are the standard
+              ARIA pattern for tabs, so screen readers announce this as a
+              tab group rather than a row of unrelated buttons. */}
+          <div className="qa-lab__tabs" role="tablist" aria-label="QA Lab experiences">
+            {TABS.map((tab) => (
+              <button
+                key={tab.id}
+                type="button"
+                role="tab"
+                aria-selected={activeTab === tab.id}
+                className={`qa-lab__tab ${activeTab === tab.id ? 'is-active' : ''}`}
+                onClick={() => setActiveTab(tab.id)}
+                data-testid={`qa-tab-${tab.id}`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
 
-        {/* Only the active tab's component is ever rendered here — the
-            other two aren't mounted at all, so their state resets each
-            time you switch away and back. */}
-        <div role="tabpanel" data-testid="qa-tabpanel">
-          {Active && <Active />}
-        </div>
+          {/* Only the active tab's component is ever rendered here — the
+              other two aren't mounted at all, so their state resets each
+              time you switch away and back. */}
+          <div role="tabpanel" data-testid="qa-tabpanel">
+            {Active && <Active />}
+          </div>
+        </Reveal>
       </div>
     </section>
   )
