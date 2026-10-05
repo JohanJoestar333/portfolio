@@ -32,13 +32,13 @@
      stronger siblings (shapes, dots, stickers). */
   --pastel-rose: #f6d5d3;
   --pastel-sage: #d7e6d2;
-  --pastel-butter: #f8e4b0;
+  --pastel-butter: #f2e6c6;
   --pastel-sky: #cfe3ee;
   --pastel-lilac: #e3d8ef;
   --pastel-peach: #f8d9bf;
   --strong-rose: #e59a9a;
   --strong-sage: #8fb593;
-  --strong-butter: #f0c35c;
+  --strong-butter: #e9cb82;
   --strong-sky: #8ec1d9;
   --strong-lilac: #b9a2dc;
   --strong-peach: #f0a878;
@@ -115,6 +115,7 @@
   --pastel-sky: #34495a;
   --pastel-lilac: #483d5a;
   --pastel-peach: #5b4332;
+  --strong-butter: #f0c35c;
 
   --aurora-1: rgba(240, 168, 120, 0.13);
   --aurora-2: rgba(143, 181, 147, 0.12);
@@ -470,7 +471,7 @@ body::after {
   position: relative;
   overflow: hidden;
   gap: 0.5rem;
-  padding: 0.7rem 1.5rem;
+  padding: 0.7rem 1.3rem;
   border: 2px solid var(--btn-edge);
   border-radius: 999px;
   font-family: var(--font-sans);

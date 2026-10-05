@@ -14,12 +14,12 @@
 
 @media (min-width: 900px) {
   .hero__layout {
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
   }
 }
 
 .hero__inner {
-  max-width: 640px;
+  max-width: 720px;
 }
 
 .hero__name {
@@ -48,7 +48,8 @@
 .hero__rotator-window {
   display: inline-block;
   overflow: hidden;
-  height: 1.5em;
+  height: 1.75em;
+  line-height: 1.5;
   vertical-align: bottom;
 }
 
@@ -80,7 +81,7 @@
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.7rem;
   margin-bottom: 1.75rem;
 }
 

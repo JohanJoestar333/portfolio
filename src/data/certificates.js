@@ -37,6 +37,7 @@ export const certificates = [
     organization: 'IBM SkillsBuild',
     url: 'https://www.credly.com/badges/32ae55ea-525f-465c-85ba-2e88ddea3987/linked_in_profile',
     image: '/certificates/ibm-generative-ai.jpeg',
+    fit: 'contain',
   },
   {
     title: 'Craft Precise Prompts for AI Models',

@@ -71,15 +71,16 @@
   margin-top: 0.25rem;
 }
 
-/* A pinned note: warm paper, washi tape, hand-lettered kicker */
-.projects__card {
+/* A pinned note: warm paper, washi tape, hand-lettered kicker.
+   (.projects prefix so these beat the global .panel styles.) */
+.projects .projects__card {
   background: var(--pastel-butter);
   border-radius: var(--radius-lg);
   rotate: -0.5deg;
   margin-top: 0.5rem;
 }
 
-.projects__card::after {
+.projects .projects__card::after {
   content: '';
   position: absolute;
   top: -12px;
@@ -118,4 +119,13 @@
 
 .projects__card .btn-secondary {
   background: var(--paper);
+}
+
+/* The note is butter yellow, so give its button a different color to stand out. */
+.projects .projects__card .btn-primary {
+  background: var(--strong-sage);
+}
+
+.projects .projects__card .btn-primary:hover {
+  background: var(--strong-rose);
 }
