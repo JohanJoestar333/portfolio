@@ -28,7 +28,7 @@ export default function Certificates() {
         </Reveal>
 
         {certificates.length === 0 ? (
-          <p className="certificates__empty">Nothing added yet — check back soon.</p>
+          <p className="certificates__empty">Nothing added yet. Check back soon.</p>
         ) : (
           <div className="certificates__grid">
             {certificates.map((cert, index) => (

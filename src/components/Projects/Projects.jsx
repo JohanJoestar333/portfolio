@@ -16,7 +16,7 @@ export default function Projects() {
         </Reveal>
 
         {projects.length === 0 ? (
-          <p className="projects__empty">Nothing added yet — check back soon.</p>
+          <p className="projects__empty">Nothing added yet. Check back soon.</p>
         ) : (
           <div className="projects__list">
             {projects.map((project, index) => (

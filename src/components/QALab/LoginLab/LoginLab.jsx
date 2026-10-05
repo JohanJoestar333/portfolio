@@ -37,7 +37,7 @@ const CATEGORY_CONFIG = {
     expected: 'Validation message shown for the email field.',
     isBug: (r) => !r.emailError,
     actual: (r) =>
-      r.emailError ? 'Validation message shown for the email field.' : 'No validation shown — form allowed submission.',
+      r.emailError ? 'Validation message shown for the email field.' : 'No validation shown, so the form was allowed to submit.',
   },
   'empty-password': {
     expected: 'Validation message shown for the password field.',
@@ -45,7 +45,7 @@ const CATEGORY_CONFIG = {
     actual: (r) =>
       r.passwordError
         ? 'Validation message shown for the password field.'
-        : 'No validation shown — form allowed submission.',
+        : 'No validation shown, so the form was allowed to submit.',
   },
   'invalid-format': {
     expected: 'Validation message shown for the email field.',
@@ -58,15 +58,15 @@ const CATEGORY_CONFIG = {
     actual: (r) => (r.emailError ? 'Input rejected as empty.' : 'Input accepted as if it were a real value.'),
   },
   'short-password': {
-    expected: 'Validation message shown — password too short.',
+    expected: 'Validation message shown because the password is too short.',
     isBug: (r) => !r.passwordError,
     actual: (r) =>
-      r.passwordError ? 'Validation message shown — password too short.' : 'Accepted with no minimum length check.',
+      r.passwordError ? 'Validation message shown because the password is too short.' : 'Accepted with no minimum length check.',
   },
   'padded-credentials': {
     expected: 'Whitespace trimmed automatically; login succeeds.',
     isBug: (r) => !r.success,
-    actual: (r) => (r.success ? 'Whitespace trimmed automatically; login succeeded.' : 'Login failed — whitespace was not trimmed.'),
+    actual: (r) => (r.success ? 'Whitespace trimmed automatically; login succeeded.' : 'Login failed because the whitespace was not trimmed.'),
   },
   'incorrect-credentials': {
     expected: '"Invalid email or password" message shown.',
@@ -212,7 +212,7 @@ export default function LoginLab() {
       expected: 'Only one login request is processed per submission.',
       actual:
         maxInFlight > 1
-          ? `${maxInFlight} overlapping requests were processed — the button doesn't disable while a request is pending.`
+          ? `${maxInFlight} overlapping requests were processed, because the button doesn't disable while a request is pending.`
           : 'Only one request was processed.',
     })
   }
@@ -286,8 +286,8 @@ export default function LoginLab() {
       <div className="panel login-lab__qa">
         <p className="eyebrow">Test scenarios</p>
         <p className="login-lab__desc">
-          You can test these scenarios yourself by typing into the form, or just click one — the software fills in the
-          form, runs the test for you, and logs the outcome.
+          You can test these scenarios yourself by typing into the form, or click one and the software will fill in the
+          form, run the test for you, and log the outcome.
         </p>
         <div className="login-lab__scenarios">
           {SCENARIOS.map((scenario) => (
@@ -309,7 +309,7 @@ export default function LoginLab() {
           bug was found.
         </p>
         <ul className="login-lab__log scroll-x" data-testid="login-log">
-          {log.length === 0 && <li className="login-lab__log-empty">No attempts yet — try a scenario or log in above.</li>}
+          {log.length === 0 && <li className="login-lab__log-empty">No attempts yet. Try a scenario or log in above.</li>}
           {log.map((entry) => (
             <li key={entry.id} className="login-lab__log-entry">
               <div className="login-lab__log-head">

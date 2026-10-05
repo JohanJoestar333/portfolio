@@ -7,7 +7,7 @@ export const site = {
   location: 'Texas, USA',
   experienceStart: '2022',
   focus: 'Quality + Automation + AI',
-  status: 'Currently building — QA Portfolio + Automation Lab',
+  status: 'Currently building a QA portfolio and automation lab',
 
   linkedin: 'https://www.linkedin.com/in/thomas-pessoa-tech/',
   email: 'tomecosabs@gmail.com',
@@ -19,7 +19,7 @@ export const site = {
 
   // One-liner under the name in the Hero.
   heroLede:
-    'Software QA Analyst focused on manual and exploratory testing, regression, UI and API testing — growing into Cypress automation and AI-assisted testing.',
+    'Software QA Analyst focused on manual and exploratory testing, regression, and UI and API testing. Now growing into Cypress automation and AI-assisted testing.',
 }
 
 // ---------------------------------------------------------------------------
@@ -29,8 +29,8 @@ export const site = {
 // ---------------------------------------------------------------------------
 export const about = [
   "I'm a Software QA Analyst who likes finding the problem before the user does. Since 2022 I've worked across the full software development lifecycle: turning requirements into test cases, validating acceptance criteria, hunting for edge cases, and documenting defects so developers can reproduce and fix them fast.",
-  'Day to day that means manual and exploratory testing, regression passes before releases, API checks in Postman, and Cypress automation for the flows that should never break. I sit comfortably between QA and development — I build my own websites with React and JavaScript, so I can read the code, understand how things fit together, and talk to developers in their language.',
-  "I'm also genuinely curious about AI. I enjoy using it to build websites, draft and sharpen test cases, and speed up automation — always with human judgment on top, because AI can write the test but someone still has to decide what \"correct\" means.",
+  'Day to day that means manual and exploratory testing, regression passes before releases, API checks in Postman, and Cypress automation for the flows that should never break. I sit comfortably between QA and development. I build my own websites with React and JavaScript, so I can read the code, understand how things fit together, and talk to developers in their language.',
+  "I'm also genuinely curious about AI. I enjoy using it to build websites, draft and sharpen test cases, and speed up automation. Human judgment always stays on top, because AI can write the test but someone still has to decide what \"correct\" means.",
 ]
 
 // ---------------------------------------------------------------------------
@@ -42,7 +42,7 @@ export const interests = [
   {
     title: 'AI-assisted QA',
     description:
-      'Using AI to brainstorm scenarios, cut repetitive work, and sharpen test cases — with a human deciding what "correct" means.',
+      'Using AI to brainstorm scenarios, cut repetitive work, and sharpen test cases, with a human deciding what "correct" means.',
   },
   {
     title: 'Building websites',

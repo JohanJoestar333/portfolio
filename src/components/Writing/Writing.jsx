@@ -17,7 +17,7 @@ export default function Writing() {
         </Reveal>
 
         {posts.length === 0 ? (
-          <p className="writing__empty">Nothing published yet — check back soon.</p>
+          <p className="writing__empty">Nothing published yet. Check back soon.</p>
         ) : (
           <div className="writing__list">
             {posts.map((post, index) => (

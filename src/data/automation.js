@@ -7,7 +7,7 @@
 export const automationIntro = {
   title: 'Automation',
   tagline: 'Some tests are better when they run themselves.',
-  body: "I'm growing my automation skills with Cypress, and this portfolio doubles as the project I practice on. Its flows, validation rules, and accessibility are covered by an automated suite that runs in GitHub Actions on every push. I also use AI to speed up the boring parts — drafting scenarios and boilerplate — then review and refine everything myself.",
+  body: "I'm growing my automation skills with Cypress, and this portfolio doubles as the project I practice on. Its flows, validation rules, and accessibility are covered by an automated suite that runs in GitHub Actions on every push. I also use AI to speed up the boring parts, like drafting scenarios and boilerplate, then review and refine everything myself.",
 }
 
 // Optional: a short description per spec file, keyed by file name. A spec
@@ -17,7 +17,7 @@ const descriptions = {
   'login.cy.js': 'Login Lab scenarios, including the documented validation bugs.',
   'form-validation.cy.js': 'Required fields, email format, phone input, and the live test results.',
   'accessibility.cy.js': 'Automated axe-core checks across the page, QA Lab tabs, and the mobile menu.',
-  'content.cy.js': 'Certificates, writing, and About content render correctly — new entries are covered automatically.',
+  'content.cy.js': 'Certificates, writing, and About content render correctly, and new entries are covered automatically.',
 }
 
 // Vite reads the spec files as raw text (never runs them in the browser).

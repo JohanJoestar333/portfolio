@@ -12,7 +12,7 @@ import './About.css'
 const meta = [
   { label: 'Location', value: site.location },
   { label: 'Role', value: site.role },
-  { label: 'Experience', value: `${site.experienceStart} — Present` },
+  { label: 'Experience', value: `${site.experienceStart} to Present` },
   { label: 'Focus', value: site.focus },
 ]
 
