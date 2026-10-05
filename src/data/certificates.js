@@ -27,12 +27,6 @@ export const certificatesIntro = {
 // ---------------------------------------------------------------------------
 export const certificates = [
   {
-    title: 'Learn JavaScript Course',
-    organization: 'Codecademy',
-    url: 'https://www.codecademy.com/profiles/Kazeshini3/certificates/705dcb15de0da4dd9d9fc4f3274b430e',
-    image: '/certificates/codecademy-learn-javascript.png',
-  },
-  {
     title: 'Quality Assurance: plano de testes e gestão de bugs',
     organization: 'Alura',
     url: 'https://cursos.alura.com.br/certificate/9f50d11a-cbd0-4f80-991f-1203eae271d8',
@@ -52,5 +46,19 @@ export const certificates = [
     url: 'https://www.credly.com/',
     image: '/certificates/ibm-craft-precise-prompts.webp',
     fit: 'contain',
+  },
+  {
+    title: 'Build Website With AI',
+    organization: 'FreeAcademy.ai',
+    url: 'https://freeacademy.ai/verify/FA-2026-BWWA-XGRJGW',
+    image: '/certificates/freeacademy-build-website-with-ai.webp',
+    year: '2026',
+    fit: 'contain',
+  },
+  {
+    title: 'Learn JavaScript Course',
+    organization: 'Codecademy',
+    url: 'https://www.codecademy.com/profiles/Kazeshini3/certificates/705dcb15de0da4dd9d9fc4f3274b430e',
+    image: '/certificates/codecademy-learn-javascript.png',
   },
 ]

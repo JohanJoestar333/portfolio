@@ -21,37 +21,74 @@ const navLinks = [
 
 export default function Navbar() {
   // `open` tracks whether the mobile hamburger menu is currently expanded.
-  // It only affects anything below 720px wide — see the @media rule at
-  // the bottom of Navbar.css.
+  // It only affects anything at or below 980px wide (the point where nine
+  // links no longer fit on one line) — see the @media rule in Navbar.css.
   const [open, setOpen] = useState(false)
+
+  // Scrollspy: highlight the nav link for whichever section is crossing
+  // the middle of the viewport.
+  const [active, setActive] = useState('')
+  useEffect(() => {
+    const sections = navLinks
+      .map((l) => document.querySelector(l.href))
+      .filter(Boolean)
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(`#${entry.target.id}`)
+        })
+      },
+      { rootMargin: '-45% 0px -50% 0px' }
+    )
+    sections.forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
+  }, [])
 
   // If the viewport grows back past the mobile breakpoint while the
   // mobile menu is open, close it so it doesn't get stuck open.
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 720) setOpen(false)
+      if (window.innerWidth > 980) setOpen(false)
+    }
+    // Escape closes the menu too, like any well-behaved popover.
+    const handleKey = (e) => {
+      if (e.key === 'Escape') setOpen(false)
     }
     window.addEventListener('resize', handleResize)
-    // Cleanup: remove the listener when Navbar unmounts, so we don't leak
+    window.addEventListener('keydown', handleKey)
+    // Cleanup: remove the listeners when Navbar unmounts, so we don't leak
     // event listeners if this component is ever added/removed dynamically.
-    return () => window.removeEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+      window.removeEventListener('keydown', handleKey)
+    }
   }, [])
 
   return (
     <header className="navbar">
       <div className="container navbar__inner">
-        {/* The terminal-prompt-style logo ("thomas@qa:~$") doubles as a
-            "scroll to top" link via href="#top", which matches the id on
-            the <section> in Hero.jsx. */}
-        <a href="#top" className="navbar__logo mono" data-testid="nav-logo">
-          {site.name.toLowerCase()}@qa<span className="navbar__cursor">:~$</span>
+        {/* The wordmark doubles as a "scroll to top" link via href="#top",
+            which matches the id on the <section> in Hero.jsx. */}
+        <a href="#top" className="navbar__logo" data-testid="nav-logo" onClick={() => setOpen(false)}>
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" className="navbar__mark">
+            <circle cx="12" cy="12" r="5" fill="var(--strong-butter)" />
+            <g stroke="var(--strong-peach)" strokeWidth="2" strokeLinecap="round">
+              <path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2" />
+            </g>
+          </svg>
+          {site.name}
         </a>
 
-        {/* Desktop navigation — hidden below 720px via CSS, replaced by
+        {/* Desktop navigation — hidden at 980px and below via CSS, replaced by
             the hamburger + mobile menu below. */}
         <nav className="navbar__links" aria-label="Primary">
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href}>
+            <a
+              key={link.href}
+              href={link.href}
+              className={active === link.href ? 'is-active' : undefined}
+              aria-current={active === link.href ? 'location' : undefined}
+            >
               {link.label}
             </a>
           ))}
@@ -63,7 +100,7 @@ export default function Navbar() {
         <div className="navbar__controls">
           <ThemeToggle />
 
-          {/* Hamburger button — only visible below 720px. aria-expanded
+          {/* Hamburger button — only visible at 980px and below. aria-expanded
               and aria-controls tell screen readers this button toggles
               the #mobile-menu element below. */}
           <button
@@ -91,7 +128,13 @@ export default function Navbar() {
         data-testid="nav-mobile"
       >
         {navLinks.map((link) => (
-          <a key={link.href} href={link.href} onClick={() => setOpen(false)}>
+          <a
+            key={link.href}
+            href={link.href}
+            className={active === link.href ? 'is-active' : undefined}
+            aria-current={active === link.href ? 'location' : undefined}
+            onClick={() => setOpen(false)}
+          >
             {link.label}
           </a>
         ))}

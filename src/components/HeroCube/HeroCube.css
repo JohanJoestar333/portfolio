@@ -1,0 +1,165 @@
+.herocube {
+  --s: clamp(150px, 24vw, 230px);
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: calc(var(--s) * 1.9);
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.herocube.is-dragging {
+  cursor: grabbing;
+}
+
+/* Soft cast shadow on the "table" */
+.herocube::before {
+  content: '';
+  position: absolute;
+  width: calc(var(--s) * 1.3);
+  height: calc(var(--s) * 0.32);
+  bottom: 13%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(90, 55, 35, 0.3), transparent);
+  filter: blur(8px);
+}
+
+.herocube__scene {
+  position: relative;
+  width: var(--s);
+  height: var(--s);
+  perspective: 900px;
+  animation: herocube-float 7s ease-in-out infinite;
+}
+
+.herocube__cube {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+
+.herocube__face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 3px solid rgba(255, 255, 255, 0.6);
+  box-shadow: inset 0 0 0 8px rgba(255, 255, 255, 0.16);
+}
+
+/* Each face: a pastel ground + one simple shape */
+.herocube__face::before,
+.herocube__face::after {
+  content: '';
+  position: absolute;
+}
+
+.herocube__face--front  { background: var(--pastel-butter); transform: translateZ(calc(var(--s) / 2)); }
+.herocube__face--back   { background: var(--pastel-sage);   transform: rotateY(180deg) translateZ(calc(var(--s) / 2)); }
+.herocube__face--right  { background: var(--pastel-rose);   transform: rotateY(90deg) translateZ(calc(var(--s) / 2)); }
+.herocube__face--left   { background: var(--pastel-sky);    transform: rotateY(-90deg) translateZ(calc(var(--s) / 2)); }
+.herocube__face--top    { background: var(--pastel-lilac);  transform: rotateX(90deg) translateZ(calc(var(--s) / 2)); }
+.herocube__face--bottom { background: var(--pastel-peach);  transform: rotateX(-90deg) translateZ(calc(var(--s) / 2)); }
+
+/* sun */
+.herocube__face--front::before {
+  inset: 24%;
+  border-radius: 50%;
+  background: var(--strong-peach);
+}
+.herocube__face--front::after {
+  inset: 12%;
+  border-radius: 50%;
+  border: 3px dotted var(--strong-peach);
+}
+
+/* arch */
+.herocube__face--back::before {
+  left: 27%;
+  right: 27%;
+  top: 22%;
+  bottom: 0;
+  border-radius: 999px 999px 0 0;
+  background: var(--strong-sage);
+}
+.herocube__face--back::after {
+  left: 38%;
+  right: 38%;
+  top: 40%;
+  bottom: 0;
+  border-radius: 999px 999px 0 0;
+  background: var(--pastel-sage);
+}
+
+/* stripes */
+.herocube__face--right::before {
+  inset: 18%;
+  border-radius: 14px;
+  background: repeating-linear-gradient(90deg, var(--strong-rose) 0 12%, transparent 12% 24%);
+}
+
+/* dots */
+.herocube__face--left::before {
+  inset: 14%;
+  background: radial-gradient(circle, var(--strong-sky) 0 22%, transparent 24%) 0 0 / 25% 25%;
+}
+
+/* little rainbow */
+.herocube__face--top::before {
+  left: 20%;
+  right: 20%;
+  top: 30%;
+  bottom: 18%;
+  border-radius: 999px 999px 0 0;
+  background: radial-gradient(circle at 50% 100%, var(--pastel-lilac) 0 28%, var(--strong-peach) 29% 44%, var(--strong-butter) 45% 60%, var(--strong-lilac) 61% 78%, transparent 79%);
+}
+
+/* ring */
+.herocube__face--bottom::before {
+  inset: 22%;
+  border-radius: 50%;
+  border: 16px solid var(--strong-butter);
+}
+.herocube__face--bottom::after {
+  inset: 42%;
+  border-radius: 50%;
+  background: var(--strong-rose);
+}
+
+/* Sticker label sitting on top of each drawing. Fixed light-on-dark colors
+   so it stays readable in both themes. */
+.herocube__label {
+  position: relative;
+  z-index: 2;
+  max-width: 84%;
+  padding: 0.3em 0.75em;
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 2.3vw, 1.3rem);
+  font-weight: 600;
+  line-height: 1.15;
+  text-align: center;
+  color: #3a2e28;
+  background: rgba(255, 253, 248, 0.95);
+  border: 2px solid #4a3a31;
+  border-radius: 999px;
+  box-shadow: 0 3px 0 #4a3a31;
+}
+
+.herocube__hint {
+  position: absolute;
+  bottom: 0;
+  font-family: var(--font-hand);
+  font-size: 1.4rem;
+  color: var(--text-secondary);
+  rotate: -3deg;
+}
+
+@keyframes herocube-float {
+  50% {
+    translate: 0 -10px;
+  }
+}

@@ -1,109 +1,139 @@
 /* ==========================================================================
-   Design tokens
-   Dark, slightly green-tinted charcoal base — grounded in a terminal/testing
-   aesthetic rather than a generic "dark mode" palette. One accent (lime),
-   one reserved status color (fail/bug red) so red always means something
-   specific rather than acting as decoration.
+   Design tokens — "cozy desk" palette
+   Warm paper and cocoa text by default (light), with a lamp-lit "evening"
+   dark theme. Soft sage is the main accent, dusty rose the second, and a
+   set of pastels is reused for stickers, tags, and the hero cube so the
+   whole site feels like one pinned-up moodboard.
+   Status colors (pass / fail / warn) keep their meaning in the QA Lab.
    ========================================================================== */
 
 :root {
   /* Surfaces */
-  --bg: #0d1210;
-  --surface: #151a17;
-  --surface-raised: #1c2320;
-  --surface-hover: #202822;
-  --border: #2a322d;
-  --border-strong: #3a453e;
+  --bg: #f7f0e6;
+  --surface: #fffaf2;
+  --surface-raised: #f1e7da;
+  --surface-hover: #ebdfd0;
+  --border: #e4d6c5;
+  --border-strong: #cfbca7;
 
   /* Text */
-  --text-primary: #edf2ee;
-  --text-secondary: #93a099;
-  --text-tertiary: #5c6660;
+  --text-primary: #3a2e28;
+  --text-secondary: #6b5b50;
+  --text-tertiary: #7a695d;
 
-  /* Accent */
-  --accent: #84cc16;
-  --accent-bright: #a3e635;
-  --accent-dim: rgba(132, 204, 22, 0.12);
-  --accent-text-on: #0d1210;
+  /* Accents */
+  --accent: #486f50;
+  --accent-bright: #3d6045;
+  --accent-dim: rgba(72, 111, 80, 0.12);
+  --accent-text-on: #ffffff;
+  --accent-2: #9c4a5e;
+
+  /* Pastels (backgrounds, always paired with --text-primary) and their
+     stronger siblings (shapes, dots, stickers). */
+  --pastel-rose: #f6d5d3;
+  --pastel-sage: #d7e6d2;
+  --pastel-butter: #f8e4b0;
+  --pastel-sky: #cfe3ee;
+  --pastel-lilac: #e3d8ef;
+  --pastel-peach: #f8d9bf;
+  --strong-rose: #e59a9a;
+  --strong-sage: #8fb593;
+  --strong-butter: #f0c35c;
+  --strong-sky: #8ec1d9;
+  --strong-lilac: #b9a2dc;
+  --strong-peach: #f0a878;
+
+  /* Atmosphere */
+  --aurora-1: rgba(240, 168, 120, 0.26);
+  --aurora-2: rgba(143, 181, 147, 0.28);
+  --spot: rgba(240, 168, 120, 0.22);
+  --paper: #fffdf8;
+  --shadow: 0 1px 0 rgba(255, 255, 255, 0.7) inset, 0 14px 30px -20px rgba(110, 70, 40, 0.45);
+  --shadow-hover: 0 1px 0 rgba(255, 255, 255, 0.7) inset, 0 24px 40px -22px rgba(110, 70, 40, 0.55);
+  --btn-edge: #4a3a31;
+  --btn-text: #3a2e28;
 
   /* Status (reserved meanings — pass/fail/warn, used only in the QA Lab
      and anywhere something is literally being tested) */
-  --status-pass: #84cc16;
-  --status-fail: #f87171;
-  --status-fail-dim: rgba(248, 113, 113, 0.12);
-  --status-warn: #fbbf24;
-  --status-warn-dim: rgba(251, 191, 36, 0.12);
+  --status-pass: #486f50;
+  --status-fail: #a8372e;
+  --status-fail-dim: rgba(168, 55, 46, 0.1);
+  --status-warn: #7a5200;
+  --status-warn-dim: rgba(122, 82, 0, 0.1);
 
   /* Type */
-  --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Consolas, monospace;
+  --font-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'DM Mono', ui-monospace, 'SF Mono', Consolas, monospace;
+  --font-hand: 'Caveat', 'Segoe Print', 'Bradley Hand', cursive;
 
-  /* Type scale (major third-ish, hand-tuned) */
+  /* Type scale */
   --text-xs: 0.8125rem;
   --text-sm: 0.9375rem;
   --text-base: 1.0625rem;
   --text-lg: 1.25rem;
   --text-xl: 1.75rem;
-  --text-2xl: 2.5rem;
+  --text-2xl: 2.75rem;
   --text-3xl: 3.5rem;
 
-  /* Layout */
+  /* Layout — rounder everything, like a sticker sheet */
   --content-max: 1120px;
   --content-padding: clamp(1.25rem, 4vw, 3rem);
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
+  --radius-sm: 10px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
 
-  /* Translucent sticky-navbar background — a token (not a hardcoded
-     rgba()) specifically so it can be swapped per theme below. */
-  --navbar-bg: rgba(13, 18, 16, 0.85);
-
-  color-scheme: dark;
-}
-
-/* ==========================================================================
-   Light theme
-   Toggled by ThemeToggle.jsx, which sets data-theme="light" on <html>
-   (persisted in localStorage, and initialized before first paint by the
-   inline script in index.html to avoid a flash of the wrong theme).
-   Every component CSS file in this project uses var(--token) exclusively
-   rather than hardcoded colors, so overriding the tokens here is enough
-   to re-theme the entire site — no other CSS file needs to change.
-   ========================================================================== */
-
-:root[data-theme='light'] {
-  /* Surfaces */
-  --bg: #f7f9f7;
-  --surface: #ffffff;
-  --surface-raised: #eef2ee;
-  --surface-hover: #e5eae5;
-  --border: #dce3dc;
-  --border-strong: #c3cfc3;
-
-  /* Text */
-  --text-primary: #12160f;
-  --text-secondary: #49564a;
-  --text-tertiary: #798479;
-
-  /* Accent — a darker green than the dark theme's, since the bright lime
-     used on a near-black background doesn't have enough contrast to
-     read as text on a near-white one. */
-  --accent: #3f7d0b;
-  --accent-bright: #4d9814;
-  --accent-dim: rgba(63, 125, 11, 0.1);
-  --accent-text-on: #ffffff;
-
-  /* Status — same idea: darker, more saturated versions for contrast on
-     a light background. */
-  --status-pass: #3f7d0b;
-  --status-fail: #dc2626;
-  --status-fail-dim: rgba(220, 38, 38, 0.08);
-  --status-warn: #b45309;
-  --status-warn-dim: rgba(180, 83, 9, 0.1);
-
-  --navbar-bg: rgba(247, 249, 247, 0.85);
+  --navbar-bg: rgba(247, 240, 230, 0.82);
 
   color-scheme: light;
+}
+
+/* Evening: the same room with the lamp on. Toggled by ThemeToggle.jsx,
+   which sets data-theme on <html>. Every component uses var(--token), so
+   overriding tokens here re-themes the whole site. */
+:root[data-theme='dark'] {
+  --bg: #1e1714;
+  --surface: #2a201b;
+  --surface-raised: #342823;
+  --surface-hover: #3d2f29;
+  --border: #44352e;
+  --border-strong: #5a4739;
+
+  --text-primary: #f5e9db;
+  --text-secondary: #cdb9a6;
+  --text-tertiary: #a8957f;
+
+  --accent: #a9cfae;
+  --accent-bright: #c2e0c6;
+  --accent-dim: rgba(169, 207, 174, 0.14);
+  --accent-text-on: #1e1714;
+  --accent-2: #f0a9a9;
+
+  --pastel-rose: #5a3b3d;
+  --pastel-sage: #3d4d3e;
+  --pastel-butter: #5c4a2a;
+  --pastel-sky: #34495a;
+  --pastel-lilac: #483d5a;
+  --pastel-peach: #5b4332;
+
+  --aurora-1: rgba(240, 168, 120, 0.13);
+  --aurora-2: rgba(143, 181, 147, 0.12);
+  --spot: rgba(240, 168, 120, 0.12);
+  --paper: #33271f;
+  --shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 14px 30px -18px rgba(0, 0, 0, 0.7);
+  --shadow-hover: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 24px 40px -20px rgba(0, 0, 0, 0.8);
+  --btn-edge: #e8d3ba;
+  --btn-text: #3a2e28;
+
+  --status-pass: #a9cfae;
+  --status-fail: #ff9d94;
+  --status-fail-dim: rgba(255, 157, 148, 0.14);
+  --status-warn: #f2c46d;
+  --status-warn-dim: rgba(242, 196, 109, 0.14);
+
+  --navbar-bg: rgba(30, 23, 20, 0.82);
+
+  color-scheme: dark;
 }
 
 /* ==========================================================================
@@ -179,6 +209,18 @@ p {
   margin: 0;
 }
 
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+}
+
+::selection {
+  background: var(--strong-butter);
+  color: #3a2e28;
+}
+
 /* ==========================================================================
    Focus states — visible everywhere, styled (not the default blue ring)
    ========================================================================== */
@@ -221,7 +263,7 @@ section[id] {
 
 .section {
   padding-block: clamp(3.5rem, 8vw, 6.5rem);
-  border-top: 1px solid var(--border);
+  border-top: 2px dashed var(--border-strong);
 }
 
 .section-head {
@@ -235,7 +277,8 @@ section[id] {
 .section-head h2 {
   font-size: var(--text-2xl);
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
 .section-head p {
@@ -346,4 +389,306 @@ section[id] {
 
 .scroll-x {
   overflow-x: auto;
+}
+
+
+/* ==========================================================================
+   Cozy layer: paper, pastel light, soft cards, stickers, motion
+   All decorative; every rule degrades gracefully (no JS / reduced motion
+   / unsupported browsers just see the plain warm surfaces).
+   ========================================================================== */
+
+/* Fixed backdrop: two pastel light pools + a very fine paper grain */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-image:
+    radial-gradient(52rem 36rem at 90% -8%, var(--aurora-1), transparent 62%),
+    radial-gradient(46rem 36rem at -8% 40%, var(--aurora-2), transparent 62%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .35 0 0 0 0 .25 0 0 0 0 .2 0 0 0 .32 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* A soft lamp-glow that follows the cursor (positions set by useInteractions) */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(380px circle at var(--gx, 50%) var(--gy, -20%), var(--spot), transparent 70%);
+}
+
+/* Cards: warm paper, big radius, soft shadow, cursor-tracking glow */
+.panel {
+  position: relative;
+  isolation: isolate;
+  background: var(--surface);
+  border-color: var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+  transition: border-color 0.2s ease, box-shadow 0.25s ease, rotate 0.2s ease-out;
+}
+
+.panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(300px circle at var(--mx, 50%) var(--my, 50%), var(--spot), transparent 65%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.panel:hover::before {
+  opacity: 1;
+}
+
+.panel:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+/* Parents of tilting cards need perspective for the 3D lean to read. */
+.skills__grid,
+.certificates__grid,
+.projects__list,
+.writing__list,
+.about__stats,
+.about__interest-grid {
+  perspective: 1100px;
+}
+
+/* Buttons: chunky sticker pills. Outlined in cocoa, with a solid "ledge"
+   underneath that squishes when pressed. Primary is butter yellow,
+   secondary is paper that blushes pink on hover. Still has the light
+   sweep and the magnetic drift from the interactions hook. */
+.btn {
+  position: relative;
+  overflow: hidden;
+  gap: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  border: 2px solid var(--btn-edge);
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  color: var(--btn-text);
+  background: var(--paper);
+  box-shadow: 0 4px 0 var(--btn-edge);
+  transition: background-color 0.18s ease, color 0.15s ease, transform 0.12s ease,
+    translate 0.2s ease-out, box-shadow 0.12s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 var(--btn-edge);
+}
+
+.btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 var(--btn-edge);
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--accent-2);
+  outline-offset: 3px;
+}
+
+.btn:disabled,
+.btn[aria-disabled='true'] {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 2px 0 var(--btn-edge);
+}
+
+.btn-primary {
+  background: var(--strong-butter);
+  color: var(--btn-text);
+}
+
+.btn-primary:hover {
+  background: var(--strong-peach);
+}
+
+.btn-secondary {
+  background: var(--paper);
+  border-color: var(--btn-edge);
+  color: var(--btn-text);
+}
+
+.btn-secondary:hover {
+  background: var(--strong-rose);
+  border-color: var(--btn-edge);
+  color: var(--btn-text);
+}
+
+/* In the evening theme the paper is dark, so keep the label readable. */
+:root[data-theme='dark'] .btn-secondary {
+  color: var(--text-primary);
+}
+
+:root[data-theme='dark'] .btn-secondary:hover {
+  color: var(--btn-text);
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.45) 50%, transparent 65%);
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+
+.btn:hover::after {
+  transform: translateX(120%);
+  transition: transform 0.65s ease;
+}
+
+/* The round theme button and mobile menu button match the sticker style */
+.theme-toggle,
+.navbar__toggle {
+  background: var(--paper);
+  border: 2px solid var(--btn-edge);
+  border-radius: 999px;
+  box-shadow: 0 3px 0 var(--btn-edge);
+  color: var(--text-primary);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.18s ease;
+}
+
+.theme-toggle:hover,
+.navbar__toggle:hover {
+  background: var(--pastel-butter);
+  transform: translateY(-1px);
+}
+
+.theme-toggle:active,
+.navbar__toggle:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--btn-edge);
+}
+
+/* Section headings: a hand-drawn squiggle that spans the whole title and
+   draws in as you scroll. The h2 shrinks to its text so the wave ends
+   exactly where the title does. */
+.section-head h2 {
+  width: fit-content;
+  max-width: 100%;
+}
+
+.section-head h2::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 12px;
+  margin-top: 0.7rem;
+  background: var(--accent-2);
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='12' viewBox='0 0 32 12'><path d='M0 6 Q8 -1 16 6 T32 6' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round'/></svg>") repeat-x left center / 32px 12px;
+  mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='12' viewBox='0 0 32 12'><path d='M0 6 Q8 -1 16 6 T32 6' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round'/></svg>") repeat-x left center / 32px 12px;
+  transform-origin: left;
+}
+
+@supports (animation-timeline: view()) {
+  .section-head h2::after {
+    animation: bar-draw linear both;
+    animation-timeline: view();
+    animation-range: entry 5% entry 70%;
+  }
+}
+
+@keyframes bar-draw {
+  from {
+    transform: scaleX(0.05);
+    opacity: 0.3;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+/* A gently pulsing status dot */
+.dot--pulse {
+  box-shadow: 0 0 0 0 var(--accent);
+  animation: dot-pulse 2s ease-out infinite;
+}
+
+@keyframes dot-pulse {
+  70% {
+    box-shadow: 0 0 0 9px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+.pill {
+  background: var(--surface);
+}
+
+.about__stat-value {
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+/* Skills as a Pinterest-style masonry board of sticker tags */
+.skills__grid {
+  display: block;
+  columns: 1;
+  column-gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .skills__grid {
+    columns: 2;
+  }
+}
+
+@media (min-width: 980px) {
+  .skills__grid {
+    columns: 3;
+  }
+}
+
+.skills__grid > * {
+  break-inside: avoid;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 1.25rem;
+}
+
+.skills__tag {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem;
+  color: var(--text-primary);
+  background: var(--pastel-rose);
+}
+
+.skills__tags .skills__tag:nth-child(6n + 2) { background: var(--pastel-sage); }
+.skills__tags .skills__tag:nth-child(6n + 3) { background: var(--pastel-butter); }
+.skills__tags .skills__tag:nth-child(6n + 4) { background: var(--pastel-sky); }
+.skills__tags .skills__tag:nth-child(6n + 5) { background: var(--pastel-lilac); }
+.skills__tags .skills__tag:nth-child(6n + 6) { background: var(--pastel-peach); }
+
+/* Cozy details */
+.eyebrow {
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  letter-spacing: 0;
+  color: var(--accent-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__blob,
+  .hero__sticker,
+  .marquee__track {
+    animation: none !important;
+  }
 }

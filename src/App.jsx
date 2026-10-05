@@ -18,13 +18,19 @@ import Experience from './components/Experience/Experience.jsx'
 import Writing from './components/Writing/Writing.jsx'
 import Contact from './components/Contact/Contact.jsx'
 import Footer from './components/Footer/Footer.jsx'
+import Marquee from './components/Marquee/Marquee.jsx'
+import useInteractions from './hooks/useInteractions.js'
 
 export default function App() {
+  // Cursor glow, card spotlight/tilt, and magnetic buttons (see the hook).
+  useInteractions()
+
   return (
     <>
       <ScrollProgress />
       <Navbar />
       <Hero />
+      <Marquee />
       <About />
       <Experience />
       <Skills />

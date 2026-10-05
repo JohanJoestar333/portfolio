@@ -20,6 +20,13 @@ describe('Homepage', () => {
     cy.contains('Explore QA Lab').should('be.visible')
   })
 
+  it('renders the draggable 3D hero block with all six faces', () => {
+    cy.get('[data-testid="hero-cube"]').should('be.visible')
+    cy.get('[data-testid="hero-cube"] .herocube__face').should('have.length', 6)
+    cy.get('[data-testid="hero-cube"] .herocube__label').should('have.length', 6)
+    cy.get('[data-testid="hero-cube"]').should('contain.text', 'Regression').and('contain.text', 'Test case writing')
+  })
+
   it('has a working primary navigation', () => {
     // cy.get(selector) works like document.querySelector — here it's
     // using the data-testid attributes we added throughout the app
@@ -28,6 +35,8 @@ describe('Homepage', () => {
     cy.get('[data-testid="nav-logo"]').should('be.visible')
     // cy.contains(selector, text) narrows the search to elements matching
     // the selector ('nav a') that also contain the given text.
+    // Desktop width: the nav only shows as a row above 980px.
+    cy.viewport(1280, 800)
     cy.contains('nav a', 'QA Lab').click()
     // Clicking an anchor with href="#qa-lab" updates the URL's hash.
     cy.location('hash').should('eq', '#qa-lab')
@@ -36,7 +45,7 @@ describe('Homepage', () => {
 
   it('shows an accessible mobile menu on small viewports', () => {
     // cy.viewport(width, height) resizes the simulated browser window —
-    // this drops us below the 720px breakpoint where Navbar.css switches
+    // this drops us below the 980px breakpoint where Navbar.css switches
     // to the hamburger menu.
     cy.viewport(375, 800)
     cy.get('[data-testid="nav-toggle"]').should('be.visible').click()

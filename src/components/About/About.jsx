@@ -3,6 +3,7 @@ import { certificates } from '../../data/certificates.js'
 import { posts } from '../../data/writing.js'
 import { testCount } from '../../data/automation.js'
 import Reveal from '../Reveal/Reveal.jsx'
+import CountUp from '../CountUp/CountUp.jsx'
 import './About.css'
 
 // The little "Location / Role / Experience / Focus" panel is built from
@@ -63,7 +64,9 @@ export default function About() {
         <Reveal as="ul" className="about__stats" delay={0.05} data-testid="about-stats">
           {stats.map((stat) => (
             <li key={stat.label} className="about__stat panel">
-              <span className="about__stat-value mono">{stat.value}</span>
+              <span className="about__stat-value mono">
+                <CountUp value={stat.value} />
+              </span>
               <span className="about__stat-label">{stat.label}</span>
             </li>
           ))}

@@ -37,9 +37,24 @@ certificates, writing) after.
 There is intentionally no GitHub link anywhere on the site — Contact only
 shows LinkedIn, Email, and Resume.
 
+## Look & feel
+
+- **Cozy moodboard theme** — warm paper (light, the default) and a
+  lamp-lit evening (dark), Fraunces + Caveat + DM Sans, pastel stickers,
+  masonry skills board, polaroid certificates, a pinned-note project.
+  All colors are tokens in `globals.css`.
+- **3D hero** — a draggable pastel "toy block" (`HeroCube`) built from
+  CSS 3D transforms, ringed by floating stickers. No 3D library.
+- **Interactions** (`src/hooks/useInteractions.js`) — cursor glow, card
+  spotlight, 3D tilt on cards, and magnetic buttons. Fine pointers only,
+  and all of it is off when the visitor prefers reduced motion.
+- **Motion** — letter-by-letter 3D name entrance, rotating "I test …"
+  line, toolkit marquee, count-up stats, scrollspy nav underline, and
+  scroll-drawn section accents.
+
 ## Testing & CI
 
-**5 Cypress spec files, 33 tests**, covering:
+**5 Cypress spec files, 35 tests**, covering:
 
 | Spec | Covers |
 | --- | --- |

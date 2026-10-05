@@ -12,7 +12,7 @@ export const skillCategories = [
   },
   {
     title: 'Automation',
-    skills: ['Cypress', 'JavaScript', 'axe-core', 'GitHub Actions (CI)'],
+    skills: ['Cypress', 'Playwright', 'GitHub Actions (CI)'],
   },
   {
     title: 'API',

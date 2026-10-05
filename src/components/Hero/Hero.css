@@ -1,26 +1,74 @@
 .hero {
-  padding-block: clamp(3rem, 10vw, 6rem) clamp(2.5rem, 8vw, 5rem);
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(3rem, 9vw, 6rem) clamp(3rem, 8vw, 5.5rem);
+}
+
+.hero__layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .hero__layout {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  }
 }
 
 .hero__inner {
-  max-width: 720px;
+  max-width: 640px;
 }
 
 .hero__name {
-  font-size: var(--text-3xl);
+  font-size: clamp(3.75rem, 11vw, 7.25rem);
   font-weight: 600;
-  letter-spacing: -0.02em;
-  margin: 0.5rem 0 0;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  margin: 0.5rem 0 0.75rem;
+  perspective: 700px;
+}
+
+.hero__letter {
+  display: inline-block;
+  transform-origin: 50% 100%;
+}
+
+.hero__rotator {
+  display: flex;
+  gap: 0.5ch;
+  font-family: var(--font-hand);
+  font-size: 2rem;
+  line-height: 1.2;
+  color: var(--text-secondary);
+}
+
+.hero__rotator-window {
+  display: inline-block;
+  overflow: hidden;
+  height: 1.5em;
+  vertical-align: bottom;
+}
+
+.hero__rotator-word {
+  display: inline-block;
+  color: var(--accent-2);
+  font-weight: 600;
 }
 
 .hero__quote {
   margin: 1.75rem 0;
+  font-family: var(--font-display);
   font-size: var(--text-xl);
   font-weight: 500;
+  font-style: italic;
   line-height: 1.35;
   max-width: 560px;
   padding-left: 1.1rem;
-  border-left: 2px solid var(--accent);
+  border-left: 2px solid transparent;
+  border-image: linear-gradient(180deg, var(--accent), var(--accent-2)) 1;
 }
 
 .hero__lede {
@@ -34,4 +82,76 @@
   flex-wrap: wrap;
   gap: 0.75rem;
   margin-bottom: 1.75rem;
+}
+
+.hero__visual {
+  perspective: 1200px;
+}
+
+/* ---- Background: dotted paper + two pastel blobs ---- */
+.hero__dots {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(var(--border-strong) 1.3px, transparent 1.6px) 0 0 / 26px 26px;
+  opacity: 0.55;
+  -webkit-mask-image: radial-gradient(ellipse at 70% 40%, #000, transparent 72%);
+  mask-image: radial-gradient(ellipse at 70% 40%, #000, transparent 72%);
+  pointer-events: none;
+}
+
+.hero__blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  pointer-events: none;
+  animation: hero-drift 16s ease-in-out infinite alternate;
+}
+
+.hero__blob--a {
+  width: 28rem;
+  height: 28rem;
+  top: -10rem;
+  right: -6rem;
+  background: var(--aurora-1);
+}
+
+.hero__blob--b {
+  width: 24rem;
+  height: 24rem;
+  bottom: -8rem;
+  left: -8rem;
+  background: var(--aurora-2);
+  animation-delay: -6s;
+}
+
+@keyframes hero-drift {
+  to {
+    translate: 40px 30px;
+    scale: 1.12;
+  }
+}
+
+/* ---- Stickers around the cube ---- */
+.hero__visual {
+  position: relative;
+}
+
+.hero__sticker {
+  position: absolute;
+  width: 56px;
+  height: auto;
+  animation: sticker-bob 6s ease-in-out infinite;
+  filter: drop-shadow(0 6px 6px rgba(90, 55, 35, 0.18));
+}
+
+.hero__sticker--sun    { top: 2%;  left: 6%;   width: 62px; }
+.hero__sticker--leaf   { top: 10%; right: 4%;  width: 54px; rotate: 18deg; animation-delay: -1.5s; }
+.hero__sticker--spark  { bottom: 22%; left: 2%; width: 46px; animation-delay: -3s; }
+.hero__sticker--wave   { bottom: 12%; right: 6%; width: 84px; animation-delay: -4.5s; }
+.hero__sticker--flower { top: 46%; right: -2%; width: 44px; rotate: -12deg; animation-delay: -2.2s; }
+
+@keyframes sticker-bob {
+  50% {
+    translate: 0 -9px;
+  }
 }

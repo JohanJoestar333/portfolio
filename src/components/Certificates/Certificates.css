@@ -1,3 +1,5 @@
+/* Certificates are polaroids taped to a board: white frame, caption under
+   the picture, a strip of washi tape on top, and a slight tilt at rest. */
 .certificates__empty {
   color: var(--text-tertiary);
   font-size: var(--text-sm);
@@ -5,31 +7,55 @@
 
 .certificates__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 2.25rem 1.5rem;
+  padding-top: 0.75rem;
 }
 
 .certificates__card {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  padding: 0.75rem 0.75rem 0.5rem;
   text-decoration: none;
   color: var(--text-primary);
-  transition: border-color 0.15s ease, transform 0.15s ease;
+  background: var(--paper);
+  border-radius: 6px;
+  box-shadow: var(--shadow);
 }
+
+.certificates__card:nth-child(odd)  { rotate: -1.6deg; }
+.certificates__card:nth-child(even) { rotate: 1.3deg; margin-top: 0.75rem; }
+.certificates__card:nth-child(3n)   { rotate: 0.5deg; }
+
+/* washi tape */
+.certificates__card::after {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  width: 84px;
+  height: 24px;
+  translate: -50% 0;
+  rotate: -3deg;
+  background: color-mix(in srgb, var(--strong-butter) 70%, transparent);
+  box-shadow: 0 1px 2px rgba(90, 55, 35, 0.15);
+  clip-path: polygon(0 8%, 4% 0, 8% 10%, 12% 0, 100% 0, 96% 50%, 100% 100%, 8% 100%, 4% 90%, 0 100%, 4% 50%);
+}
+
+.certificates__card:nth-child(3n + 2)::after { background: color-mix(in srgb, var(--strong-rose) 70%, transparent); rotate: 4deg; }
+.certificates__card:nth-child(3n)::after     { background: color-mix(in srgb, var(--strong-sage) 70%, transparent); }
 
 .certificates__card:hover,
 .certificates__card:focus-visible {
-  border-color: var(--accent);
-  transform: translateY(-2px);
+  border-color: var(--border);
 }
 
 .certificates__image {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
+  border-radius: 3px;
   background: var(--surface-raised);
-  border-bottom: 1px solid var(--border);
 }
 
 .certificates__image--placeholder {
@@ -40,16 +66,17 @@
 }
 
 .certificates__text {
-  padding: 1rem 1.1rem;
+  padding: 0.85rem 0.35rem 0.6rem;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.25rem;
 }
 
 .certificates__title {
-  font-size: var(--text-sm);
-  font-weight: 500;
-  line-height: 1.4;
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.15;
 }
 
 .certificates__org {
@@ -57,7 +84,7 @@
   color: var(--text-tertiary);
 }
 
-/* Square badges: show the whole badge instead of cropping it to 4:3. */
+/* Square badges: show the whole badge instead of cropping it. */
 .certificates__image--contain {
   object-fit: contain;
 }
