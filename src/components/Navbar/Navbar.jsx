@@ -13,6 +13,7 @@ const navLinks = [
   { label: 'Skills', href: '#skills' },
   { label: 'QA Lab', href: '#qa-lab' },
   { label: 'Automation', href: '#automation' },
+  { label: 'Projects', href: '#projects' },
   { label: 'Certificates', href: '#certificates' },
   { label: 'Writing', href: '#writing' },
   { label: 'Contact', href: '#contact' },

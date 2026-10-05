@@ -30,6 +30,17 @@ describe('Content sections', () => {
     })
   })
 
+  it('renders every project with a title and working links', () => {
+    cy.get('[data-testid^="project-"]:not([data-testid="project-link"])').should('have.length.greaterThan', 0)
+    cy.get('[data-testid="project-link"]').each(($link) => {
+      cy.wrap($link).should('have.attr', 'href').and('match', /^(https:\/\/|\/projects\/)/)
+    })
+    // Downloadable files must actually be served (not a 404 or the app shell).
+    cy.get('[data-testid="project-link"][download]').each(($link) => {
+      cy.request($link.attr('href')).its('status').should('eq', 200)
+    })
+  })
+
   it('renders every writing post with a title and an external link', () => {
     cy.get('[data-testid^="writing-post-"]').should('have.length.greaterThan', 0)
     cy.get('[data-testid^="writing-post-"]').each(($post) => {

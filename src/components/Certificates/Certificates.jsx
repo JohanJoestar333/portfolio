@@ -46,7 +46,7 @@ export default function Certificates() {
                   <img
                     src={cert.image}
                     alt={`${cert.title} certificate`}
-                    className="certificates__image"
+                    className={`certificates__image${cert.fit === 'contain' ? ' certificates__image--contain' : ''}`}
                     loading="lazy"
                     decoding="async"
                   />

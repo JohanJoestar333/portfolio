@@ -19,6 +19,8 @@ export const certificatesIntro = {
 //     url: 'https://…',                      // verification / badge page
 //     image: '/certificates/your-file.webp', // optional — omit for an icon
 //     year: '2026',                          // optional — shown on the card
+//     fit: 'contain',                        // optional — use for square badges so
+//                                            // nothing gets cropped
 //   },
 //
 // To remove one, delete its object. Order here is the display order.
@@ -41,5 +43,14 @@ export const certificates = [
     organization: 'IBM SkillsBuild',
     url: 'https://www.credly.com/badges/32ae55ea-525f-465c-85ba-2e88ddea3987/linked_in_profile',
     image: '/certificates/ibm-generative-ai.jpeg',
+  },
+  {
+    title: 'Craft Precise Prompts for AI Models',
+    organization: 'IBM SkillsBuild',
+    // TODO: replace with the real Credly badge link for this course
+    // (Credly → the badge → Share → copy link).
+    url: 'https://www.credly.com/',
+    image: '/certificates/ibm-craft-precise-prompts.webp',
+    fit: 'contain',
   },
 ]

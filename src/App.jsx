@@ -11,6 +11,7 @@ import Hero from './components/Hero/Hero.jsx'
 import About from './components/About/About.jsx'
 import QALab from './components/QALab/QALab.jsx'
 import Automation from './components/Automation/Automation.jsx'
+import Projects from './components/Projects/Projects.jsx'
 import Skills from './components/Skills/Skills.jsx'
 import Certificates from './components/Certificates/Certificates.jsx'
 import Experience from './components/Experience/Experience.jsx'
@@ -29,6 +30,7 @@ export default function App() {
       <Skills />
       <QALab />
       <Automation />
+      <Projects />
       <Certificates />
       <Writing />
       <Contact />
