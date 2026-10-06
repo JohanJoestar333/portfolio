@@ -62,4 +62,11 @@ export const certificates = [
     url: 'https://www.codecademy.com/profiles/Kazeshini3/certificates/705dcb15de0da4dd9d9fc4f3274b430e',
     image: '/certificates/codecademy-learn-javascript.png',
   },
+  {
+    title: 'Fundamentals of Quality Assurance',
+    organization: 'Alison',
+    url: 'https://alison.com/verify/df15581d96',
+    image: '/certificates/alison-fundamentals-of-qa.webp',
+    year: '2026',
+  },
 ]
