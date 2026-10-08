@@ -8,12 +8,14 @@ describe('Content sections', () => {
     cy.visit('/')
   })
 
-  it('renders every certificate as a working external link', () => {
+  it('renders every certificate as a working link', () => {
     cy.get('[data-testid^="certificate-"]').should('have.length.greaterThan', 0)
     cy.get('[data-testid^="certificate-"]').each(($card) => {
       cy.wrap($card)
         .should('have.attr', 'href')
-        .and('match', /^https:\/\//)
+        // An https verification page, or a certificate PDF hosted in
+        // public/certificates/ for courses with no online verification.
+        .and('match', /^(https:\/\/|\/certificates\/)/)
       cy.wrap($card).should('have.attr', 'target', '_blank')
       cy.wrap($card).find('.certificates__title').should('not.be.empty')
       cy.wrap($card).find('.certificates__org').should('not.be.empty')
@@ -46,7 +48,9 @@ describe('Content sections', () => {
     cy.get('[data-testid^="writing-post-"]').each(($post) => {
       cy.wrap($post)
         .should('have.attr', 'href')
-        .and('match', /^https:\/\//)
+        // An https verification page, or a certificate PDF hosted in
+        // public/certificates/ for courses with no online verification.
+        .and('match', /^(https:\/\/|\/certificates\/)/)
       cy.wrap($post).should('have.attr', 'target', '_blank')
       cy.wrap($post).find('h3').should('not.be.empty')
     })

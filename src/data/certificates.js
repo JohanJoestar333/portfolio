@@ -16,7 +16,8 @@ export const certificatesIntro = {
 //   {
 //     title: 'Course or certification name',
 //     organization: 'Who issued it',
-//     url: 'https://…',                      // verification / badge page
+//     url: 'https://…',                      // verification / badge page (or a PDF in
+//                                            // public/certificates/, e.g. '/certificates/x.pdf')
 //     image: '/certificates/your-file.webp', // optional — omit for an icon
 //     year: '2026',                          // optional — shown on the card
 //     fit: 'contain',                        // optional — use for square badges so
@@ -57,16 +58,25 @@ export const certificates = [
     fit: 'contain',
   },
   {
-    title: 'Learn JavaScript Course',
-    organization: 'Codecademy',
-    url: 'https://www.codecademy.com/profiles/Kazeshini3/certificates/705dcb15de0da4dd9d9fc4f3274b430e',
-    image: '/certificates/codecademy-learn-javascript.png',
-  },
-  {
     title: 'Fundamentals of Quality Assurance',
     organization: 'Alison',
     url: 'https://alison.com/verify/df15581d96',
     image: '/certificates/alison-fundamentals-of-qa.webp',
     year: '2026',
+  },
+  {
+    title: 'Introducing AI',
+    organization: 'Raspberry Pi Foundation',
+    // No online verification page, so this opens the certificate PDF itself.
+    url: '/certificates/raspberry-pi-introducing-ai.pdf',
+    image: '/certificates/raspberry-pi-introducing-ai.webp',
+    year: '2026',
+    fit: 'contain',
+  },
+  {
+    title: 'Learn JavaScript Course',
+    organization: 'Codecademy',
+    url: 'https://www.codecademy.com/profiles/Kazeshini3/certificates/705dcb15de0da4dd9d9fc4f3274b430e',
+    image: '/certificates/codecademy-learn-javascript.png',
   },
 ]
