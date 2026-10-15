@@ -74,6 +74,14 @@ export const certificates = [
     fit: 'contain',
   },
   {
+    title: 'Claude 101',
+    organization: 'Claude Academy',
+    url: 'https://academy.claude.com/verify/40f3df09fddd65e58a5b70298cd9de29',
+    image: '/certificates/claude-academy-claude-101.webp',
+    year: '2026',
+    fit: 'contain',
+  },
+  {
     title: 'Learn JavaScript Course',
     organization: 'Codecademy',
     url: 'https://www.codecademy.com/profiles/Kazeshini3/certificates/705dcb15de0da4dd9d9fc4f3274b430e',
