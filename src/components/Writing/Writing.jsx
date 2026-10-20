@@ -1,4 +1,4 @@
-import { posts, writingIntro } from '../../data/writing.js'
+import { useLang } from '../../i18n/LanguageContext.jsx'
 import Reveal from '../Reveal/Reveal.jsx'
 import './Writing.css'
 
@@ -6,6 +6,8 @@ import './Writing.css'
 // list of posts. If the posts array is empty, this shows a quiet fallback
 // instead of an empty section.
 export default function Writing() {
+  const { t, c } = useLang()
+  const { posts, writingIntro } = c
   return (
     <section id="writing" className="section writing">
       <div className="container">
@@ -17,7 +19,7 @@ export default function Writing() {
         </Reveal>
 
         {posts.length === 0 ? (
-          <p className="writing__empty">Nothing published yet. Check back soon.</p>
+          <p className="writing__empty">{t.writing.empty}</p>
         ) : (
           <div className="writing__list">
             {posts.map((post, index) => (
@@ -44,7 +46,7 @@ export default function Writing() {
                   <h3>{post.title}</h3>
                   <p>{post.description}</p>
                 </div>
-                <span className="writing__post-cta mono">Read on {post.platform ?? 'Medium'} →</span>
+                <span className="writing__post-cta mono">{t.writing.readOn(post.platform ?? 'Medium')}</span>
               </Reveal>
             ))}
           </div>

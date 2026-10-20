@@ -1,4 +1,4 @@
-import { experience } from '../../data/experience.js'
+import { useLang } from '../../i18n/LanguageContext.jsx'
 import Reveal from '../Reveal/Reveal.jsx'
 import './Experience.css'
 
@@ -6,12 +6,14 @@ import './Experience.css'
 // per role. `location` is optional per entry — the {entry.location && ...}
 // check below just skips rendering that line if an entry doesn't have one.
 export default function Experience() {
+  const { t, c } = useLang()
+  const { experience } = c
   return (
     <section id="experience" className="section experience">
       <div className="container">
         <Reveal>
           <div className="section-head">
-            <h2>Experience</h2>
+            <h2>{t.experience.title}</h2>
           </div>
         </Reveal>
 

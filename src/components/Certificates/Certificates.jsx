@@ -1,4 +1,4 @@
-import { certificates, certificatesIntro } from '../../data/certificates.js'
+import { useLang } from '../../i18n/LanguageContext.jsx'
 import Reveal from '../Reveal/Reveal.jsx'
 import './Certificates.css'
 
@@ -17,6 +17,8 @@ function CertificateIcon() {
 // link (the whole card is clickable, not just the title) that opens the
 // certificate's url in a new tab. `image` and `year` are optional.
 export default function Certificates() {
+  const { t, c } = useLang()
+  const { certificates, certificatesIntro } = c
   return (
     <section id="certificates" className="section certificates">
       <div className="container">
@@ -28,7 +30,7 @@ export default function Certificates() {
         </Reveal>
 
         {certificates.length === 0 ? (
-          <p className="certificates__empty">Nothing added yet. Check back soon.</p>
+          <p className="certificates__empty">{t.certificates.empty}</p>
         ) : (
           <div className="certificates__grid">
             {certificates.map((cert, index) => (
@@ -45,7 +47,7 @@ export default function Certificates() {
                 {cert.image ? (
                   <img
                     src={cert.image}
-                    alt={`${cert.title} certificate`}
+                    alt={t.certificates.alt(cert.title)}
                     className={`certificates__image${cert.fit === 'contain' ? ' certificates__image--contain' : ''}`}
                     loading="lazy"
                     decoding="async"

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import LoginLab from './LoginLab/LoginLab.jsx'
 import FormLab from './FormLab/FormLab.jsx'
 import Reveal from '../Reveal/Reveal.jsx'
+import { useLang } from '../../i18n/LanguageContext.jsx'
 import './QALab.css'
 
 // This section is a simple tab switcher: only one of the two
@@ -9,11 +10,12 @@ import './QALab.css'
 // To add another QA Lab experience: build it as its own component folder
 // (like LoginLab/ and FormLab/), then add one line here.
 const TABS = [
-  { id: 'login', label: 'Login Lab', Component: LoginLab },
-  { id: 'form', label: 'Form Validation Lab', Component: FormLab },
+  { id: 'login', labelKey: 'loginTab', Component: LoginLab },
+  { id: 'form', labelKey: 'formTab', Component: FormLab },
 ]
 
 export default function QALab() {
+  const { t } = useLang()
   // activeTab just stores which tab's id is currently selected — "login"
   // by default, so Login Lab is what visitors see first.
   const [activeTab, setActiveTab] = useState('login')
@@ -27,11 +29,11 @@ export default function QALab() {
       <div className="container">
         <Reveal>
           <div className="section-head">
-            <h2>QA Lab</h2>
-            <p>This portfolio is also a testing playground.</p>
+            <h2>{t.qaLab.title}</h2>
+            <p>{t.qaLab.subtitle}</p>
           </div>
 
-          <p className="qa-lab__intro">Don't just read about how I test software. Try breaking something yourself.</p>
+          <p className="qa-lab__intro">{t.qaLab.intro}</p>
         </Reveal>
 
         {/* This Reveal wraps the tabs AND the panel below, but only plays
@@ -42,7 +44,7 @@ export default function QALab() {
           {/* role="tablist" / role="tab" / aria-selected are the standard
               ARIA pattern for tabs, so screen readers announce this as a
               tab group rather than a row of unrelated buttons. */}
-          <div className="qa-lab__tabs" role="tablist" aria-label="QA Lab experiences">
+          <div className="qa-lab__tabs" role="tablist" aria-label={t.qaLab.tablist}>
             {TABS.map((tab) => (
               <button
                 key={tab.id}
@@ -53,7 +55,7 @@ export default function QALab() {
                 onClick={() => setActiveTab(tab.id)}
                 data-testid={`qa-tab-${tab.id}`}
               >
-                {tab.label}
+                {t.qaLab[tab.labelKey]}
               </button>
             ))}
           </div>

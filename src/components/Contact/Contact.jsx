@@ -1,4 +1,4 @@
-import { site } from '../../data/site.js'
+import { useLang } from '../../i18n/LanguageContext.jsx'
 import Reveal from '../Reveal/Reveal.jsx'
 import './Contact.css'
 
@@ -50,20 +50,22 @@ function displayUrl(url) {
 // All three link/download straight away on click — no confirmation step.
 // `download: true` adds the HTML `download` attribute, which tells the
 // browser to save the file instead of trying to navigate to/render it.
-const LINKS = [
-  { key: 'linkedin', label: 'LinkedIn', value: displayUrl(site.linkedin), href: site.linkedin, Icon: LinkedinIcon, external: true },
-  { key: 'email', label: 'Email', value: site.email, href: `mailto:${site.email}`, Icon: MailIcon, external: false },
-  { key: 'resume', label: 'Resume', value: 'PDF · Download', href: site.resumePath, Icon: DownloadIcon, download: true },
-]
 
 export default function Contact() {
+  const { t, c } = useLang()
+  const site = c.site
+  const LINKS = [
+    { key: 'linkedin', label: t.contact.linkedin, value: displayUrl(site.linkedin.split('?')[0]), href: site.linkedin, Icon: LinkedinIcon, external: true },
+    { key: 'email', label: t.contact.email, value: site.email, href: `mailto:${site.email}`, Icon: MailIcon, external: false },
+    { key: 'resume', label: t.contact.resume, value: t.contact.resumeValue, href: site.resumePath, Icon: DownloadIcon, download: true },
+  ]
   return (
     <section id="contact" className="section contact">
       <div className="container">
         <Reveal>
           <div className="section-head">
-            <h2>Let's talk</h2>
-            <p>Interested in QA, testing, automation, or just found a bug I missed?</p>
+            <h2>{t.contact.title}</h2>
+            <p>{t.contact.subtitle}</p>
           </div>
         </Reveal>
 

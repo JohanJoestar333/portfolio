@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { site } from '../../data/site.js'
+import { useLang } from '../../i18n/LanguageContext.jsx'
 import HeroCube from '../HeroCube/HeroCube.jsx'
 import './Hero.css'
 
@@ -55,9 +55,9 @@ function Stickers() {
   )
 }
 
-const ROTATING = ['new features', 'edge cases', 'regressions', 'APIs', 'accessibility']
-
 function Rotator() {
+  const { t } = useLang()
+  const ROTATING = t.hero.rotating
   const [i, setI] = useState(0)
   useEffect(() => {
     const id = setInterval(() => setI((n) => (n + 1) % ROTATING.length), 2200)
@@ -65,7 +65,7 @@ function Rotator() {
   }, [])
   return (
     <p className="hero__rotator" aria-hidden="true">
-      <span>I test </span>
+      <span>{t.hero.iTest}</span>
       <span className="hero__rotator-window">
         <AnimatePresence mode="wait">
           <motion.span
@@ -85,6 +85,8 @@ function Rotator() {
 }
 
 export default function Hero() {
+  const { t, c } = useLang()
+  const site = c.site
   const letters = site.name.split('')
   return (
     // id="top" is what the navbar's logo link (href="#top") scrolls to.
@@ -121,9 +123,9 @@ export default function Hero() {
           </motion.div>
 
           <motion.blockquote variants={item} className="hero__quote">
-            “I don’t just test if it works.
+            {t.hero.quoteA}
             <br />
-            I try to find out how it breaks.”
+            {t.hero.quoteB}
           </motion.blockquote>
 
           <motion.p variants={item} className="hero__lede">
@@ -132,16 +134,16 @@ export default function Hero() {
 
           <motion.div variants={item} className="hero__actions">
             <a href="#qa-lab" className="btn btn-primary">
-              Explore QA Lab
+              {t.hero.qaLab}
             </a>
             <a href="#projects" className="btn btn-secondary">
-              See Projects
+              {t.hero.projects}
             </a>
             <a href={site.resumePath} download className="btn btn-secondary" data-testid="hero-resume">
-              Download Resume
+              {t.hero.resume}
             </a>
             <a href={site.linkedin} target="_blank" rel="noreferrer" className="btn btn-secondary" data-testid="hero-linkedin">
-              LinkedIn
+              {t.hero.linkedin}
             </a>
           </motion.div>
 

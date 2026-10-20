@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useLang } from '../../i18n/LanguageContext.jsx'
 import './ThemeToggle.css'
 
 function SunIcon() {
@@ -32,6 +33,7 @@ function getInitialTheme() {
 }
 
 export default function ThemeToggle() {
+  const { t } = useLang()
   const [theme, setTheme] = useState(getInitialTheme)
 
   // Every time `theme` changes, reflect it onto <html> (which is what
@@ -47,7 +49,7 @@ export default function ThemeToggle() {
       type="button"
       className="theme-toggle"
       onClick={() => setTheme((current) => (current === 'dark' ? 'light' : 'dark'))}
-      aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+      aria-label={theme === 'dark' ? t.theme.toLight : t.theme.toDark}
       data-testid="theme-toggle"
     >
       {theme === 'dark' ? <SunIcon /> : <MoonIcon />}

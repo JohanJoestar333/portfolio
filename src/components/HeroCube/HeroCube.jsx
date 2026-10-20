@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { useLang } from '../../i18n/LanguageContext.jsx'
 import './HeroCube.css'
 
 // The hero's centerpiece: a soft pastel "toy block" in real 3D (pure CSS
@@ -6,16 +7,10 @@ import './HeroCube.css'
 // (sun, arch, stripes, dots, rainbow, ring) with a sticker label on top
 // naming a kind of testing. It drifts on its own and can
 // be dragged to spin (mouse or touch) with a little inertia after you let go.
-const FACES = [
-  { side: 'front', label: 'Manual' },
-  { side: 'back', label: 'Regression' },
-  { side: 'right', label: 'Functional' },
-  { side: 'left', label: 'Exploratory' },
-  { side: 'top', label: 'API' },
-  { side: 'bottom', label: 'Test case writing' },
-]
+const SIDES = ['front', 'back', 'right', 'left', 'top', 'bottom']
 
 export default function HeroCube() {
+  const { t } = useLang()
   const stage = useRef(null)
   const cube = useRef(null)
 
@@ -84,19 +79,19 @@ export default function HeroCube() {
       ref={stage}
       className="herocube"
       role="img"
-      aria-label="A pastel 3D block labelled with the kinds of testing I do: manual, regression, functional, exploratory, API, and test case writing. Drag it to spin."
+      aria-label={t.cube.aria}
       data-testid="hero-cube"
     >
       <div className="herocube__scene">
         <div ref={cube} className="herocube__cube">
-          {FACES.map((f) => (
-            <div key={f.side} className={`herocube__face herocube__face--${f.side}`}>
-              <span className="herocube__label">{f.label}</span>
+          {SIDES.map((side) => (
+            <div key={side} className={`herocube__face herocube__face--${side}`}>
+              <span className="herocube__label">{t.cube.faces[side]}</span>
             </div>
           ))}
         </div>
       </div>
-      <p className="herocube__hint">psst… drag me</p>
+      <p className="herocube__hint">{t.cube.hint}</p>
     </div>
   )
 }

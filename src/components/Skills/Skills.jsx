@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { skillCategories, currentlyLearning } from '../../data/skills.js'
+import { useLang } from '../../i18n/LanguageContext.jsx'
 import Reveal from '../Reveal/Reveal.jsx'
 import './Skills.css'
 
@@ -32,6 +32,8 @@ function distribute(categories, count) {
 // not percentage bars, per the brief ("no percentage proficiency bars" —
 // they read as arbitrary and don't actually communicate skill level).
 export default function Skills() {
+  const { t, c } = useLang()
+  const { skillCategories, currentlyLearning } = c
   const [count, setCount] = useState(getColumnCount)
   useEffect(() => {
     const onResize = () => setCount(getColumnCount())
@@ -45,7 +47,7 @@ export default function Skills() {
       <div className="container">
         <Reveal>
           <div className="section-head">
-            <h2>Testing Toolkit</h2>
+            <h2>{t.skills.title}</h2>
           </div>
         </Reveal>
 
@@ -57,7 +59,7 @@ export default function Skills() {
             <div key={colIndex} className="skills__col">
               {items.map(({ category, index }) => (
                 <Reveal
-                  key={category.title}
+                  key={category.id}
                   className="panel skills__category"
                   delay={Math.min(index * 0.08, 0.3)}
                 >
@@ -76,7 +78,7 @@ export default function Skills() {
         </div>
 
         <Reveal className="panel skills__learning">
-          <p className="eyebrow">Currently learning</p>
+          <p className="eyebrow">{t.skills.learning}</p>
           <ul className="skills__tags">
             {currentlyLearning.map((skill) => (
               <li key={skill} className="skills__tag skills__tag--learning mono">

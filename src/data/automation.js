@@ -18,6 +18,16 @@ const descriptions = {
   'form-validation.cy.js': 'Required fields, email format, phone input, and the live test results.',
   'accessibility.cy.js': 'Automated axe-core checks across the page, QA Lab tabs, and the mobile menu.',
   'content.cy.js': 'Certificates, writing, and About content render correctly, and new entries are covered automatically.',
+  'language.cy.js': 'The language button switches between English and Portuguese, and English stays the default.',
+}
+
+const descriptionsPt = {
+  'homepage.cy.js': 'A página carrega, os links de navegação funcionam e o conteúdo do topo aparece.',
+  'login.cy.js': 'Cenários do Login Lab, incluindo os bugs de validação documentados.',
+  'form-validation.cy.js': 'Campos obrigatórios, formato de e-mail, campo de telefone e os resultados dos testes ao vivo.',
+  'accessibility.cy.js': 'Verificações automáticas de acessibilidade (axe-core) na página, nas abas do QA Lab e no menu mobile.',
+  'content.cy.js': 'Certificados, artigos e a seção Sobre são exibidos corretamente, e novas entradas entram na cobertura automaticamente.',
+  'language.cy.js': 'O botão de idioma troca entre inglês e português, e o inglês continua sendo o padrão.',
 }
 
 // Vite reads the spec files as raw text (never runs them in the browser).
@@ -34,6 +44,7 @@ export const suite = Object.entries(specSources)
       file,
       tests: (source.match(/^\s*it\(/gm) || []).length,
       description: descriptions[file] ?? 'Cypress spec.',
+      descriptionPt: descriptionsPt[file] ?? 'Spec do Cypress.',
     }
   })
   .sort((a, b) => a.file.localeCompare(b.file))

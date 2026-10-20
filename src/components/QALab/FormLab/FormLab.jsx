@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useLang } from '../../../i18n/LanguageContext.jsx'
 import './FormLab.css'
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -84,6 +85,8 @@ function sanitizePhone(value) {
 }
 
 export default function FormLab() {
+  const { t, tr } = useLang()
+  const L = t.formLab
   const [values, setValues] = useState(INITIAL_VALUES)
   const [errors, setErrors] = useState({}) // Field-level error messages from the most recent submit.
   const [submitted, setSubmitted] = useState(false) // Has the form been submitted at least once? Gates when errors/checklist show.
@@ -109,71 +112,71 @@ export default function FormLab() {
   return (
     <div className="qa-lab-experience form-lab">
       <div className="panel form-lab__app">
-        <p className="eyebrow">App under test</p>
+        <p className="eyebrow">{L.appUnderTest}</p>
         <form onSubmit={handleSubmit} noValidate>
           <label className="form-lab__field">
-            <span>Name</span>
+            <span>{L.name}</span>
             <input type="text" value={values.name} onChange={handleChange('name')} data-testid="form-name" />
           </label>
-          {submitted && errors.name && <p className="form-lab__error">{errors.name}</p>}
+          {submitted && errors.name && <p className="form-lab__error">{tr(errors.name)}</p>}
 
           <label className="form-lab__field">
-            <span>Email</span>
+            <span>{L.email}</span>
             <input type="text" value={values.email} onChange={handleChange('email')} data-testid="form-email" />
           </label>
-          {submitted && errors.email && <p className="form-lab__error">{errors.email}</p>}
+          {submitted && errors.email && <p className="form-lab__error">{tr(errors.email)}</p>}
 
           <label className="form-lab__field">
-            <span>Phone</span>
+            <span>{L.phone}</span>
             <input
               type="tel"
               inputMode="tel"
               autoComplete="off"
-              placeholder="Numbers only"
+              placeholder={L.phonePlaceholder}
               value={values.phone}
               onChange={(event) => setValues((prev) => ({ ...prev, phone: sanitizePhone(event.target.value) }))}
               data-testid="form-phone"
             />
           </label>
-          {submitted && errors.phone && <p className="form-lab__error">{errors.phone}</p>}
+          {submitted && errors.phone && <p className="form-lab__error">{tr(errors.phone)}</p>}
 
           <label className="form-lab__field">
-            <span>Age</span>
+            <span>{L.age}</span>
             <input type="text" value={values.age} onChange={handleChange('age')} data-testid="form-age" />
           </label>
-          {submitted && errors.age && <p className="form-lab__error">{errors.age}</p>}
+          {submitted && errors.age && <p className="form-lab__error">{tr(errors.age)}</p>}
 
           <label className="form-lab__field">
-            <span>Message</span>
+            <span>{L.message}</span>
             <textarea rows={4} value={values.message} onChange={handleChange('message')} data-testid="form-message" />
           </label>
-          {submitted && errors.message && <p className="form-lab__error">{errors.message}</p>}
+          {submitted && errors.message && <p className="form-lab__error">{tr(errors.message)}</p>}
 
           <button type="submit" className="btn btn-primary" data-testid="form-submit">
-            Submit
+            {L.submit}
           </button>
         </form>
       </div>
 
       <div className="panel form-lab__qa">
-        <p className="eyebrow">Test results</p>
+        <p className="eyebrow">{L.testResults}</p>
         <p className="form-lab__hint form-lab__desc">
-          Each submission is graded on what it actually exercised. Checks your input didn't touch show as not tested.
+          {L.desc}
         </p>
         {!submitted ? (
-          <p className="form-lab__hint">Submit the form to see live test results here.</p>
+          <p className="form-lab__hint">{L.empty}</p>
         ) : (
           <ul className="form-lab__checklist mono" data-testid="form-checklist">
             {checks.map((check) => (
               <li key={check.id} className={`is-${check.status}`}>
                 <span aria-hidden="true">{check.status === 'pass' ? '✓' : check.status === 'fail' ? '✗' : '–'}</span>{' '}
-                {check.label}
-                {check.status === 'untested' && <span className="form-lab__untested"> (not tested)</span>}
+                {tr(check.label)}
+                {check.status === 'untested' && <span className="form-lab__untested">{L.notTested}</span>}
               </li>
             ))}
           </ul>
         )}
-        <p className="form-lab__meta mono">Submissions this session: {submitCount}</p>
+        <p className="form-lab__meta mono">{L.submissions} {submitCount}</p>
       </div>
     </div>
   )

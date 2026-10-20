@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import { useLang } from '../../../i18n/LanguageContext.jsx'
 import './LoginLab.css'
 
 const DEMO_EMAIL = 'demo@thomas.dev'
@@ -136,6 +137,8 @@ function classify(rawEmail, rawPassword) {
 let logId = 0
 
 export default function LoginLab() {
+  const { t, tr } = useLang()
+  const L = t.loginLab
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [touched, setTouched] = useState(false) // Have we attempted a login yet? Controls whether errors/banner show at all.
@@ -226,14 +229,13 @@ export default function LoginLab() {
     // right" grid defined once in QALab.css and reused by FormLab too.
     <div className="qa-lab-experience login-lab">
       <div className="panel login-lab__app">
-        <p className="eyebrow">App under test</p>
+        <p className="eyebrow">{L.appUnderTest}</p>
         <p className="login-lab__desc">
-          The Login Lab is a small demo login form with a few intentional validation bugs. Log in yourself, or use the
-          test scenarios on the right to see how the form behaves in each case.
+          {L.appDesc}
         </p>
         <form onSubmit={handleFormSubmit} noValidate>
           <label className="login-lab__field">
-            <span>Email</span>
+            <span>{L.email}</span>
             <input
               type="text"
               autoComplete="off"
@@ -244,12 +246,12 @@ export default function LoginLab() {
           </label>
           {touched && result?.emailError && (
             <p className="login-lab__error" data-testid="login-email-error">
-              {result.emailError}
+              {tr(result.emailError)}
             </p>
           )}
 
           <label className="login-lab__field">
-            <span>Password</span>
+            <span>{L.password}</span>
             <input
               type="password"
               autoComplete="off"
@@ -260,12 +262,12 @@ export default function LoginLab() {
           </label>
           {touched && result?.passwordError && (
             <p className="login-lab__error" data-testid="login-password-error">
-              {result.passwordError}
+              {tr(result.passwordError)}
             </p>
           )}
 
           <button type="submit" className="btn btn-primary" data-testid="login-submit">
-            Log in
+            {L.logIn}
           </button>
         </form>
 
@@ -275,19 +277,18 @@ export default function LoginLab() {
           aria-live="polite"
           data-testid="login-banner"
         >
-          {bannerText}
+          {tr(bannerText)}
         </p>
 
         <p className="login-lab__hint mono">
-          Try <strong>demo@thomas.dev</strong> / <strong>Testing123</strong>
+          {L.try} <strong>demo@thomas.dev</strong> / <strong>Testing123</strong>
         </p>
       </div>
 
       <div className="panel login-lab__qa">
-        <p className="eyebrow">Test scenarios</p>
+        <p className="eyebrow">{L.scenarios}</p>
         <p className="login-lab__desc">
-          You can test these scenarios yourself by typing into the form, or click one and the software will fill in the
-          form, run the test for you, and log the outcome.
+          {L.scenariosDesc}
         </p>
         <div className="login-lab__scenarios">
           {SCENARIOS.map((scenario) => (
@@ -298,31 +299,30 @@ export default function LoginLab() {
               data-testid={`login-scenario-${scenario.id}`}
               onClick={() => runScenario(scenario)}
             >
-              {scenario.label}
+              {tr(scenario.label)}
             </button>
           ))}
         </div>
 
-        <p className="eyebrow login-lab__results-label">Results</p>
+        <p className="eyebrow login-lab__results-label">{L.results}</p>
         <p className="login-lab__desc">
-          Every attempt is logged here with the expected behavior, what actually happened, and whether it passed or a
-          bug was found.
+          {L.resultsDesc}
         </p>
         <ul className="login-lab__log scroll-x" data-testid="login-log">
-          {log.length === 0 && <li className="login-lab__log-empty">No attempts yet. Try a scenario or log in above.</li>}
+          {log.length === 0 && <li className="login-lab__log-empty">{L.empty}</li>}
           {log.map((entry) => (
             <li key={entry.id} className="login-lab__log-entry">
               <div className="login-lab__log-head">
-                <span>{entry.title}</span>
+                <span>{tr(entry.title)}</span>
                 <span className={`status ${entry.isBug ? 'status-fail' : 'status-pass'}`}>
-                  {entry.isBug ? 'BUG FOUND' : 'PASS'}
+                  {entry.isBug ? L.bug : L.pass}
                 </span>
               </div>
               <p className="login-lab__log-line mono">
-                <span>Expected:</span> {entry.expected}
+                <span>{L.expected}</span> {tr(entry.expected)}
               </p>
               <p className="login-lab__log-line mono">
-                <span>Actual:</span> {entry.actual}
+                <span>{L.actual}</span> {tr(entry.actual)}
               </p>
             </li>
           ))}

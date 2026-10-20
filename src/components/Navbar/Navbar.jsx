@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { site } from '../../data/site.js'
+import { useLang } from '../../i18n/LanguageContext.jsx'
 import ThemeToggle from '../ThemeToggle/ThemeToggle.jsx'
 import './Navbar.css'
 
@@ -8,21 +8,23 @@ import './Navbar.css'
 // reorder entries here to change the nav — the mobile menu reuses this
 // same array, so you only ever edit it in one place.
 const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'QA Lab', href: '#qa-lab' },
-  { label: 'Automation', href: '#automation' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Certificates', href: '#certificates' },
-  { label: 'Writing', href: '#writing' },
-  { label: 'Contact', href: '#contact' },
+  { key: 'about', href: '#about' },
+  { key: 'experience', href: '#experience' },
+  { key: 'skills', href: '#skills' },
+  { key: 'qaLab', href: '#qa-lab' },
+  { key: 'automation', href: '#automation' },
+  { key: 'projects', href: '#projects' },
+  { key: 'certificates', href: '#certificates' },
+  { key: 'writing', href: '#writing' },
+  { key: 'contact', href: '#contact' },
 ]
 
 export default function Navbar() {
   // `open` tracks whether the mobile hamburger menu is currently expanded.
   // It only affects anything at or below 980px wide (the point where nine
   // links no longer fit on one line) — see the @media rule in Navbar.css.
+  const { t, c, lang, toggle } = useLang()
+  const site = c.site
   const [open, setOpen] = useState(false)
 
   // Scrollspy: highlight the nav link for whichever section is crossing
@@ -81,7 +83,7 @@ export default function Navbar() {
 
         {/* Desktop navigation — hidden at 980px and below via CSS, replaced by
             the hamburger + mobile menu below. */}
-        <nav className="navbar__links" aria-label="Primary">
+        <nav className="navbar__links" aria-label={t.nav.primary}>
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -89,7 +91,7 @@ export default function Navbar() {
               className={active === link.href ? 'is-active' : undefined}
               aria-current={active === link.href ? 'location' : undefined}
             >
-              {link.label}
+              {t.nav[link.key]}
             </a>
           ))}
         </nav>
@@ -98,6 +100,17 @@ export default function Navbar() {
             viewport width — the theme toggle is always visible, whether
             or not the mobile menu is open. */}
         <div className="navbar__controls">
+          <button
+            type="button"
+            className="lang-toggle"
+            onClick={toggle}
+            aria-label={t.language.switchTo}
+            lang={lang === 'en' ? 'pt-BR' : 'en'}
+            data-testid="lang-toggle"
+          >
+            <span className={lang === 'en' ? 'is-on' : undefined}>EN</span>
+            <span className={lang === 'pt' ? 'is-on' : undefined}>PT</span>
+          </button>
           <ThemeToggle />
 
           {/* Hamburger button — only visible at 980px and below. aria-expanded
@@ -108,7 +121,7 @@ export default function Navbar() {
             className="navbar__toggle"
             aria-expanded={open}
             aria-controls="mobile-menu"
-            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-label={open ? t.nav.closeMenu : t.nav.openMenu}
             data-testid="nav-toggle"
             onClick={() => setOpen((v) => !v)}
           >
@@ -124,7 +137,7 @@ export default function Navbar() {
       <nav
         id="mobile-menu"
         className={`navbar__mobile ${open ? 'is-open' : ''}`}
-        aria-label="Mobile"
+        aria-label={t.nav.mobile}
         data-testid="nav-mobile"
       >
         {navLinks.map((link) => (
@@ -135,7 +148,7 @@ export default function Navbar() {
             aria-current={active === link.href ? 'location' : undefined}
             onClick={() => setOpen(false)}
           >
-            {link.label}
+            {t.nav[link.key]}
           </a>
         ))}
       </nav>

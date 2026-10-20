@@ -1,10 +1,12 @@
-import { projects, projectsIntro } from '../../data/projects.js'
+import { useLang } from '../../i18n/LanguageContext.jsx'
 import Reveal from '../Reveal/Reveal.jsx'
 import './Projects.css'
 
 // Renders whatever is in src/data/projects.js. Every field except `title`
 // and `description` is optional, so a card only shows what you filled in.
 export default function Projects() {
+  const { t, c } = useLang()
+  const { projects, projectsIntro } = c
   return (
     <section id="projects" className="section projects">
       <div className="container">
@@ -16,7 +18,7 @@ export default function Projects() {
         </Reveal>
 
         {projects.length === 0 ? (
-          <p className="projects__empty">Nothing added yet. Check back soon.</p>
+          <p className="projects__empty">{t.projects.empty}</p>
         ) : (
           <div className="projects__list">
             {projects.map((project, index) => (
@@ -104,7 +106,7 @@ export default function Projects() {
                 )}
 
                 {project.stack?.length > 0 && (
-                  <ul className="projects__stack" aria-label="Tools and skills">
+                  <ul className="projects__stack" aria-label={t.projects.stackLabel}>
                     {project.stack.map((item) => (
                       <li key={item} className="pill">
                         {item}

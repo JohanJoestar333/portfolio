@@ -1,4 +1,5 @@
-import { automationIntro, suite, testCount, specCount } from '../../data/automation.js'
+import { suite, testCount, specCount } from '../../data/automation.js'
+import { useLang } from '../../i18n/LanguageContext.jsx'
 import Reveal from '../Reveal/Reveal.jsx'
 import './Automation.css'
 
@@ -6,6 +7,8 @@ import './Automation.css'
 // which reads the real files in /cypress/e2e at build time — so this
 // section always matches the actual test suite.
 export default function Automation() {
+  const { t, c, lang } = useLang()
+  const automationIntro = c.automationIntro
   return (
     <section id="automation" className="section automation">
       <div className="container automation__grid">
@@ -24,9 +27,9 @@ export default function Automation() {
 
         <Reveal className="panel automation__panel" delay={0.1}>
           <div className="automation__panel-head">
-            <p className="eyebrow">Cypress test suite</p>
+            <p className="eyebrow">{t.automation.eyebrow}</p>
             <span className="pill" data-testid="automation-count">
-              {testCount} tests · {specCount} specs
+              {t.automation.counts(testCount, specCount)}
             </span>
           </div>
 
@@ -38,17 +41,18 @@ export default function Automation() {
                 </span>
                 <span className="automation__suite-file">{item.file}</span>
                 <span className="automation__suite-desc">
-                  {item.description} ({item.tests} {item.tests === 1 ? 'test' : 'tests'})
+                  {lang === 'pt' ? item.descriptionPt : item.description} ({item.tests} {t.automation.testWord(item.tests)})
                 </span>
               </li>
             ))}
           </ul>
 
           <p className="automation__note">
-            The list and counts are read from <span className="mono">/cypress/e2e</span>, so they
-            update when a spec is added. Run it yourself with{' '}
-            <span className="mono">npm run test:e2e</span>; every push also runs it in GitHub
-            Actions.
+            {t.automation.noteA}
+            <span className="mono">/cypress/e2e</span>
+            {t.automation.noteB}
+            <span className="mono">npm run test:e2e</span>
+            {t.automation.noteC}
           </p>
         </Reveal>
       </div>

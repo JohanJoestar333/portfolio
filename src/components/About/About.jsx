@@ -1,6 +1,4 @@
-import { site, about, interests } from '../../data/site.js'
-import { certificates } from '../../data/certificates.js'
-import { posts } from '../../data/writing.js'
+import { useLang } from '../../i18n/LanguageContext.jsx'
 import Reveal from '../Reveal/Reveal.jsx'
 import CountUp from '../CountUp/CountUp.jsx'
 import './About.css'
@@ -8,24 +6,25 @@ import './About.css'
 // The little "Location / Role / Experience / Focus" panel is built from
 // this array, which just pulls its values from src/data/site.js — so to
 // change what shows up here, edit site.js rather than this file.
-const meta = [
-  { label: 'Location', value: site.location },
-  { label: 'Role', value: site.role },
-  { label: 'Experience', value: `${site.experienceStart} to Present` },
-  { label: 'Focus', value: site.focus },
-]
-
-// The numbers strip is computed, not typed in, so it can't go stale: years
-// come from site.experienceStart, and certificates/articles are counted
-// from their data files (add one and the number goes up by itself).
-const years = new Date().getFullYear() - Number(site.experienceStart)
-const stats = [
-  { label: 'Years in QA', value: `${years}+` },
-  { label: 'Certificates', value: certificates.length },
-  { label: 'Articles', value: posts.length },
-]
-
 export default function About() {
+  const { t, c } = useLang()
+  const { site, about, interests, certificates, posts } = c
+  // Location / Role / Experience / Focus panel, from the site data.
+  const meta = [
+    { label: t.about.location, value: site.location },
+    { label: t.about.role, value: site.role },
+    { label: t.about.experience, value: `${site.experienceStart} ${t.about.present}` },
+    { label: t.about.focus, value: site.focus },
+  ]
+  // Computed, so it can't go stale: years from site.experienceStart,
+  // certificates and articles counted from their data.
+  const years = new Date().getFullYear() - Number(site.experienceStart)
+  const stats = [
+    { key: 'years', label: t.about.years, value: `${years}+` },
+    { key: 'certs', label: t.about.certificates, value: certificates.length },
+    { key: 'articles', label: t.about.articles, value: posts.length },
+  ]
+
   return (
     <section id="about" className="section about">
       {/* Two-column layout on wide screens (prose left, meta panel
@@ -35,7 +34,7 @@ export default function About() {
             Reveal around the whole group — CSS grid needs each item to be
             a direct child of the grid container to lay out correctly. */}
         <Reveal className="section-head">
-          <h2>A little about me</h2>
+          <h2>{t.about.title}</h2>
         </Reveal>
 
         {/* Paragraphs come from the `about` array in src/data/site.js. */}
@@ -60,7 +59,7 @@ export default function About() {
 
         <Reveal as="ul" className="about__stats" delay={0.05} data-testid="about-stats">
           {stats.map((stat) => (
-            <li key={stat.label} className="about__stat panel">
+            <li key={stat.key} className="about__stat panel">
               <span className="about__stat-value mono">
                 <CountUp value={stat.value} />
               </span>
@@ -70,7 +69,7 @@ export default function About() {
         </Reveal>
 
         <Reveal className="about__interests" delay={0.05}>
-          <p className="eyebrow">What I'm into</p>
+          <p className="eyebrow">{t.about.into}</p>
           <ul className="about__interest-grid">
             {interests.map((interest) => (
               <li key={interest.title} className="about__interest panel" data-testid="about-interest">
