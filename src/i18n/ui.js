@@ -84,9 +84,9 @@ export const ui = {
     },
     footer: { tagline: 'Built with React. Tested with Cypress.' },
     meta: {
-      title: 'Thomas | Software QA Analyst: Manual, API & Cypress Automation Testing',
+      title: 'Thomas Pessoa | Software QA Analyst: Manual, Regression & API Testing',
       description:
-        'Thomas is a Software QA Analyst with experience in manual, exploratory, regression, API (Postman) and Cypress automation testing. Explore the interactive QA Lab, test suite, and writing on QA + AI.',
+        'Thomas Pessoa is a Software QA Analyst with experience in manual, exploratory, regression, and API (Postman) testing. Explore the interactive QA Lab, projects, and writing on QA + AI.',
     },
     formLab: {
       appUnderTest: 'App under test',
@@ -206,9 +206,9 @@ export const ui = {
     },
     footer: { tagline: 'Feito com React. Testado com Cypress.' },
     meta: {
-      title: 'Thomas | Analista de QA de Software: Testes Manuais, de API e Automação com Cypress',
+      title: 'Thomas Pessoa | Analista de QA de Software: Testes Manuais, de Regressão e de API',
       description:
-        'Thomas é Analista de QA de Software com experiência em testes manuais, exploratórios, de regressão, de API (Postman) e automação com Cypress. Explore o QA Lab interativo, a suíte de testes e os artigos sobre QA + IA.',
+        'Thomas Pessoa é Analista de QA de Software com experiência em testes manuais, exploratórios, de regressão e de API (Postman). Explore o QA Lab interativo, os projetos e os artigos sobre QA + IA.',
     },
     formLab: {
       appUnderTest: 'Aplicação testada',
