@@ -230,7 +230,7 @@
 
 @media (min-width: 1000px) {
   .projects__steps {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
   .projects__step {
@@ -247,7 +247,11 @@
     border-top: 2px dashed var(--border-strong);
   }
 
-  .projects__step:nth-child(4n)::before {
+}
+
+/* Between phone and desktop the steps wrap, so skip the connector lines */
+@media (min-width: 760px) and (max-width: 999px) {
+  .projects__step:not(:last-child)::before {
     display: none;
   }
 }
@@ -255,8 +259,8 @@
 /* Big-number row */
 .projects__stats {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.75rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -264,7 +268,11 @@
 
 @media (min-width: 760px) {
   .projects__stats {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .projects__stat {
+    padding: 0.8rem 1rem;
   }
 }
 
@@ -272,7 +280,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.15rem;
-  padding: 0.8rem 1rem;
+  padding: 0.65rem 0.7rem;
   background: var(--paper);
   border: 2px solid var(--btn-edge);
   border-radius: var(--radius-md);
@@ -362,4 +370,26 @@
   background: var(--strong-peach);
   border: 2px solid var(--btn-edge);
   border-radius: 999px;
+}
+
+/* Which tool each step happens in */
+.projects__step-tool {
+  align-self: flex-start;
+  padding: 0.05rem 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--btn-text);
+  background: var(--strong-sky);
+  border: 2px solid var(--btn-edge);
+  border-radius: 999px;
+}
+
+.projects__step-tool[data-tool='Confluence'] { background: var(--strong-lilac); }
+.projects__step-tool[data-tool='GitHub'] { background: var(--strong-sage); }
+
+.projects__flow-caption {
+  margin-top: -0.35rem;
+  font-size: var(--text-sm);
+  color: var(--text-primary);
 }

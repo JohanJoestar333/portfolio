@@ -39,36 +39,27 @@ export const projectsIntro = {
 export const projects = [
   {
     title: 'PixelCart',
-    tag: 'QA workflow · Jira · Confluence · Manual testing',
+    tag: 'QA in real life · Jira · Confluence',
     description:
-      'A small clothing store I built so I could run QA the way it works on a real team. The store is only the system under test. The project is everything around it: Jira stories, test cases written before coding, pull requests, bug reports, and releases through staging to production.',
+      'Ever wondered what QA looks like day to day? PixelCart is a demo store with the whole process built around it: stories and bugs in Jira, test cases in Confluence, and every change checked before it ships. I hid 3 bugs in it on purpose, then found them and logged them the way I would at work.',
     stats: [
-      { value: '127', label: 'manual test cases (93 positive, 34 negative)' },
-      { value: '8', label: 'modules covered' },
+      { value: '127', label: 'test cases in Confluence' },
       { value: '5', label: 'Jira epics' },
-      { value: '3', label: 'real bugs found' },
-    ],
-    highlights: [
-      'Test cases written in Confluence before any code, by module, in Given / When / Then format with severity and exact expected results',
-      'A Jira Scrum board with two-week sprints, [DEV] / [TEST] / [DOCS] subtasks, and test priority labels, with acceptance criteria on every story',
-      'A 22-step end-to-end regression scenario (TC-REG-001), run on staging before release',
-      'Every failure becomes a Jira bug with the test case ID, steps, expected and actual results, and a screenshot',
-      'A GitHub Action that posts each Vercel preview link on its Jira story, so testing starts from the ticket',
+      { value: '3', label: 'bugs hidden on purpose' },
     ],
     workflow: {
-      title: 'A change, from story to production',
+      title: 'How a change moves through the project',
       steps: [
-        { title: 'Story in Jira', text: 'Acceptance criteria, priority, story points, and a test priority label.' },
-        { title: 'Test cases first', text: 'Written or updated in Confluence before coding starts.' },
-        { title: 'Branch and PR', text: 'A feature branch off staging, with the Jira key in the PR title.' },
-        { title: 'Preview built', text: 'The preview link lands on the story, which moves to Ready To Test.' },
-        { title: 'Test the preview', text: 'I run the cases. Anything that fails becomes a bug.' },
-        { title: 'Staging regression', text: 'Merged to staging, then the full regression runs.' },
-        { title: 'Production', text: 'Staging merges to main and the story is marked Done.' },
+        { tool: 'Jira', title: 'Story', text: 'Written with acceptance criteria and a test priority.' },
+        { tool: 'Confluence', title: 'Test cases', text: 'Written before any code, one page per module.' },
+        { tool: 'GitHub', title: 'Build', text: 'A pull request, with the preview link posted on the Jira ticket.' },
+        { tool: 'Jira', title: 'Test and report', text: 'Every failure becomes a bug with steps and a screenshot.' },
+        { tool: 'GitHub', title: 'Release', text: 'Regression on staging, then production. Story marked Done.' },
       ],
     },
     flow: {
-      title: 'Jira status flow',
+      title: 'My Jira board',
+      caption: 'Every story moves through these 8 statuses.',
       items: [
         'To Do',
         'In Development',
@@ -80,18 +71,9 @@ export const projects = [
         'Done',
       ],
     },
-    findings: {
-      title: 'Bugs I found along the way',
-      items: [
-        { label: 'TC-CHK-010', text: 'Stock is stored per browser tab, so two tabs can both buy the last units.' },
-        { label: 'Price format', text: 'A price of $1,999.50 shows as $1999.50, with no thousands separator.' },
-        { label: 'Dark mode', text: 'The black color swatch is almost invisible on the dark background.' },
-      ],
-    },
-    stack: ['Jira', 'Confluence', 'Test case design', 'Regression testing', 'Bug reporting', 'GitHub', 'Vercel'],
     links: [
       { label: 'Try the live demo', href: 'https://qa-project-automation.vercel.app' },
-      { label: 'Read the full README', href: 'https://github.com/JohanJoestar333/qa-project' },
+      { label: 'See the full project', href: 'https://github.com/JohanJoestar333/qa-project' },
     ],
   },
   {

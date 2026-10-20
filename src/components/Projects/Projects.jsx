@@ -60,6 +60,11 @@ export default function Projects() {
                           <span className="projects__step-num" aria-hidden="true">
                             {i + 1}
                           </span>
+                          {step.tool && (
+                            <span className="projects__step-tool" data-tool={step.tool}>
+                              {step.tool}
+                            </span>
+                          )}
                           <strong>{step.title}</strong>
                           <span>{step.text}</span>
                         </li>
@@ -71,6 +76,7 @@ export default function Projects() {
                 {project.flow?.items?.length > 0 && (
                   <div className="projects__flow">
                     {project.flow.title && <h4 className="projects__workflow-title">{project.flow.title}</h4>}
+                    {project.flow.caption && <p className="projects__flow-caption">{project.flow.caption}</p>}
                     <ol className="projects__flow-list">
                       {project.flow.items.map((item) => (
                         <li key={item} className="projects__flow-item">
