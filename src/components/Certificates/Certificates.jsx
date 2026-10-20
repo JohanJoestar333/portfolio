@@ -1,9 +1,13 @@
+import { useState } from 'react'
 import { useLang } from '../../i18n/LanguageContext.jsx'
 import Reveal from '../Reveal/Reveal.jsx'
 import './Certificates.css'
 
 // A generic certificate/ribbon icon, shown instead of a broken <img> for
 // any entry that doesn't have a real image yet (see certificates.js).
+// The first few cards show by default; a button reveals the rest.
+const INITIAL_COUNT = 8
+
 function CertificateIcon() {
   return (
     <svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.4">
@@ -18,7 +22,10 @@ function CertificateIcon() {
 // certificate's url in a new tab. `image` and `year` are optional.
 export default function Certificates() {
   const { t, c } = useLang()
-  const { certificates, certificatesIntro } = c
+  const { certificates: allCertificates, certificatesIntro } = c
+  const [expanded, setExpanded] = useState(false)
+  const hasMore = allCertificates.length > INITIAL_COUNT
+  const certificates = expanded ? allCertificates : allCertificates.slice(0, INITIAL_COUNT)
   return (
     <section id="certificates" className="section certificates">
       <div className="container">
@@ -66,6 +73,20 @@ export default function Certificates() {
                 </div>
               </Reveal>
             ))}
+          </div>
+        )}
+
+        {hasMore && (
+          <div className="certificates__more">
+            <button
+              type="button"
+              className="btn btn-secondary"
+              aria-expanded={expanded}
+              onClick={() => setExpanded((v) => !v)}
+              data-testid="certificates-toggle"
+            >
+              {expanded ? t.certificates.showLess : t.certificates.showAll(allCertificates.length)}
+            </button>
           </div>
         )}
       </div>

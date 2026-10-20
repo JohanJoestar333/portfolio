@@ -27,6 +27,12 @@ export const writingIntro = {
 // ---------------------------------------------------------------------------
 export const posts = [
   {
+    title: 'How a QA Engineer Thinks Before Writing a Single Test',
+    description: "Good testing doesn't start with clicking buttons. It starts with asking the right questions.",
+    url: 'https://medium.com/@tomecosabs/how-a-qa-engineer-thinks-before-writing-a-single-test-704bcad79a51',
+    tag: 'Test thinking',
+  },
+  {
     title: 'Manual Testing Isn\u2019t Dead. The Job Description Changed.',
     description: 'What the research, and one very public failure, say about where human testers still matter.',
     url: 'https://medium.com/@tomecosabs/manual-testing-isnt-dead-the-job-description-changed-9a242bf3be87',

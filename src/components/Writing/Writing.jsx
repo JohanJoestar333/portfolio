@@ -2,12 +2,17 @@ import { useLang } from '../../i18n/LanguageContext.jsx'
 import Reveal from '../Reveal/Reveal.jsx'
 import './Writing.css'
 
+// Only the newest posts are shown here; the rest live on Medium (see the
+// "More on Medium" link under the list).
+const MAX_POSTS = 3
+
 // Renders whatever is in src/data/writing.js — both the intro text and the
 // list of posts. If the posts array is empty, this shows a quiet fallback
 // instead of an empty section.
 export default function Writing() {
   const { t, c } = useLang()
-  const { posts, writingIntro } = c
+  const { writingIntro } = c
+  const posts = c.posts.slice(0, MAX_POSTS)
   return (
     <section id="writing" className="section writing">
       <div className="container">

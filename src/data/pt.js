@@ -241,15 +241,19 @@ export const writingIntro = {
 
 // The articles are published in English, so the titles stay as published.
 // The short descriptions and tags are translated.
-const postsPt = [
-  {
+const postsPt = {
+  'https://medium.com/@tomecosabs/how-a-qa-engineer-thinks-before-writing-a-single-test-704bcad79a51': {
+    description: 'Bons testes não começam clicando em botões. Começam fazendo as perguntas certas.',
+    tag: 'Raciocínio de teste',
+  },
+  'https://medium.com/@tomecosabs/manual-testing-isnt-dead-the-job-description-changed-9a242bf3be87': {
     description: 'O que a pesquisa, e uma falha muito pública, dizem sobre onde os testadores humanos ainda importam.',
     tag: 'Teste manual',
   },
-  {
+  'https://medium.com/@tomecosabs/qa-ai-why-quality-assurance-and-artificial-intelligence-are-a-perfect-match-599414834071': {
     description: 'A IA cuida da repetição. O QA entra com o julgamento. Como combinar os dois deixa os testes mais rápidos e mais profundos.',
     tag: 'QA + IA',
   },
-]
+}
 
-export const posts = postsEn.map((post, i) => ({ ...post, ...(postsPt[i] ?? {}) }))
+export const posts = postsEn.map((post) => ({ ...post, ...(postsPt[post.url] ?? {}) }))

@@ -66,7 +66,12 @@ export const ui = {
       noteB: ', so they update when a spec is added. Run it yourself with ',
       noteC: '; every push also runs it in GitHub Actions.',
     },
-    certificates: { empty: 'Nothing added yet. Check back soon.', alt: (title) => `${title} certificate` },
+    certificates: {
+      empty: 'Nothing added yet. Check back soon.',
+      alt: (title) => `${title} certificate`,
+      showAll: (n) => `See all ${n} certificates`,
+      showLess: 'Show fewer',
+    },
     projects: { empty: 'Nothing added yet. Check back soon.', stackLabel: 'Tools and skills' },
     writing: { empty: 'Nothing published yet. Check back soon.', readOn: (p) => `Read on ${p} →` },
     contact: {
@@ -183,7 +188,12 @@ export const ui = {
       noteB: ', então se atualizam quando uma spec é adicionada. Rode você mesmo com ',
       noteC: '; todo push também executa a suíte no GitHub Actions.',
     },
-    certificates: { empty: 'Nada adicionado ainda. Volte em breve.', alt: (title) => `Certificado: ${title}` },
+    certificates: {
+      empty: 'Nada adicionado ainda. Volte em breve.',
+      alt: (title) => `Certificado: ${title}`,
+      showAll: (n) => `Ver todos os ${n} certificados`,
+      showLess: 'Mostrar menos',
+    },
     projects: { empty: 'Nada adicionado ainda. Volte em breve.', stackLabel: 'Ferramentas e habilidades' },
     writing: { empty: 'Nada publicado ainda. Volte em breve.', readOn: (p) => `Ler no ${p} →` },
     contact: {

@@ -88,3 +88,9 @@
 .certificates__image--contain {
   object-fit: contain;
 }
+
+.certificates__more {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.25rem;
+}
