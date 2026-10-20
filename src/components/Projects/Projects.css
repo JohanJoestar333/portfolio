@@ -129,3 +129,121 @@
 .projects .projects__card .btn-primary:hover {
   background: var(--strong-rose);
 }
+
+/* Second note in a different color so the stack reads like a pinned board */
+.projects .projects__card:nth-child(even) {
+  background: var(--pastel-sky);
+  rotate: 0.5deg;
+}
+
+.projects .projects__card:nth-child(even)::after {
+  left: auto;
+  right: 2rem;
+  rotate: 4deg;
+  background: color-mix(in srgb, var(--strong-sage) 75%, transparent);
+}
+
+/* "How I worked on it": numbered steps in a row, stacked on small screens */
+.projects__workflow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem 1.1rem 1.1rem;
+  border: 2px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--paper) 55%, transparent);
+}
+
+.projects__workflow-title {
+  font-family: var(--font-hand);
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--text-primary);
+}
+
+.projects__steps {
+  display: grid;
+  gap: 0.9rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: none;
+}
+
+.projects__step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding-left: 2.6rem;
+  font-size: var(--text-xs);
+  line-height: 1.4;
+  color: var(--text-primary);
+}
+
+.projects__step strong {
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.projects__step-num {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--btn-text);
+  background: var(--strong-rose);
+  border: 2px solid var(--btn-edge);
+  border-radius: 50%;
+  box-shadow: 0 2px 0 var(--btn-edge);
+}
+
+.projects__step:nth-child(6n + 2) .projects__step-num { background: var(--strong-butter); }
+.projects__step:nth-child(6n + 3) .projects__step-num { background: var(--strong-sage); }
+.projects__step:nth-child(6n + 4) .projects__step-num { background: var(--strong-sky); }
+.projects__step:nth-child(6n + 5) .projects__step-num { background: var(--strong-lilac); }
+.projects__step:nth-child(6n + 6) .projects__step-num { background: var(--strong-peach); }
+
+/* Mobile: a vertical line links the numbers */
+.projects__step:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  top: 2rem;
+  bottom: -0.9rem;
+  left: calc(1rem - 1px);
+  border-left: 2px dashed var(--border-strong);
+}
+
+@media (min-width: 760px) {
+  .projects__steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.1rem 1rem;
+  }
+}
+
+@media (min-width: 1000px) {
+  .projects__steps {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .projects__step {
+    padding: 2.6rem 0 0;
+  }
+
+  /* Desktop: a dashed line runs along the number row instead */
+  .projects__step:not(:last-child)::before {
+    top: 1rem;
+    bottom: auto;
+    left: 2.4rem;
+    right: -0.9rem;
+    border-left: 0;
+    border-top: 2px dashed var(--border-strong);
+  }
+}

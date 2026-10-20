@@ -38,6 +38,25 @@ export default function Projects() {
                   </ul>
                 )}
 
+                {project.workflow?.steps?.length > 0 && (
+                  <div className="projects__workflow">
+                    {project.workflow.title && (
+                      <h4 className="projects__workflow-title">{project.workflow.title}</h4>
+                    )}
+                    <ol className="projects__steps">
+                      {project.workflow.steps.map((step, i) => (
+                        <li key={step.title} className="projects__step">
+                          <span className="projects__step-num" aria-hidden="true">
+                            {i + 1}
+                          </span>
+                          <strong>{step.title}</strong>
+                          <span>{step.text}</span>
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                )}
+
                 {project.stack?.length > 0 && (
                   <ul className="projects__stack" aria-label="Tools and skills">
                     {project.stack.map((item) => (

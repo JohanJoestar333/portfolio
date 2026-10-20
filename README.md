@@ -25,9 +25,10 @@ certificates, writing) after.
   documented, reproducible bugs (see `QA_NOTES.md`).
 - **Automation** — the real Cypress spec list and test counts, read from
   `cypress/e2e/` at build time so they can't go stale.
-- **Projects** — hands-on QA work beyond the site (currently the QA Test
-  Case Workbook, with a download button), driven by `src/data/projects.js`;
-  downloadable files live in `public/projects/`.
+- **Projects** — hands-on QA work beyond the site: QA Cart (a demo store run
+  like a real company, with a numbered "how I worked" Jira-to-production
+  strip) and the QA Test Case Workbook (download button). Driven by
+  `src/data/projects.js`; downloadable files live in `public/projects/`.
 - **Certificates** — clickable cards with images, driven by one data file.
 - **Writing** — articles on QA, testing, and AI, driven by one data file.
 - **Contact** — LinkedIn, email, and a resume download.
