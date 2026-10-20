@@ -25,7 +25,7 @@ certificates, writing) after.
   documented, reproducible bugs (see `QA_NOTES.md`).
 - **Automation** — the real Cypress spec list and test counts, read from
   `cypress/e2e/` at build time so they can't go stale.
-- **Projects** — hands-on QA work beyond the site: QA Cart (a demo store run
+- **Projects** — hands-on QA work beyond the site: PixelCart (a demo store run
   like a real company, with a numbered "how I worked" Jira-to-production
   strip) and the QA Test Case Workbook (download button). Driven by
   `src/data/projects.js`; downloadable files live in `public/projects/`.

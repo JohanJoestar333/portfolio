@@ -30,6 +30,17 @@ export default function Projects() {
                 <h3>{project.title}</h3>
                 <p className="projects__desc">{project.description}</p>
 
+                {project.stats?.length > 0 && (
+                  <ul className="projects__stats">
+                    {project.stats.map((stat) => (
+                      <li key={stat.label} className="projects__stat">
+                        <span className="projects__stat-value">{stat.value}</span>
+                        <span className="projects__stat-label">{stat.label}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
                 {project.highlights?.length > 0 && (
                   <ul className="projects__highlights">
                     {project.highlights.map((item) => (
@@ -54,6 +65,35 @@ export default function Projects() {
                         </li>
                       ))}
                     </ol>
+                  </div>
+                )}
+
+                {project.flow?.items?.length > 0 && (
+                  <div className="projects__flow">
+                    {project.flow.title && <h4 className="projects__workflow-title">{project.flow.title}</h4>}
+                    <ol className="projects__flow-list">
+                      {project.flow.items.map((item) => (
+                        <li key={item} className="projects__flow-item">
+                          {item}
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                )}
+
+                {project.findings?.items?.length > 0 && (
+                  <div className="projects__findings">
+                    {project.findings.title && (
+                      <h4 className="projects__workflow-title">{project.findings.title}</h4>
+                    )}
+                    <ul className="projects__findings-list">
+                      {project.findings.items.map((item) => (
+                        <li key={item.label}>
+                          <span className="projects__finding-label">{item.label}</span>
+                          <span>{item.text}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 )}
 

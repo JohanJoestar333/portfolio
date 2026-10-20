@@ -20,6 +20,12 @@ export const projectsIntro = {
 //       title: 'How I worked on it',
 //       steps: [{ title: 'Step name', text: 'One short line.' }],
 //     },
+//     stats: [{ value: '127', label: 'test cases' }],   // optional — big numbers row
+//     flow: { title: 'Status flow', items: ['To Do', 'Done'] }, // optional — arrow chain
+//     findings: {                            // optional — short list of bugs found
+//       title: 'Bugs I found',
+//       items: [{ label: 'TC-001', text: 'What went wrong.' }],
+//     },
 //     stack: ['Excel', 'Trello'],            // optional — small tags
 //     links: [                               // optional — buttons on the card
 //       { label: 'Download workbook', href: '/projects/your-file.xlsx', download: true },
@@ -32,31 +38,60 @@ export const projectsIntro = {
 // ---------------------------------------------------------------------------
 export const projects = [
   {
-    title: 'QA Cart',
-    tag: 'Manual testing · Playwright practice · Jira',
+    title: 'PixelCart',
+    tag: 'QA workflow · Jira · Confluence · Manual testing',
     description:
-      'A small online store I built to be tested like a real product. I ran the project the way a company would: every change started as a Jira ticket, got its own branch and pull request, and was checked on a preview before it reached production.',
+      'A small clothing store I built so I could run QA the way it works on a real team. The store is only the system under test. The project is everything around it: Jira stories, test cases written before coding, pull requests, bug reports, and releases through staging to production.',
+    stats: [
+      { value: '127', label: 'manual test cases (93 positive, 34 negative)' },
+      { value: '8', label: 'modules covered' },
+      { value: '5', label: 'Jira epics' },
+      { value: '3', label: 'real bugs found' },
+    ],
     highlights: [
-      'Full shopping flow to test: login, catalog, cart, checkout, and order confirmation',
-      'Clear rules to design tests against: login validation, access control for signed-out visitors, stock limits, and price math (10% tax, $0 shipping)',
-      'Predictable test data and a one-click reset, plus a data-testid on every element worth asserting',
-      'Separate staging and production environments, with every change verified on its Vercel preview first',
+      'Test cases written in Confluence before any code, by module, in Given / When / Then format with severity and exact expected results',
+      'A Jira Scrum board with two-week sprints, [DEV] / [TEST] / [DOCS] subtasks, and test priority labels, with acceptance criteria on every story',
+      'A 22-step end-to-end regression scenario (TC-REG-001), run on staging before release',
+      'Every failure becomes a Jira bug with the test case ID, steps, expected and actual results, and a screenshot',
+      'A GitHub Action that posts each Vercel preview link on its Jira story, so testing starts from the ticket',
     ],
     workflow: {
-      title: 'How I worked on it',
+      title: 'A change, from story to production',
       steps: [
-        { title: 'Jira ticket', text: 'Each change starts as a ticket.' },
-        { title: 'Feature branch', text: 'One branch per ticket.' },
-        { title: 'Pull request', text: 'Opened into staging, with a preview to check.' },
-        { title: 'Test on preview', text: 'I verify the change before it merges.' },
-        { title: 'Staging', text: 'Verified again on the staging deployment.' },
-        { title: 'Production', text: 'A final pull request publishes to main.' },
+        { title: 'Story in Jira', text: 'Acceptance criteria, priority, story points, and a test priority label.' },
+        { title: 'Test cases first', text: 'Written or updated in Confluence before coding starts.' },
+        { title: 'Branch and PR', text: 'A feature branch off staging, with the Jira key in the PR title.' },
+        { title: 'Preview built', text: 'The preview link lands on the story, which moves to Ready To Test.' },
+        { title: 'Test the preview', text: 'I run the cases. Anything that fails becomes a bug.' },
+        { title: 'Staging regression', text: 'Merged to staging, then the full regression runs.' },
+        { title: 'Production', text: 'Staging merges to main and the story is marked Done.' },
       ],
     },
-    stack: ['Jira', 'React', 'TypeScript', 'Vite', 'GitHub', 'Vercel'],
+    flow: {
+      title: 'Jira status flow',
+      items: [
+        'To Do',
+        'In Development',
+        'Code Review',
+        'Ready To Test',
+        'Ready for Staging',
+        'Test in Staging',
+        'Ready for production',
+        'Done',
+      ],
+    },
+    findings: {
+      title: 'Bugs I found along the way',
+      items: [
+        { label: 'TC-CHK-010', text: 'Stock is stored per browser tab, so two tabs can both buy the last units.' },
+        { label: 'Price format', text: 'A price of $1,999.50 shows as $1999.50, with no thousands separator.' },
+        { label: 'Dark mode', text: 'The black color swatch is almost invisible on the dark background.' },
+      ],
+    },
+    stack: ['Jira', 'Confluence', 'Test case design', 'Regression testing', 'Bug reporting', 'GitHub', 'Vercel'],
     links: [
       { label: 'Try the live demo', href: 'https://qa-project-automation.vercel.app' },
-      { label: 'View on GitHub', href: 'https://github.com/JohanJoestar333/qa-project' },
+      { label: 'Read the full README', href: 'https://github.com/JohanJoestar333/qa-project' },
     ],
   },
   {
