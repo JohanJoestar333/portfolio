@@ -28,12 +28,6 @@ export const certificatesIntro = {
 // ---------------------------------------------------------------------------
 export const certificates = [
   {
-    title: 'Quality Assurance: plano de testes e gestão de bugs',
-    organization: 'Alura',
-    url: 'https://cursos.alura.com.br/certificate/9f50d11a-cbd0-4f80-991f-1203eae271d8',
-    image: '/certificates/alura-qa-test-plan.webp',
-  },
-  {
     title: 'Getting Started with Generative AI',
     organization: 'IBM SkillsBuild',
     url: 'https://www.credly.com/badges/32ae55ea-525f-465c-85ba-2e88ddea3987/linked_in_profile',
@@ -45,7 +39,7 @@ export const certificates = [
     organization: 'IBM SkillsBuild',
     // TODO: replace with the real Credly badge link for this course
     // (Credly → the badge → Share → copy link).
-    url: 'https://www.credly.com/',
+    url: 'https://www.credly.com/badges/a966c3a4-cdd4-4c39-9c8e-380890a528b4/linked_in_profile',
     image: '/certificates/ibm-craft-precise-prompts.webp',
     fit: 'contain',
   },
@@ -56,13 +50,6 @@ export const certificates = [
     image: '/certificates/freeacademy-build-website-with-ai.webp',
     year: '2026',
     fit: 'contain',
-  },
-  {
-    title: 'Fundamentals of Quality Assurance',
-    organization: 'Alison',
-    url: 'https://alison.com/verify/df15581d96',
-    image: '/certificates/alison-fundamentals-of-qa.webp',
-    year: '2026',
   },
   {
     title: 'Introducing AI',
@@ -80,6 +67,26 @@ export const certificates = [
     image: '/certificates/claude-academy-claude-101.webp',
     year: '2026',
     fit: 'contain',
+  },
+  {
+    title: 'Product Certified: Manual Testing',
+    organization: 'TestMu AI',
+    url: 'https://www.testmuai.com/certified/LMT-IWYQ5H',
+    image: '/certificates/testmu-manual-testing.webp',
+    year: '2026',
+  },
+  {
+    title: 'Quality Assurance: plano de testes e gestão de bugs',
+    organization: 'Alura',
+    url: 'https://cursos.alura.com.br/certificate/9f50d11a-cbd0-4f80-991f-1203eae271d8',
+    image: '/certificates/alura-qa-test-plan.webp',
+  },
+  {
+    title: 'Fundamentals of Quality Assurance',
+    organization: 'Alison',
+    url: 'https://alison.com/verify/df15581d96',
+    image: '/certificates/alison-fundamentals-of-qa.webp',
+    year: '2026',
   },
   {
     title: 'Learn JavaScript Course',

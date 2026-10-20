@@ -4,7 +4,7 @@ export const experience = [
   {
     role: 'Quality Assurance Junior',
     company: 'Motrix Techknowledge',
-    period: 'Sep 2023 to Present',
+    period: 'Sep 2022 to Present',
     location: 'Remote',
     bullets: [
       'Act as the primary QA responsible for software quality across the product, working throughout the SDLC in an Agile/Scrum environment.',

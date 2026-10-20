@@ -16,8 +16,7 @@ certificates, writing) after.
 - **Hero** — one-line pitch with direct *Download Resume* and *LinkedIn*
   buttons.
 - **About** — a recruiter-friendly intro, a live numbers strip (years in
-  QA, automated tests, certificates, articles — all computed, never typed
-  in), and a "What I'm into" grid covering AI-assisted QA, building
+  QA, certificates, articles — all computed, never typed in), and a "What I'm into" grid covering AI-assisted QA, building
   websites, test case design, and test automation.
 - **Experience** — roles and responsibilities.
 - **Testing Toolkit** — skills by category, plus what I'm learning now.

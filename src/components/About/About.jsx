@@ -1,7 +1,6 @@
 import { site, about, interests } from '../../data/site.js'
 import { certificates } from '../../data/certificates.js'
 import { posts } from '../../data/writing.js'
-import { testCount } from '../../data/automation.js'
 import Reveal from '../Reveal/Reveal.jsx'
 import CountUp from '../CountUp/CountUp.jsx'
 import './About.css'
@@ -17,13 +16,11 @@ const meta = [
 ]
 
 // The numbers strip is computed, not typed in, so it can't go stale: years
-// come from site.experienceStart, the test count is read from the real
-// Cypress specs, and certificates/articles are counted from their data
-// files (add one and the number goes up by itself).
+// come from site.experienceStart, and certificates/articles are counted
+// from their data files (add one and the number goes up by itself).
 const years = new Date().getFullYear() - Number(site.experienceStart)
 const stats = [
   { label: 'Years in QA', value: `${years}+` },
-  { label: 'Automated tests', value: testCount },
   { label: 'Certificates', value: certificates.length },
   { label: 'Articles', value: posts.length },
 ]

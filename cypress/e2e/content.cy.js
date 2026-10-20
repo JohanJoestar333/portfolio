@@ -58,7 +58,7 @@ describe('Content sections', () => {
 
   it('shows the About interests and the numbers strip', () => {
     cy.get('[data-testid="about-interest"]').should('have.length.greaterThan', 0)
-    cy.get('[data-testid="about-stats"] li').should('have.length', 4)
+    cy.get('[data-testid="about-stats"] li').should('have.length', 3)
   })
 
   it('offers the resume download in the hero', () => {
