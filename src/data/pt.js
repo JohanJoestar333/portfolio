@@ -203,6 +203,23 @@ export const projects = [
       },
     ],
   },
+  {
+    title: 'Template de Site para Casais',
+    tag: 'Desenvolvimento web · JavaScript · Firebase',
+    description:
+      'Um site para duas pessoas que qualquer um pode personalizar. Fotos, calendário compartilhado, lista de desejos, quizzes, músicas e até uma cabine de fotos ao vivo, tudo em um só app instalável. É um projeto pessoal que criei do zero com HTML, CSS e JavaScript puros, e é open source.',
+    highlights: [
+      'Instalável como app no celular, com suporte offline e modo escuro',
+      'Listas, eventos e fotos compartilhados que sincronizam ao vivo entre as duas pessoas',
+      'Cabine de fotos com chamada ao vivo de duas câmeras e editor de tirinhas de fotos',
+      'Configuração editando um único arquivo, com hospedagem gratuita e guia passo a passo',
+    ],
+    stack: ['JavaScript', 'HTML e CSS', 'Firebase', 'GitHub Actions'],
+    links: [
+      { label: 'Ver a demonstração', href: 'https://johanjoestar333.github.io/couples-website' },
+      { label: 'Ver o código', href: 'https://github.com/JohanJoestar333/couples-website' },
+    ],
+  },
 ]
 
 export const certificatesIntro = {

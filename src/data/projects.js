@@ -96,4 +96,21 @@ export const projects = [
       },
     ],
   },
+  {
+    title: 'Couple Website Template',
+    tag: 'Web development · JavaScript · Firebase',
+    description:
+      'A website for two people that anyone can make their own. Photos, a shared calendar, a bucket list, quizzes, music, and even a live photo booth, all in one installable app. It is a side project I built from scratch with plain HTML, CSS, and JavaScript, and it is open source.',
+    highlights: [
+      'Installable as an app on a phone, with offline support and a dark mode',
+      'Shared lists, events, and photos that sync live between both people',
+      'Photo booth with a live two-camera call and a photo strip editor',
+      'Set up by editing one config file, with free hosting and a step-by-step guide',
+    ],
+    stack: ['JavaScript', 'HTML & CSS', 'Firebase', 'GitHub Actions'],
+    links: [
+      { label: 'Try the live demo', href: 'https://johanjoestar333.github.io/couples-website' },
+      { label: 'See the code', href: 'https://github.com/JohanJoestar333/couples-website' },
+    ],
+  },
 ]
