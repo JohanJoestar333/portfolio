@@ -54,36 +54,29 @@ export const interests = [
 
 export const experience = [
   {
-    role: 'Analista de Garantia de Qualidade Júnior',
+    role: 'Analista de Qualidade de Software (QA)',
     company: 'Motrix Techknowledge',
+    blurb: 'Empresa de tecnologia educacional que desenvolve currículos e sistemas educacionais para escolas',
     period: 'Set 2022 até o presente',
     location: 'Remoto',
     bullets: [
-      'Atuo como principal responsável por QA na qualidade do software do produto, em todo o ciclo de desenvolvimento, em um ambiente Agile/Scrum.',
-      'Crio e executo testes funcionais, exploratórios, de regressão, de interface e de API para novas funcionalidades, correções de bugs e funcionalidades existentes.',
-      'Valido critérios de aceitação e requisitos de negócio antes que as funcionalidades sigam para produção.',
-      'Faço testes de API com Postman para validar o comportamento do back-end, requisições, respostas e integrações.',
-      'Mantenho e contribuo com os testes automatizados em Cypress existentes, enquanto continuo desenvolvendo minhas habilidades em automação.',
-      'Crio e mantenho casos de teste para novas funcionalidades, apoiando regressões futuras e o conhecimento sobre o produto.',
-      'Investigo e documento defeitos com passos claros para reproduzir, evidências, comportamento esperado e resultado obtido.',
-      'Realizo testes de regressão ao final de cada sprint em toda a aplicação, para identificar regressões antes das releases em produção.',
-      'Colaboro com desenvolvedores, designers e partes interessadas do produto para identificar riscos, esclarecer requisitos e ampliar a cobertura de testes.',
-      'Aplico testes exploratórios e de caminho negativo para encontrar casos extremos e comportamentos inesperados além dos requisitos documentados.',
+      'Criei e mantive mais de 200 casos de teste para uma plataforma de criação e entrega de currículos escolares, cobrindo cenários funcionais, de regressão e UAT.',
+      'Validei conteúdos curriculares e materiais didáticos, incluindo apostilas, entregues via APIs, usando o Postman para conferir precisão e estrutura dos dados.',
+      'Executei testes manuais e exploratórios em funcionalidades críticas e reportei defeitos com passos de reprodução, prints e evidências do DevTools.',
+      'Validei funcionalidades contra critérios de aceitação usando BDD com desenvolvedores e produto, aumentando a aprovação em UAT.',
+      'Mantive e corrigi testes automatizados em Cypress (nível básico) para garantir a confiabilidade da regressão.',
     ],
   },
   {
-    role: 'Estagiário de Garantia de Qualidade',
-    company: 'Flexy Plataforma de E-commerce',
+    role: 'Estagiário de Qualidade de Software (QA)',
+    company: 'Flexy E-commerce Platform',
+    blurb: 'Plataforma de e-commerce B2B e B2C',
     period: 'Mai 2022 a Set 2022',
     location: 'Brasil',
     bullets: [
-      'Apoiei as atividades de garantia de qualidade durante todo o ciclo de desenvolvimento, com foco em testes funcionais e exploratórios.',
-      'Executei casos de teste com base em requisitos funcionais e critérios de aceitação, identificando problemas e documentando defeitos com passos claros para reproduzir.',
-      'Ajudei a criar planos de teste, casos de teste e relatórios de teste para apoiar as releases e ampliar a cobertura.',
-      'Fiz testes exploratórios para encontrar comportamentos inesperados, casos extremos e possíveis problemas de usabilidade e de funcionamento.',
-      'Tive meu primeiro contato prático com Cypress, aprendendo os fundamentos de testes automatizados de interface e executando testes já existentes.',
-      'Ganhei experiência prática com Postman em testes básicos de API: envio de requisições, validação de respostas e verificação do comportamento esperado.',
-      'Colaborei com desenvolvedores e outros membros do time para comunicar achados, esclarecer requisitos e apoiar a correção dos problemas encontrados.',
+      'Realizei testes funcionais e exploratórios em uma plataforma de e-commerce B2B e B2C, identificando mais de 10 problemas de alto impacto antes do release.',
+      'Criei e executei testes de API no Postman para fluxos essenciais do e-commerce, como cadastro de produtos, login e criação de contas.',
+      'Elaborei planos e relatórios de teste e executei testes em Cypress (básico) na regressão, contribuindo para releases estáveis.',
     ],
   },
 ]
@@ -97,6 +90,8 @@ export const skillCategories = [
       'Teste Funcional',
       'Teste de Regressão',
       'Teste Exploratório',
+      'Teste de Fumaça (Smoke)',
+      'UAT',
       'Teste de Interface',
       'Teste Negativo',
       'Teste de Acessibilidade',
@@ -105,7 +100,7 @@ export const skillCategories = [
   {
     id: 'design',
     title: 'Design de Testes',
-    skills: ['Design de Casos de Teste', 'Planejamento de Testes', 'Relato de Bugs', 'Critérios de Aceitação'],
+    skills: ['Design de Casos de Teste', 'Planejamento de Testes', 'Relatórios de Teste', 'Relato de Bugs', 'Critérios de Aceitação', 'BDD'],
   },
   {
     id: 'automation',
@@ -125,7 +120,7 @@ export const skillCategories = [
   {
     id: 'dev',
     title: 'Desenvolvimento e Fluxo de Trabalho',
-    skills: ['React', 'JavaScript', 'HTML', 'CSS', 'Fundamentos de SQL', 'Git', 'GitHub', 'Agile/Scrum', 'ClickUp'],
+    skills: ['Jira', 'React', 'JavaScript', 'TypeScript', 'HTML', 'CSS', 'Fundamentos de SQL', 'Git', 'GitHub', 'Vercel', 'DevTools do navegador', 'Agile/Scrum', 'Kanban', 'ClickUp'],
   },
 ]
 

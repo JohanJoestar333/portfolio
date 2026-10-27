@@ -70,3 +70,10 @@
   left: 0;
   color: var(--accent);
 }
+
+.experience__blurb {
+  color: var(--text-secondary);
+  font-size: var(--text-xs);
+  font-style: italic;
+  margin-top: 0.15rem;
+}

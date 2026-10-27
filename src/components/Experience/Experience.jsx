@@ -32,6 +32,7 @@ export default function Experience() {
                 <div>
                   <h3>{entry.role}</h3>
                   <p className="experience__company">{entry.company}</p>
+                  {entry.blurb && <p className="experience__blurb">{entry.blurb}</p>}
                 </div>
                 <div className="experience__meta">
                   <p className="experience__period mono">{entry.period}</p>

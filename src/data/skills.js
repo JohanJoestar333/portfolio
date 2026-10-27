@@ -5,12 +5,12 @@ export const skillCategories = [
   {
     id: 'testing',
     title: 'Testing',
-    skills: ['Manual Testing', 'Functional Testing', 'Regression Testing', 'Exploratory Testing', 'UI Testing', 'Negative Testing', 'Accessibility Testing'],
+    skills: ['Manual Testing', 'Functional Testing', 'Regression Testing', 'Exploratory Testing', 'Smoke Testing', 'UAT', 'UI Testing', 'Negative Testing', 'Accessibility Testing'],
   },
   {
     id: 'design',
     title: 'Test Design',
-    skills: ['Test Case Design', 'Test Planning', 'Bug Reporting', 'Acceptance Criteria'],
+    skills: ['Test Case Design', 'Test Planning', 'Test Reporting', 'Bug Reporting', 'Acceptance Criteria', 'BDD'],
   },
   {
     id: 'automation',
@@ -30,7 +30,7 @@ export const skillCategories = [
   {
     id: 'dev',
     title: 'Development & Workflow',
-    skills: ['React', 'JavaScript', 'HTML', 'CSS', 'SQL Fundamentals', 'Git', 'GitHub', 'Agile/Scrum', 'ClickUp'],
+    skills: ['Jira', 'React', 'JavaScript', 'TypeScript', 'HTML', 'CSS', 'SQL Fundamentals', 'Git', 'GitHub', 'Vercel', 'Browser DevTools', 'Agile/Scrum', 'Kanban', 'ClickUp'],
   },
 ]
 
