@@ -1,6 +1,6 @@
 // Content checks for the sections driven by data files (certificates,
 // writing, About). They loop over whatever is actually rendered, so a new
-// certificate or post you add later is covered automatically — no test
+// certificate or post you add later is covered automatically - no test
 // edits needed. They catch the mistakes that are easy to make when editing
 // data by hand: a missing link, a broken image path, a typo'd URL.
 describe('Content sections', () => {

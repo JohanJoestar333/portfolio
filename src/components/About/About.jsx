@@ -4,7 +4,7 @@ import CountUp from '../CountUp/CountUp.jsx'
 import './About.css'
 
 // The little "Location / Role / Experience / Focus" panel is built from
-// this array, which just pulls its values from src/data/site.js — so to
+// this array, which just pulls its values from src/data/site.js - so to
 // change what shows up here, edit site.js rather than this file.
 export default function About() {
   const { t, c } = useLang()
@@ -28,10 +28,10 @@ export default function About() {
   return (
     <section id="about" className="section about">
       {/* Two-column layout on wide screens (prose left, meta panel
-          right), stacked on mobile — see the @media rule in About.css. */}
+          right), stacked on mobile - see the @media rule in About.css. */}
       <div className="container about__grid">
         {/* Each grid child is wrapped in its own <Reveal> rather than one
-            Reveal around the whole group — CSS grid needs each item to be
+            Reveal around the whole group - CSS grid needs each item to be
             a direct child of the grid container to lay out correctly. */}
         <Reveal className="section-head">
           <h2>{t.about.title}</h2>
@@ -45,7 +45,7 @@ export default function About() {
         </Reveal>
 
         {/* <dl> (description list) is the semantically correct HTML
-            element for a set of label/value pairs like this — better for
+            element for a set of label/value pairs like this - better for
             screen readers than a plain <div> grid would be. as="dl" tells
             Reveal to render a <motion.dl> instead of its default <div>. */}
         <Reveal as="dl" className="about__meta panel" delay={0.1}>

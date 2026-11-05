@@ -35,3 +35,28 @@ describe('Language switch', () => {
     cy.get('[data-testid="login-log"] li').first().should('contain', 'PASSOU')
   })
 })
+
+describe('Phone number and Loom video', () => {
+  beforeEach(() => {
+    cy.visit('/')
+  })
+
+  it('shows the Brazilian phone number only in Portuguese', () => {
+    cy.get('[data-testid="contact-phone"]').should('not.exist')
+    cy.get('[data-testid="lang-toggle"]').click()
+    cy.get('[data-testid="contact-phone"]')
+      .should('contain', '+55 48 99217-3313')
+      .and('have.attr', 'href', 'tel:+5548992173313')
+  })
+
+  it('links to the Loom walkthrough from the video section and Contact', () => {
+    cy.get('[data-testid="video-loom-link"]').should('have.attr', 'href').and('include', 'loom.com/share/')
+    cy.get('[data-testid="contact-video"]').should('have.attr', 'href').and('include', 'loom.com/share/')
+  })
+
+  it('loads the video player only after pressing play', () => {
+    cy.get('.video__player').should('not.exist')
+    cy.get('[data-testid="video-play"]').click()
+    cy.get('.video__player').should('have.attr', 'src').and('include', 'loom.com/embed/')
+  })
+})

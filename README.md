@@ -1,4 +1,4 @@
-# Thomas — Software QA Analyst Portfolio
+# Thomas - Software QA Analyst Portfolio
 
 [![CI](https://github.com/JohanJoestar333/portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/JohanJoestar333/portfolio/actions/workflows/ci.yml)
 
@@ -13,42 +13,42 @@ Sections appear in this order, chosen so a recruiter sees who you are, your
 experience, and your skills first, with the proof (QA Lab, Automation,
 certificates, writing) after.
 
-- **Hero** — one-line pitch with direct *Download Resume* and *LinkedIn*
+- **Hero** - one-line pitch with direct *Download Resume* and *LinkedIn*
   buttons.
-- **About** — a recruiter-friendly intro, a live numbers strip (years in
-  QA, certificates, articles — all computed, never typed in), and a "What I'm into" grid covering AI-assisted QA, building
+- **About** - a recruiter-friendly intro, a live numbers strip (years in
+  QA, certificates, articles - all computed, never typed in), and a "What I'm into" grid covering AI-assisted QA, building
   websites, test case design, and test automation.
-- **Experience** — roles and responsibilities.
-- **Testing Toolkit** — skills by category, plus what I'm learning now.
-- **QA Lab** — two interactive apps (Login Lab, Form Validation Lab) with
+- **Experience** - roles and responsibilities.
+- **Testing Toolkit** - skills by category, plus what I'm learning now.
+- **QA Lab** - two interactive apps (Login Lab, Form Validation Lab) with
   documented, reproducible bugs (see `QA_NOTES.md`).
-- **Automation** — the real Cypress spec list and test counts, read from
+- **Automation** - the real Cypress spec list and test counts, read from
   `cypress/e2e/` at build time so they can't go stale.
-- **Projects** — hands-on QA work beyond the site: PixelCart (a demo store run
+- **Projects** - hands-on QA work beyond the site: PixelCart (a demo store run
   like a real company, with a numbered "how I worked" Jira-to-production
   strip) and the QA Test Case Workbook (download button). Driven by
   `src/data/projects.js`; downloadable files live in `public/projects/`.
-- **Certificates** — clickable cards with images, driven by one data file.
-- **Writing** — articles on QA, testing, and AI, driven by one data file.
-- **Contact** — LinkedIn, email, and a resume download.
+- **Certificates** - clickable cards with images, driven by one data file.
+- **Writing** - articles on QA, testing, and AI, driven by one data file.
+- **Contact** - LinkedIn, email, and a resume download.
 - Dark/light theme (remembers your choice), scroll-reveal animations, a
   scroll progress bar, and a mobile menu.
 
-There is intentionally no GitHub link anywhere on the site — Contact only
+There is intentionally no GitHub link anywhere on the site - Contact only
 shows LinkedIn, Email, and Resume.
 
 ## Look & feel
 
-- **Cozy moodboard theme** — warm paper (light, the default) and a
+- **Cozy moodboard theme** - warm paper (light, the default) and a
   lamp-lit evening (dark), Fraunces + Caveat + DM Sans, pastel stickers,
   masonry skills board, polaroid certificates, a pinned-note project.
   All colors are tokens in `globals.css`.
-- **3D hero** — a draggable pastel "toy block" (`HeroCube`) built from
+- **3D hero** - a draggable pastel "toy block" (`HeroCube`) built from
   CSS 3D transforms, ringed by floating stickers. No 3D library.
-- **Interactions** (`src/hooks/useInteractions.js`) — cursor glow, card
+- **Interactions** (`src/hooks/useInteractions.js`) - cursor glow, card
   spotlight, 3D tilt on cards, and magnetic buttons. Fine pointers only,
   and all of it is off when the visitor prefers reduced motion.
-- **Motion** — letter-by-letter 3D name entrance, rotating "I test …"
+- **Motion** - letter-by-letter 3D name entrance, rotating "I test …"
   line, toolkit marquee, count-up stats, scrollspy nav underline, and
   scroll-drawn section accents.
 
@@ -81,7 +81,7 @@ npm run test:e2e:open    # interactive Cypress runner
 
 ## Adding content
 
-Almost everything is edited in `src/data/` — you rarely touch a component.
+Almost everything is edited in `src/data/` - you rarely touch a component.
 Each data file has a copy-paste template in a comment at the top.
 
 ### Add a certificate
@@ -96,7 +96,7 @@ Each data file has a copy-paste template in a comment at the top.
      title: 'Course or certification name',
      organization: 'Who issued it',
      url: 'https://…',                      // verification / badge page
-     image: '/certificates/your-file.webp', // optional — omit for an icon
+     image: '/certificates/your-file.webp', // optional - omit for an icon
      year: '2026',                          // optional
    },
    ```
@@ -125,7 +125,7 @@ The section heading and description above the list live in the
 
 ### Edit the About text or interests
 
-`src/data/site.js` — `about` is an array of paragraphs (add, remove, or
+`src/data/site.js` - `about` is an array of paragraphs (add, remove, or
 reword freely) and `interests` is the "What I'm into" card list.
 
 ### Add a spec
@@ -227,40 +227,40 @@ Starting from nothing but the GitHub repository link:
      panel of the Cypress app, and you can click any step to see exactly
      what the page looked like at that moment.
    - If a headless run fails, Cypress automatically saves a screenshot
-     (and, if configured, a video) of the failure — check
+     (and, if configured, a video) of the failure - check
      `cypress/screenshots/` (these are gitignored, so they won't show up
      in the repository itself).
 
 ## Customization Guide
 
-A map from "I want to change X" to the file that controls it — almost
+A map from "I want to change X" to the file that controls it - almost
 everything content-related lives in `src/data/`, so you rarely need to
 touch a component file just to update text or links.
 
 | I want to change... | Edit this file |
 | --- | --- |
 | Name, role, location, focus, the "Currently building" status pill, Hero tagline, LinkedIn/email, resume path | `src/data/site.js` |
-| About paragraphs and the "What I'm into" cards | `src/data/site.js` — the `about` and `interests` arrays |
+| About paragraphs and the "What I'm into" cards | `src/data/site.js` - the `about` and `interests` arrays |
 | Your resume PDF | Replace `public/Thomas-Pessoa-Resume.pdf` with your updated file (keep the same filename, or update `resumePath` in `src/data/site.js`) |
 | Skills listed under Testing Toolkit, or the "Currently learning" list | `src/data/skills.js` |
-| Work history (add/edit/remove a role) | `src/data/experience.js` — it's an array, so copy an existing entry to add a new role |
-| Writing posts, and the Writing section's intro text | `src/data/writing.js` — see "Add a writing post" above |
-| Certificates (add/edit/remove one), and the section's intro text | `src/data/certificates.js` — see "Add a certificate" above |
+| Work history (add/edit/remove a role) | `src/data/experience.js` - it's an array, so copy an existing entry to add a new role |
+| Writing posts, and the Writing section's intro text | `src/data/writing.js` - see "Add a writing post" above |
+| Certificates (add/edit/remove one), and the section's intro text | `src/data/certificates.js` - see "Add a certificate" above |
 | Automation section intro and spec descriptions | `src/data/automation.js` (the spec list itself is generated from `cypress/e2e/`) |
-| Nav links, their order, or the mobile menu | `src/components/Navbar/Navbar.jsx` — edit the `navLinks` array near the top |
-| Order of sections on the page | `src/App.jsx` — sections render in the order they're listed there |
-| Colors, fonts, spacing, or the accent color (dark theme) | `src/styles/globals.css` — the `:root` block near the top of the file |
-| Colors for light mode specifically | `src/styles/globals.css` — the `:root[data-theme='light']` block right below the dark one |
-| Whether the theme toggle shows in the nav | `src/components/Navbar/Navbar.jsx` — remove the `<ThemeToggle />` line to drop it entirely |
-| How much content fades up on scroll, or the effect itself | `src/components/Reveal/Reveal.jsx` — adjust the `initial`/`whileInView` values, or wrap/unwrap `<Reveal>` around content in any section |
-| Login Lab's preset test scenarios | `src/components/QALab/LoginLab/LoginLab.jsx` — the `SCENARIOS` array |
+| Nav links, their order, or the mobile menu | `src/components/Navbar/Navbar.jsx` - edit the `navLinks` array near the top |
+| Order of sections on the page | `src/App.jsx` - sections render in the order they're listed there |
+| Colors, fonts, spacing, or the accent color (dark theme) | `src/styles/globals.css` - the `:root` block near the top of the file |
+| Colors for light mode specifically | `src/styles/globals.css` - the `:root[data-theme='light']` block right below the dark one |
+| Whether the theme toggle shows in the nav | `src/components/Navbar/Navbar.jsx` - remove the `<ThemeToggle />` line to drop it entirely |
+| How much content fades up on scroll, or the effect itself | `src/components/Reveal/Reveal.jsx` - adjust the `initial`/`whileInView` values, or wrap/unwrap `<Reveal>` around content in any section |
+| Login Lab's preset test scenarios | `src/components/QALab/LoginLab/LoginLab.jsx` - the `SCENARIOS` array |
 | Form Validation Lab's fields or checklist copy | `src/components/QALab/FormLab/FormLab.jsx` |
-| Cypress test coverage | `cypress/e2e/*.cy.js` — one file per major area; add a new `.cy.js` file for a new area |
+| Cypress test coverage | `cypress/e2e/*.cy.js` - one file per major area; add a new `.cy.js` file for a new area |
 
 **To add a brand-new section** (say, a "Testimonials" section):
 
 1. Create a folder `src/components/Testimonials/` with `Testimonials.jsx` and `Testimonials.css`, following the pattern of any existing section (e.g. `src/components/Skills/`).
-2. Give the outer `<section>` a unique `id` (e.g. `id="testimonials"`) — that's what nav links and Cypress tests hook into.
+2. Give the outer `<section>` a unique `id` (e.g. `id="testimonials"`) - that's what nav links and Cypress tests hook into.
 3. Import and render it in `src/App.jsx`, in the position you want it to appear.
 4. If it should be reachable from the nav, add a `{ label: 'Testimonials', href: '#testimonials' }` entry to `navLinks` in `Navbar.jsx`.
 

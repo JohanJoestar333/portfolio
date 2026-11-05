@@ -16,12 +16,12 @@ const TABS = [
 
 export default function QALab() {
   const { t } = useLang()
-  // activeTab just stores which tab's id is currently selected — "login"
+  // activeTab just stores which tab's id is currently selected - "login"
   // by default, so Login Lab is what visitors see first.
   const [activeTab, setActiveTab] = useState('login')
   // Look up the matching Component for the active tab. The `?.` (optional
   // chaining) means this won't throw even if, somehow, activeTab didn't
-  // match anything in TABS — Active would just be undefined.
+  // match anything in TABS - Active would just be undefined.
   const Active = TABS.find((tab) => tab.id === activeTab)?.Component
 
   return (
@@ -37,7 +37,7 @@ export default function QALab() {
         </Reveal>
 
         {/* This Reveal wraps the tabs AND the panel below, but only plays
-            once when it first scrolls into view — switching tabs
+            once when it first scrolls into view - switching tabs
             afterwards doesn't replay it, since it's the same element the
             whole time and viewport={{ once: true }} only fires once. */}
         <Reveal delay={0.1}>
@@ -60,7 +60,7 @@ export default function QALab() {
             ))}
           </div>
 
-          {/* Only the active tab's component is ever rendered here — the
+          {/* Only the active tab's component is ever rendered here - the
               other one isn't mounted at all, so their state resets each
               time you switch away and back. */}
           <div role="tabpanel" data-testid="qa-tabpanel">

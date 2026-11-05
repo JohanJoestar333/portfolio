@@ -1,18 +1,18 @@
 // A Cypress "spec" file. `describe()` groups related tests together;
 // each `it()` inside it is one individual test. Cypress runs every
-// .cy.js file under cypress/e2e/ automatically — no need to import them
+// .cy.js file under cypress/e2e/ automatically - no need to import them
 // anywhere.
 describe('Homepage', () => {
   // beforeEach runs before every single `it()` below, so each test starts
   // from a clean, freshly-loaded page rather than sharing state with the
   // previous test.
   beforeEach(() => {
-    cy.visit('/') // Loads baseUrl + '/' — i.e. http://localhost:5173/ (see cypress.config.js).
+    cy.visit('/') // Loads baseUrl + '/' - i.e. http://localhost:5173/ (see cypress.config.js).
   })
 
   it('loads and shows the hero content', () => {
     // cy.contains(text) finds an element containing that text anywhere on
-    // the page. .should('be.visible') is an assertion — Cypress will
+    // the page. .should('be.visible') is an assertion - Cypress will
     // retry it automatically for a few seconds if the element isn't
     // there yet, so you rarely need manual waits.
     cy.contains('Thomas').should('be.visible')
@@ -28,7 +28,7 @@ describe('Homepage', () => {
   })
 
   it('has a working primary navigation', () => {
-    // cy.get(selector) works like document.querySelector — here it's
+    // cy.get(selector) works like document.querySelector - here it's
     // using the data-testid attributes we added throughout the app
     // specifically so tests have stable hooks that don't break if we
     // later change CSS classes or wording.
@@ -44,7 +44,7 @@ describe('Homepage', () => {
   })
 
   it('shows an accessible mobile menu on small viewports', () => {
-    // cy.viewport(width, height) resizes the simulated browser window —
+    // cy.viewport(width, height) resizes the simulated browser window -
     // this drops us below the 980px breakpoint where Navbar.css switches
     // to the hamburger menu.
     cy.viewport(375, 800)

@@ -27,9 +27,9 @@ function distribute(categories, count) {
   return columns.map((c) => c.items)
 }
 
-// All the actual skill names come from src/data/skills.js — this
+// All the actual skill names come from src/data/skills.js - this
 // component only handles the layout. Skills are rendered as plain tags,
-// not percentage bars, per the brief ("no percentage proficiency bars" —
+// not percentage bars, per the brief ("no percentage proficiency bars" -
 // they read as arbitrary and don't actually communicate skill level).
 export default function Skills() {
   const { t, c } = useLang()

@@ -10,10 +10,13 @@ export const site = {
   status: 'Currently building a QA portfolio and automation lab',
 
   linkedin: 'https://www.linkedin.com/in/thomas-pessoa-tech/',
+  // Loom walkthrough of how I test (shown right under the hero, in Contact,
+  // and on the PixelCart project card).
+  loomUrl: 'https://www.loom.com/share/435ecce4b8bb4f95afaf089083d0d048',
   email: 'tomecosabs@gmail.com',
 
   // Lives in public/, so it's served at this exact path. Swap the PDF
-  // (same filename) whenever your resume changes — Hero and Contact both
+  // (same filename) whenever your resume changes - Hero and Contact both
   // read this value.
   resumePath: '/Thomas-Pessoa-Resume.pdf',
 
@@ -23,7 +26,7 @@ export const site = {
 }
 
 // ---------------------------------------------------------------------------
-// About section copy. Each string is one paragraph, rendered in order — add,
+// About section copy. Each string is one paragraph, rendered in order - add,
 // remove, or reword freely. The first paragraph is shown in the brightest
 // text color, the rest are slightly softer.
 // ---------------------------------------------------------------------------

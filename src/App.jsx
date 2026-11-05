@@ -1,4 +1,4 @@
-// App.jsx is the "composition root" — it doesn't contain any content or
+// App.jsx is the "composition root" - it doesn't contain any content or
 // logic itself, it just imports every section and stacks them in the
 // order they should appear on the page. To reorder sections, change the
 // order of the JSX below. To add a new section, create its component
@@ -18,6 +18,7 @@ import Experience from './components/Experience/Experience.jsx'
 import Writing from './components/Writing/Writing.jsx'
 import Contact from './components/Contact/Contact.jsx'
 import Footer from './components/Footer/Footer.jsx'
+import Video from './components/Video/Video.jsx'
 import Marquee from './components/Marquee/Marquee.jsx'
 import useInteractions from './hooks/useInteractions.js'
 
@@ -31,6 +32,7 @@ export default function App() {
       <Navbar />
       <Hero />
       <Marquee />
+      <Video />
       <About />
       <Experience />
       <Skills />

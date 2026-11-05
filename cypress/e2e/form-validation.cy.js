@@ -1,5 +1,5 @@
 // The form's actual limit (see MESSAGE_MAX_LENGTH in FormLab.jsx) is 500
-// characters, and there's no enforcement of it — that's the bug being
+// characters, and there's no enforcement of it - that's the bug being
 // tested below. 501 is just "one over the line".
 const MESSAGE_OVER_LIMIT_LENGTH = 501
 
@@ -14,7 +14,7 @@ describe('Form Validation Lab', () => {
 
   it('flags every required field on an empty submission', () => {
     cy.get('[data-testid="form-submit"]').click()
-    // name, email, phone, message — age is optional
+    // name, email, phone, message - age is optional
     cy.get('.form-lab__error').should('have.length', 4)
     cy.get('[data-testid="form-checklist"]').contains('li', 'Required fields').should('have.class', 'is-pass')
     cy.get('[data-testid="form-checklist"]').contains('li', 'Empty submission').should('have.class', 'is-pass')
@@ -57,7 +57,7 @@ describe('Form Validation Lab', () => {
     cy.get('[data-testid="form-name"]').type('Jane Doe')
     cy.get('[data-testid="form-email"]').type('jane@example.com')
     cy.get('[data-testid="form-phone"]').type('123456789')
-    // { delay: 0 } skips Cypress's small per-keystroke delay — without it,
+    // { delay: 0 } skips Cypress's small per-keystroke delay - without it,
     // typing 501 characters one at a time would make this test noticeably
     // slower for no real benefit.
     cy.get('[data-testid="form-message"]').type(longMessage, { delay: 0 })

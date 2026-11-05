@@ -18,9 +18,9 @@ export const writingIntro = {
 //     title: 'Your article title',
 //     description: 'One sentence on what the reader will get out of it.',
 //     url: 'https://medium.com/@you/your-article',
-//     tag: 'QA',              // optional — small label above the title
-//     date: 'Oct 2026',       // optional — shown next to the tag
-//     platform: 'Medium',     // optional — defaults to Medium ("Read on …")
+//     tag: 'QA',              // optional - small label above the title
+//     date: 'Oct 2026',       // optional - shown next to the tag
+//     platform: 'Medium',     // optional - defaults to Medium ("Read on …")
 //   },
 //
 // To remove a post, delete its object. Order here is the display order.

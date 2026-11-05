@@ -24,7 +24,7 @@ function MoonIcon() {
 
 // index.html has a small inline script that sets data-theme on <html>
 // before React even loads (to avoid a flash of the wrong theme on page
-// load) — this reads that same attribute as its starting value, so the
+// load) - this reads that same attribute as its starting value, so the
 // button's icon matches the theme that's already showing.
 function getInitialTheme() {
   if (typeof document === 'undefined') return 'dark'

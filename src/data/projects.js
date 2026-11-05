@@ -13,21 +13,21 @@ export const projectsIntro = {
 //
 //   {
 //     title: 'Project name',
-//     tag: 'Manual testing',                 // optional — small label above the title
+//     tag: 'Manual testing',                 // optional - small label above the title
 //     description: 'One or two sentences on what it is and why it exists.',
 //     highlights: ['What it includes', 'Another point'], // optional bullets
-//     workflow: {                            // optional — numbered "how I worked" steps
+//     workflow: {                            // optional - numbered "how I worked" steps
 //       title: 'How I worked on it',
 //       steps: [{ title: 'Step name', text: 'One short line.' }],
 //     },
-//     stats: [{ value: '127', label: 'test cases' }],   // optional — big numbers row
-//     flow: { title: 'Status flow', items: ['To Do', 'Done'] }, // optional — arrow chain
-//     findings: {                            // optional — short list of bugs found
+//     stats: [{ value: '127', label: 'test cases' }],   // optional - big numbers row
+//     flow: { title: 'Status flow', items: ['To Do', 'Done'] }, // optional - arrow chain
+//     findings: {                            // optional - short list of bugs found
 //       title: 'Bugs I found',
 //       items: [{ label: 'TC-001', text: 'What went wrong.' }],
 //     },
-//     stack: ['Excel', 'Trello'],            // optional — small tags
-//     links: [                               // optional — buttons on the card
+//     stack: ['Excel', 'Trello'],            // optional - small tags
+//     links: [                               // optional - buttons on the card
 //       { label: 'Download workbook', href: '/projects/your-file.xlsx', download: true },
 //       { label: 'View on GitHub', href: 'https://…' },
 //     ],
@@ -74,6 +74,7 @@ export const projects = [
     links: [
       { label: 'Try the live demo', href: 'https://qa-project-automation.vercel.app' },
       { label: 'See the full project', href: 'https://github.com/JohanJoestar333/qa-project' },
+      { label: 'Watch how I test (Loom)', href: 'https://www.loom.com/share/435ecce4b8bb4f95afaf089083d0d048' },
     ],
   },
   {

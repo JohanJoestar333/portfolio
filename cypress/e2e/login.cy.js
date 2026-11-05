@@ -1,6 +1,6 @@
 // These tests click the preset scenario buttons in LoginLab.jsx (each one
 // auto-fills the email/password fields and submits), then check both the
-// inline field error and the newest entry in the results log —
+// inline field error and the newest entry in the results log -
 // `[data-testid="login-log"] li').first()` is the most-recently-added
 // entry, since LoginLab prepends new entries to the top of the list.
 describe('Login Lab', () => {
@@ -63,7 +63,7 @@ describe('Login Lab', () => {
 
   // BUG (documented in QA_NOTES.md): the button doesn't disable while a
   // request is pending, so two rapid clicks both go through. The actual
-  // check takes ~550ms to resolve (see LoginLab's runDoubleClick) — no
+  // check takes ~550ms to resolve (see LoginLab's runDoubleClick) - no
   // explicit wait is needed here because .should() retries automatically
   // until the assertion passes or times out.
   it('demonstrates the missing submit-debounce bug on double-click', () => {
@@ -72,7 +72,7 @@ describe('Login Lab', () => {
   })
 
   // Unlike every test above (which clicks a preset button), this one
-  // types directly into the real inputs with cy.type() — proving the bug
+  // types directly into the real inputs with cy.type() - proving the bug
   // is in the app's actual validation logic, not just in how the preset
   // buttons happen to call it.
   it('runs manually typed input through the same validation path as the presets', () => {

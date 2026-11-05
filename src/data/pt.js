@@ -19,6 +19,9 @@ export const site = {
   status: 'Construindo meu portfólio de QA e laboratório de automação',
   linkedin: 'https://www.linkedin.com/in/thomas-pessoa-tech/?locale=pt-BR',
   resumePath: '/Thomas-Pessoa-Resume-PT.pdf',
+  // Brazilian phone number, shown only on the Portuguese version.
+  phone: '+55 48 99217-3313',
+  phoneHref: 'tel:+5548992173313',
   heroLede:
     'Analista de QA focado em testes manuais e exploratórios, regressão e testes de interface e de API. Agora evoluindo para automação com Cypress e testes assistidos por IA.',
 }
@@ -176,6 +179,7 @@ export const projects = [
     links: [
       { label: 'Ver a demonstração', href: 'https://qa-project-automation.vercel.app' },
       { label: 'Ver o projeto completo', href: 'https://github.com/JohanJoestar333/qa-project' },
+      { label: 'Assistir: como eu testo (Loom)', href: 'https://www.loom.com/share/435ecce4b8bb4f95afaf089083d0d048' },
     ],
   },
   {

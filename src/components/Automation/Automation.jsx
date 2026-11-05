@@ -4,7 +4,7 @@ import Reveal from '../Reveal/Reveal.jsx'
 import './Automation.css'
 
 // Copy, the spec list, and the counts all come from src/data/automation.js,
-// which reads the real files in /cypress/e2e at build time — so this
+// which reads the real files in /cypress/e2e at build time - so this
 // section always matches the actual test suite.
 export default function Automation() {
   const { t, c, lang } = useLang()
@@ -14,7 +14,7 @@ export default function Automation() {
       <div className="container automation__grid">
         {/* Each grid child gets its own Reveal (rather than one Reveal
             around everything) so automation__grid's two-column layout in
-            Automation.css still applies — see the same note in
+            Automation.css still applies - see the same note in
             About.jsx. */}
         <Reveal className="section-head">
           <h2>{automationIntro.title}</h2>

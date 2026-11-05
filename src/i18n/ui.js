@@ -48,6 +48,15 @@ export const ui = {
       articles: 'Articles',
       into: "What I'm into",
     },
+    video: {
+      eyebrow: 'Watch this first',
+      title: 'See how I test',
+      description: 'A walkthrough of how I approach testing. Press play to watch it right here, or open it on Loom.',
+      openLoom: 'Open on Loom',
+      play: 'Play the video: how I test',
+      posterLabel: 'Play the walkthrough',
+      playerTitle: 'How I test, a Loom walkthrough',
+    },
     experience: { title: 'Experience' },
     skills: { title: 'Testing Toolkit', learning: 'Currently learning' },
     qaLab: {
@@ -81,6 +90,9 @@ export const ui = {
       email: 'Email',
       resume: 'Resume',
       resumeValue: 'PDF · Download',
+      phone: 'Phone',
+      video: 'Video',
+      videoValue: 'How I test · Loom',
     },
     footer: { tagline: 'Built with React. Tested with Cypress.' },
     meta: {
@@ -170,6 +182,15 @@ export const ui = {
       articles: 'Artigos',
       into: 'Do que eu gosto',
     },
+    video: {
+      eyebrow: 'Veja isto primeiro',
+      title: 'Veja como eu testo',
+      description: 'Um passo a passo de como eu abordo os testes. Aperte play para assistir aqui mesmo, ou abra no Loom.',
+      openLoom: 'Abrir no Loom',
+      play: 'Reproduzir o vídeo: como eu testo',
+      posterLabel: 'Assistir ao passo a passo',
+      playerTitle: 'Como eu testo, um vídeo no Loom',
+    },
     experience: { title: 'Experiência' },
     skills: { title: 'Caixa de Ferramentas de Testes', learning: 'Aprendendo agora' },
     qaLab: {
@@ -203,6 +224,9 @@ export const ui = {
       email: 'E-mail',
       resume: 'Currículo',
       resumeValue: 'PDF · Baixar',
+      phone: 'Telefone',
+      video: 'Vídeo',
+      videoValue: 'Como eu testo · Loom',
     },
     footer: { tagline: 'Feito com React. Testado com Cypress.' },
     meta: {

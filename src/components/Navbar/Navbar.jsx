@@ -5,7 +5,7 @@ import './Navbar.css'
 
 // Each entry is just a label + the id of the section it should jump to
 // (every <section> in the app has a matching id="..."). Add, remove, or
-// reorder entries here to change the nav — the mobile menu reuses this
+// reorder entries here to change the nav - the mobile menu reuses this
 // same array, so you only ever edit it in one place.
 const navLinks = [
   { key: 'about', href: '#about' },
@@ -22,7 +22,7 @@ const navLinks = [
 export default function Navbar() {
   // `open` tracks whether the mobile hamburger menu is currently expanded.
   // It only affects anything at or below 980px wide (the point where nine
-  // links no longer fit on one line) — see the @media rule in Navbar.css.
+  // links no longer fit on one line) - see the @media rule in Navbar.css.
   const { t, c, lang, toggle } = useLang()
   const site = c.site
   const [open, setOpen] = useState(false)
@@ -81,7 +81,7 @@ export default function Navbar() {
           {site.name}
         </a>
 
-        {/* Desktop navigation — hidden at 980px and below via CSS, replaced by
+        {/* Desktop navigation - hidden at 980px and below via CSS, replaced by
             the hamburger + mobile menu below. */}
         <nav className="navbar__links" aria-label={t.nav.primary}>
           {navLinks.map((link) => (
@@ -97,7 +97,7 @@ export default function Navbar() {
         </nav>
 
         {/* Grouped so both stay pinned to the right edge at every
-            viewport width — the theme toggle is always visible, whether
+            viewport width - the theme toggle is always visible, whether
             or not the mobile menu is open. */}
         <div className="navbar__controls">
           <button
@@ -113,7 +113,7 @@ export default function Navbar() {
           </button>
           <ThemeToggle />
 
-          {/* Hamburger button — only visible at 980px and below. aria-expanded
+          {/* Hamburger button - only visible at 980px and below. aria-expanded
               and aria-controls tell screen readers this button toggles
               the #mobile-menu element below. */}
           <button

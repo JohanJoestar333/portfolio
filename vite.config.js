@@ -7,6 +7,6 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: 5173, // Also referenced in cypress.config.js's baseUrl — keep them in sync if you change this.
+    port: 5173, // Also referenced in cypress.config.js's baseUrl - keep them in sync if you change this.
   },
 })

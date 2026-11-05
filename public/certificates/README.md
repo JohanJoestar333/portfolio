@@ -9,5 +9,5 @@ Drop your certificate image files in this folder (e.g. `postman-api.webp`,
 To convert a big PNG: https://squoosh.app (free, runs in your browser).
 
 This README also keeps the folder tracked in git even if it were ever
-empty (git doesn't track empty folders) — feel free to delete it, it's
+empty (git doesn't track empty folders) - feel free to delete it, it's
 just documentation.

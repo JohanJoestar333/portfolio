@@ -10,7 +10,7 @@ const SUBMIT_DELAY = 450
 // Each preset scenario below auto-fills the two fields and immediately
 // submits, so a visitor can see a specific bug (or correct behavior)
 // without having to type it themselves. `classify()` further down maps
-// ANY input — preset or hand-typed — to one of these same ids, so typing
+// ANY input - preset or hand-typed - to one of these same ids, so typing
 // your own whitespace-only email produces the same result as clicking
 // the "Whitespace-only email" button.
 const SCENARIOS = [
@@ -85,7 +85,7 @@ const CATEGORY_CONFIG = {
 const SCENARIO_LABELS = Object.fromEntries(SCENARIOS.map((s) => [s.id, s.label]))
 
 // The validation logic below is intentionally imperfect in two documented
-// places — see the BUG comments. Everything else behaves correctly.
+// places - see the BUG comments. Everything else behaves correctly.
 // (Internal decisions log: QA_NOTES.md)
 function evaluate(rawEmail, rawPassword) {
   let emailError = null
@@ -102,7 +102,7 @@ function evaluate(rawEmail, rawPassword) {
   if (!emailError) {
     const trimmed = rawEmail.trim()
     // BUG: this guard assumes an empty-after-trim value was already
-    // caught by the required check above — but that check used the raw
+    // caught by the required check above - but that check used the raw
     // length, so a whitespace-only email slips past both checks untouched.
     if (trimmed.length > 0 && !EMAIL_PATTERN.test(trimmed)) {
       emailError = 'Enter a valid email address.'
@@ -143,8 +143,8 @@ export default function LoginLab() {
   const [password, setPassword] = useState('')
   const [touched, setTouched] = useState(false) // Have we attempted a login yet? Controls whether errors/banner show at all.
   const [result, setResult] = useState(null) // Output of evaluate() for the most recent attempt.
-  const [log, setLog] = useState([]) // History of attempts, newest first — rendered in the "Results" panel.
-  const inFlight = useRef(0) // Counts in-progress (simulated) login requests — used by the double-click scenario.
+  const [log, setLog] = useState([]) // History of attempts, newest first - rendered in the "Results" panel.
+  const inFlight = useRef(0) // Counts in-progress (simulated) login requests - used by the double-click scenario.
 
   // Adds one entry to the top of the results log, capped at 8 so the
   // list doesn't grow forever during a long visit.
@@ -190,7 +190,7 @@ export default function LoginLab() {
   // Simulates two rapid clicks on the login button. Because the real
   // handleSubmit/evaluate path never disables the button while a request
   // is "in flight", firing two attempts 100ms apart (much less than the
-  // 450ms fake network delay) lets both land at once — proving the bug
+  // 450ms fake network delay) lets both land at once - proving the bug
   // is real rather than staged.
   async function runDoubleClick(rawEmail, rawPassword) {
     setTouched(true)

@@ -2,7 +2,7 @@ import { useLang } from '../../i18n/LanguageContext.jsx'
 import Reveal from '../Reveal/Reveal.jsx'
 import './Contact.css'
 
-// Small hand-written SVG icons — kept inline here (rather than pulling in
+// Small hand-written SVG icons - kept inline here (rather than pulling in
 // an icon library) since only three are needed. Each is just a <svg>
 // with `fill="currentColor"` or `stroke="currentColor"`, which is what
 // lets .contact__link-icon's CSS `color` property control the icon color
@@ -28,6 +28,23 @@ function MailIcon() {
   )
 }
 
+function PhoneIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.6">
+      <path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+function PlayIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.6">
+      <rect x="2" y="4" width="20" height="16" rx="3" />
+      <path d="M10 9v6l5-3z" fill="currentColor" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
 function DownloadIcon() {
   return (
     <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.6">
@@ -47,7 +64,7 @@ function displayUrl(url) {
   return url.replace(/^https?:\/\//, '')
 }
 
-// All three link/download straight away on click — no confirmation step.
+// All three link/download straight away on click - no confirmation step.
 // `download: true` adds the HTML `download` attribute, which tells the
 // browser to save the file instead of trying to navigate to/render it.
 
@@ -57,7 +74,9 @@ export default function Contact() {
   const LINKS = [
     { key: 'linkedin', label: t.contact.linkedin, value: displayUrl(site.linkedin.split('?')[0]), href: site.linkedin, Icon: LinkedinIcon, external: true },
     { key: 'email', label: t.contact.email, value: site.email, href: `mailto:${site.email}`, Icon: MailIcon, external: false },
+    ...(site.phone ? [{ key: 'phone', label: t.contact.phone, value: site.phone, href: site.phoneHref, Icon: PhoneIcon, external: false }] : []),
     { key: 'resume', label: t.contact.resume, value: t.contact.resumeValue, href: site.resumePath, Icon: DownloadIcon, download: true },
+    { key: 'video', label: t.contact.video, value: t.contact.videoValue, href: site.loomUrl, Icon: PlayIcon, external: true },
   ]
   return (
     <section id="contact" className="section contact">

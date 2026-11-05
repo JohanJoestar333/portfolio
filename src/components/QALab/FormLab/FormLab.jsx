@@ -6,7 +6,7 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const INITIAL_VALUES = { name: '', email: '', phone: '', age: '', message: '' }
 const MESSAGE_MAX_LENGTH = 500
 
-// BUG (message required-check): uses the raw, untrimmed length — a
+// BUG (message required-check): uses the raw, untrimmed length - a
 // whitespace-only message is treated as "provided" and never flagged.
 // Name/email/phone all use the trimmed length correctly. (QA_NOTES.md)
 function validate(values) {
@@ -34,9 +34,9 @@ function validate(values) {
 }
 
 // Grades the most recent submission. Each row is one of:
-//   'pass'     — the form behaved correctly for input that exercised this check
-//   'fail'     — the form behaved incorrectly (a real bug was hit)
-//   'untested' — this submission didn't exercise the check, so nothing is claimed
+//   'pass'     - the form behaved correctly for input that exercised this check
+//   'fail'     - the form behaved incorrectly (a real bug was hit)
+//   'untested' - this submission didn't exercise the check, so nothing is claimed
 // The expected behaviour is written independently of validate(), so the
 // results reflect what the form actually did, not a hardcoded answer.
 function buildChecks(values, errors) {

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Design tokens — "cozy desk" palette
+   Design tokens - "cozy desk" palette
    Warm paper and cocoa text by default (light), with a lamp-lit "evening"
    dark theme. Soft sage is the main accent, dusty rose the second, and a
    set of pastels is reused for stickers, tags, and the hero cube so the
@@ -53,7 +53,7 @@
   --btn-edge: #4a3a31;
   --btn-text: #3a2e28;
 
-  /* Status (reserved meanings — pass/fail/warn, used only in the QA Lab
+  /* Status (reserved meanings - pass/fail/warn, used only in the QA Lab
      and anywhere something is literally being tested) */
   --status-pass: #486f50;
   --status-fail: #a8372e;
@@ -76,7 +76,7 @@
   --text-2xl: 2.75rem;
   --text-3xl: 3.5rem;
 
-  /* Layout — rounder everything, like a sticker sheet */
+  /* Layout - rounder everything, like a sticker sheet */
   --content-max: 1120px;
   --content-padding: clamp(1.25rem, 4vw, 3rem);
   --radius-sm: 10px;
@@ -223,7 +223,7 @@ h3 {
 }
 
 /* ==========================================================================
-   Focus states — visible everywhere, styled (not the default blue ring)
+   Focus states - visible everywhere, styled (not the default blue ring)
    ========================================================================== */
 
 :focus-visible {
@@ -289,7 +289,7 @@ section[id] {
 
 /* ==========================================================================
    Shared primitives (buttons, panels, status pills)
-   Kept intentionally few — reused across Hero, QA Lab, Contact.
+   Kept intentionally few - reused across Hero, QA Lab, Contact.
    ========================================================================== */
 
 .btn {
@@ -357,7 +357,7 @@ section[id] {
   flex-shrink: 0;
 }
 
-/* Status pills — used by every QA Lab result panel */
+/* Status pills - used by every QA Lab result panel */
 .status {
   display: inline-flex;
   align-items: center;

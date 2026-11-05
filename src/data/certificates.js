@@ -9,7 +9,7 @@ export const certificatesIntro = {
 // ---------------------------------------------------------------------------
 // HOW TO ADD A CERTIFICATE
 // 1. Drop the certificate image in public/certificates/ (WebP or JPEG under
-//    ~200 KB keeps the page fast — see the README in that folder).
+//    ~200 KB keeps the page fast - see the README in that folder).
 // 2. Copy the block below to the END of the `certificates` array and fill it
 //    in. Keep the comma after the closing brace:
 //
@@ -18,9 +18,9 @@ export const certificatesIntro = {
 //     organization: 'Who issued it',
 //     url: 'https://…',                      // verification / badge page (or a PDF in
 //                                            // public/certificates/, e.g. '/certificates/x.pdf')
-//     image: '/certificates/your-file.webp', // optional — omit for an icon
-//     year: '2026',                          // optional — shown on the card
-//     fit: 'contain',                        // optional — use for square badges so
+//     image: '/certificates/your-file.webp', // optional - omit for an icon
+//     year: '2026',                          // optional - shown on the card
+//     fit: 'contain',                        // optional - use for square badges so
 //                                            // nothing gets cropped
 //   },
 //

@@ -1,0 +1,100 @@
+.video {
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.video__inner {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+.video__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
+
+.video__text h2 {
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.video__text p {
+  color: var(--text-secondary);
+}
+
+.video__text .video__eyebrow {
+  font-family: var(--font-hand, 'Caveat', cursive);
+  font-size: 1.5rem;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.video__frame.panel {
+  padding: 0.6rem;
+  overflow: hidden;
+  rotate: -1deg;
+}
+
+.video__poster,
+.video__player {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: calc(var(--radius, 16px) - 6px);
+}
+
+.video__poster {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 0.9rem;
+  cursor: pointer;
+  font: inherit;
+  color: var(--text-primary);
+  background:
+    radial-gradient(circle at 20% 20%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 55%),
+    radial-gradient(circle at 80% 80%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 50%),
+    var(--surface);
+  transition: filter 0.2s ease;
+}
+
+.video__poster:hover,
+.video__poster:focus-visible {
+  filter: brightness(1.03);
+}
+
+.video__play {
+  display: grid;
+  place-items: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  padding-left: 0.2rem;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--btn-text, #fff);
+  box-shadow: 0 4px 0 var(--btn-edge, rgba(0, 0, 0, 0.25));
+  transition: transform 0.2s ease;
+}
+
+.video__poster:hover .video__play,
+.video__poster:focus-visible .video__play {
+  transform: scale(1.08) rotate(-4deg);
+}
+
+.video__poster-label {
+  font-family: var(--font-hand, 'Caveat', cursive);
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+@media (min-width: 860px) {
+  .video__inner {
+    grid-template-columns: 0.9fr 1.3fr;
+    gap: 3rem;
+  }
+}

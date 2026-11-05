@@ -3,7 +3,7 @@ import Reveal from '../Reveal/Reveal.jsx'
 import './Experience.css'
 
 // Loops over every entry in src/data/experience.js and renders one card
-// per role. `location` is optional per entry — the {entry.location && ...}
+// per role. `location` is optional per entry - the {entry.location && ...}
 // check below just skips rendering that line if an entry doesn't have one.
 export default function Experience() {
   const { t, c } = useLang()

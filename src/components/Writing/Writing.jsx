@@ -6,7 +6,7 @@ import './Writing.css'
 // "More on Medium" link under the list).
 const MAX_POSTS = 3
 
-// Renders whatever is in src/data/writing.js — both the intro text and the
+// Renders whatever is in src/data/writing.js - both the intro text and the
 // list of posts. If the posts array is empty, this shows a quiet fallback
 // instead of an empty section.
 export default function Writing() {
@@ -39,7 +39,7 @@ export default function Writing() {
                 delay={Math.min(index * 0.08, 0.3)}
               >
                 <div className="writing__post-text">
-                  {/* tag and date are optional — the row only renders
+                  {/* tag and date are optional - the row only renders
                       if at least one of them is set. */}
                   {(post.tag || post.date) && (
                     <p className="writing__post-meta mono">
